@@ -86,11 +86,21 @@ export const education = [
 ]
 
 export const certifications = [
-  { title: 'Microservices with React & Node.js', source: 'Udemy', year: "'23", image: '' },
-  { title: 'Next.js', source: 'Udemy', year: "'23", image: '' },
-  { title: 'Vue & Vuex', source: 'Udemy', year: "'23", image: '' },
-  { title: 'JavaScript Web Developer', source: 'SoftUni', year: "'21–'22", image: '' },
-  { title: 'QA Manual & Automation', source: 'SoftUni', year: "'22", image: '' },
-  { title: 'Java Basic, OOP & Web', source: 'Vola Software', year: "'22", image: '' },
-  { title: 'Microsoft Excel Advanced', source: 'SoftUni', year: "'22", image: '' },
+  { title: 'Front-End Developer with JavaScript', source: 'SoftUni', year: "'21–'22", pdf: '/certs/softuni-frontend-diploma.pdf' },
+  { title: 'ReactJS', source: 'SoftUni', year: "'22", pdf: '/certs/softuni-reactjs.pdf' },
+  { title: 'Angular', source: 'SoftUni', year: "'22", pdf: '/certs/softuni-angular.pdf' },
+  { title: 'JS Applications', source: 'SoftUni', year: "'22", pdf: '/certs/softuni-js-applications.pdf' },
+  { title: 'JS Back-End', source: 'SoftUni', year: "'22", pdf: '/certs/softuni-js-backend.pdf' },
+  { title: 'HTML & CSS', source: 'SoftUni', year: "'22", pdf: '/certs/softuni-html-css.pdf' },
+  { title: 'Programming Basics', source: 'SoftUni', year: "'21", pdf: '/certs/softuni-programming-basics.pdf' },
+  { title: 'QA Automation', source: 'SoftUni', year: "'22", pdf: '/certs/softuni-qa-automation.pdf' },
+  { title: 'QA Fundamentals', source: 'SoftUni', year: "'22", pdf: '/certs/softuni-qa-fundamentals.pdf' },
+  { title: 'Microsoft Excel Advanced', source: 'SoftUni', year: "'22", pdf: '/certs/softuni-excel-advanced.pdf' },
+  { title: 'Microsoft Excel Fundamentals', source: 'SoftUni', year: "'22", pdf: '/certs/softuni-excel-fundamentals.pdf' },
+  { title: 'Microservices with React & Node.js', source: 'Udemy', year: "'23", pdf: '/certs/microservices-node-react-2023.jpg' },
+  { title: 'Next.js', source: 'Udemy', year: "'23", pdf: '/certs/next-udemy-2023.jpg' },
+  { title: 'Vue & Vuex', source: 'Udemy', year: "'23", pdf: '/certs/vue-udemy-2023.jpg' },
+  { title: 'Java Basic, OOP & Web', source: 'Vola Software', year: "'22", pdf: '/certs/vola-certificate-Issued-may-22.jpeg' },
 ]
+
+export const certSources = ['All', 'SoftUni', 'Udemy', 'Vola Software'] as const

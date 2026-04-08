@@ -2,13 +2,15 @@ interface GradientCardProps {
   children: React.ReactNode
   className?: string
   style?: React.CSSProperties
+  onClick?: () => void
 }
 
-export default function GradientCard({ children, className = '', style }: GradientCardProps) {
+export default function GradientCard({ children, className = '', style, onClick }: GradientCardProps) {
   return (
     <div
       className={`relative bg-card rounded-[18px] p-5 transition-all duration-300 ${className}`}
       style={style}
+      onClick={onClick}
     >
       <div
         className="absolute inset-0 pointer-events-none rounded-[18px] p-px"

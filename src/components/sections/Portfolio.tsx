@@ -32,15 +32,14 @@ function sortProjects(projects: Project[], sort: SortKey) {
 
 const API_URL = 'https://nodejs.dimitrov93.eu/api/portfolio'
 
+const container = { hidden: {}, show: { transition: { staggerChildren: 0.09 } } }
+const anim = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.45 } } }
+
 function ProjectCard({ project, index }: { project: Project; index: number }) {
   const [hovered, setHovered] = useState(false)
-  const isEven = index % 2 === 0
 
   return (
-    <motion.div
-      initial={{ opacity: 0, x: isEven ? -40 : 40 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' as const }}
+    <div
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       className="group relative"
@@ -60,6 +59,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           <motion.img
             src={project.image}
             alt={project.title}
+            loading="lazy"
             className="w-full h-full object-cover"
             animate={{
               scale: hovered ? 1.04 : 1,
@@ -123,7 +123,7 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
           transition={{ duration: 0.5, ease: 'easeOut' }}
         />
       </div>
-    </motion.div>
+    </div>
   )
 }
 
@@ -150,23 +150,28 @@ function SkeletonCard() {
 export default function Portfolio() {
   const [projects, setProjects] = useState<Project[]>([])
   const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(false)
   const [visible, setVisible] = useState(4)
   const [sort, setSort] = useState<SortKey>('newest')
 
-  useEffect(() => {
+  const fetchProjects = () => {
+    setLoading(true)
+    setError(false)
     fetch(API_URL)
       .then(res => res.json())
       .then(data => { setProjects(data); setLoading(false) })
-      .catch(() => setLoading(false))
-  }, [])
+      .catch(() => { setError(true); setLoading(false) })
+  }
+
+  useEffect(() => { fetchProjects() }, [])
 
   const sorted = sortProjects(projects, sort)
   const shown = sorted.slice(0, visible)
 
   return (
-    <div className="flex flex-col gap-6">
+    <motion.div variants={container} initial="hidden" animate="show" className="flex flex-col gap-6">
       {/* Header: count + sort */}
-      <div className="flex items-center justify-between gap-4 flex-wrap">
+      <motion.div variants={anim} className="flex items-center justify-between gap-4 flex-wrap">
         <p className="text-sm text-[#555]">
           {loading ? (
             <span className="inline-block h-4 w-20 rounded bg-white/5 animate-pulse align-middle" />
@@ -189,31 +194,36 @@ export default function Portfolio() {
             </button>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* Cards */}
-      <div className="flex flex-col gap-8">
+      <motion.div variants={anim} className="flex flex-col gap-8">
         {loading ? (
           <>
             <SkeletonCard />
             <SkeletonCard />
             <SkeletonCard />
           </>
+        ) : error ? (
+          <div className="flex flex-col items-center gap-4 py-12 text-center">
+            <p className="text-[#888] text-sm">Failed to load projects.</p>
+            <button
+              onClick={fetchProjects}
+              className="cursor-pointer px-6 py-2.5 rounded-full text-sm font-semibold bg-gold-glow text-accent border border-accent/25 transition-all duration-300 hover:shadow-[0_4px_16px_rgba(255,219,110,0.15)]"
+            >
+              Retry
+            </button>
+          </div>
         ) : (
           shown.map((project, i) => (
             <ProjectCard key={project._id} project={project} index={i} />
           ))
         )}
-      </div>
+      </motion.div>
 
       {/* Load more */}
       {!loading && shown.length < sorted.length && (
-        <motion.div
-          className="text-center pt-2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-        >
+        <motion.div variants={anim} className="text-center pt-2">
           <button
             onClick={() => setVisible(v => v + 4)}
             className="cursor-pointer px-8 py-3 rounded-full text-sm font-semibold bg-gold-glow text-accent border border-accent/25 transition-all duration-300 hover:shadow-[0_4px_16px_rgba(255,219,110,0.15)]"
@@ -222,6 +232,6 @@ export default function Portfolio() {
           </button>
         </motion.div>
       )}
-    </div>
+    </motion.div>
   )
 }

@@ -117,6 +117,23 @@ export function SidebarCompact() {
               <div className="pt-3 flex justify-center">
                 <SocialLinks />
               </div>
+              <div className="pt-3 flex justify-center gap-2">
+                <button
+                  onClick={() => window.dispatchEvent(new CustomEvent('cv-preview'))}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-accent bg-transparent text-accent text-[11px] font-semibold cursor-pointer transition-all duration-300 hover:bg-accent/10"
+                >
+                  <FiEye size={12} />
+                  Preview CV
+                </button>
+                <a
+                  href="/cv.pdf"
+                  download="Tsvetomir_Dimitrov_CV.pdf"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-linear-to-r from-accent to-accent-2 text-[#1a1a1b] text-[11px] font-semibold no-underline transition-all duration-300 hover:brightness-110"
+                >
+                  <FiDownload size={12} />
+                  Download CV
+                </a>
+              </div>
             </div>
           </motion.div>
         )}

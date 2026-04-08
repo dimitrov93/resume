@@ -17,9 +17,9 @@ const sections: Record<string, React.FC> = { About, Resume, Certifications, Port
 const tabs = ['About', 'Resume', 'Certifications', 'Portfolio', 'Contact'] as const
 
 const pageVariants = {
-  initial: { opacity: 0, y: 18 },
-  animate: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' as const } },
-  exit: { opacity: 0, y: -10, transition: { duration: 0.2 } },
+  initial: { opacity: 0, y: 14, scale: 0.99 },
+  animate: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] } },
+  exit: { opacity: 0, y: -8, scale: 0.99, transition: { duration: 0.18, ease: 'easeIn' as const } },
 }
 
 function MobileNav({ active, setActive, menuOpen, setMenuOpen }: {
@@ -127,6 +127,7 @@ export default function App() {
             <main className="mt-5">
               <AnimatedSection active={active} />
             </main>
+
             {showCvPreview && <CvPreviewModal onClose={() => setShowCvPreview(false)} />}
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-8 pointer-events-none rounded-b-2xl bg-linear-to-t from-surface to-transparent" />
