@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { profile } from './data/profile'
 import { AnimatePresence, motion } from 'framer-motion'
-import { FiMenu, FiX, FiSun, FiMoon } from 'react-icons/fi'
+import { FiX, FiSun, FiMoon } from 'react-icons/fi'
 import CvPreviewModal from './components/ui/CvPreviewModal'
 import { SidebarFull, SidebarCompact } from './components/Sidebar'
 import NavTabs from './components/ui/NavTabs'
@@ -42,13 +42,15 @@ function MobileNav({ active, setActive, menuOpen, setMenuOpen }: {
   const { theme, toggle: toggleTheme } = useTheme()
   return (
     <>
-      <button
-        onClick={() => setMenuOpen(!menuOpen)}
-        aria-label="Toggle menu"
-        className="fixed top-4 left-4 z-100 w-11 h-11 rounded-full border-none items-center justify-center cursor-pointer shadow-lg hidden max-[1199px]:flex bg-linear-to-br from-accent to-accent-2"
-      >
-        {menuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
-      </button>
+      {menuOpen && (
+        <button
+          onClick={() => setMenuOpen(false)}
+          aria-label="Close menu"
+          className="fixed top-4 left-4 z-100 w-11 h-11 rounded-full border-none items-center justify-center cursor-pointer shadow-lg flex bg-linear-to-br from-accent to-accent-2"
+        >
+          <FiX size={20} className="text-black" />
+        </button>
+      )}
 
       <AnimatePresence>
         {menuOpen && (
@@ -136,7 +138,13 @@ export default function App() {
 
   useEffect(() => {
     document.title = `${profile.name} — ${profile.title}`
-    const handler = () => setShowCvPreview(true)
+    const handler = () => {
+      if (window.innerWidth < 640) {
+        window.open('/cv.pdf', '_blank')
+        return
+      }
+      setShowCvPreview(true)
+    }
     window.addEventListener('cv-preview', handler)
     return () => window.removeEventListener('cv-preview', handler)
   }, [])
@@ -175,7 +183,7 @@ export default function App() {
       {/* Mobile layout (<1200px) */}
       <div className="flex min-[1200px]:hidden flex-col max-w-250 mx-auto mt-7.5 px-5 gap-6 pt-17.5 max-sm:px-3 max-sm:pt-15 max-sm:gap-4">
         <MobileNav active={active} setActive={setActive} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
-        <SidebarCompact />
+        <SidebarCompact onMenuToggle={() => setMenuOpen(!menuOpen)} active={active} />
         <ContentPanel active={active}>
           <AnimatedSection active={active} />
         </ContentPanel>
