@@ -66,12 +66,6 @@ export const experience = [
   },
 ]
 
-export const links = [
-  { label: 'GitHub', href: 'https://github.com/dimitrov93', icon: 'github' as const },
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/tsvetomir-dimitrov', icon: 'linkedin' as const },
-  { label: 'Website', href: 'https://dimitrov93.eu', icon: 'website' as const },
-]
-
 export const education = [
   {
     title: 'SoftUni — Computer Software Engineering',
@@ -102,5 +96,3 @@ export const certifications = [
   { title: 'Vue & Vuex', source: 'Udemy', year: "'23", pdf: '/certs/vue-udemy-2023.jpg' },
   { title: 'Java Basic, OOP & Web', source: 'Vola Software', year: "'22", pdf: '/certs/vola-certificate-Issued-may-22.jpeg' },
 ]
-
-export const certSources = ['All', 'SoftUni', 'Udemy', 'Vola Software'] as const

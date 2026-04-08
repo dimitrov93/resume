@@ -20,19 +20,19 @@ export default function CvPreviewModal({ onClose }: { onClose: () => void }) {
           className="relative w-full max-w-4xl h-[85vh] bg-surface border border-border-gold rounded-2xl overflow-hidden flex flex-col"
         >
           <div className="flex items-center justify-between px-5 py-3 border-b border-border-gold">
-            <span className="text-white font-semibold text-sm">CV Preview</span>
+            <span className="text-heading font-semibold text-sm">CV Preview</span>
             <div className="flex items-center gap-3">
               <a
                 href="/cv.pdf"
                 download="Tsvetomir_Dimitrov_CV.pdf"
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-linear-to-r from-accent to-accent-2 text-white text-xs font-semibold no-underline transition-all duration-300 hover:brightness-110"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-linear-to-r from-accent to-accent-2 text-heading text-xs font-semibold no-underline transition-all duration-300 hover:brightness-110"
               >
                 <FiDownload size={14} />
                 Download
               </a>
               <button
                 onClick={onClose}
-                className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 border-none cursor-pointer text-white hover:bg-white/20 transition-colors"
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 border-none cursor-pointer text-heading hover:bg-white/20 transition-colors"
               >
                 <FiX size={16} />
               </button>

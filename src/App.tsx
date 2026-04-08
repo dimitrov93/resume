@@ -59,7 +59,7 @@ function MobileNav({ active, setActive, menuOpen, setMenuOpen }: {
                   key={tab}
                   onClick={() => { setActive(tab); setMenuOpen(false) }}
                   className={`cursor-pointer bg-transparent border-none text-lg font-medium py-3 text-left transition-colors duration-300 ${
-                    active === tab ? 'text-accent' : 'text-[#aaa]'
+                    active === tab ? 'text-accent' : 'text-paragraph'
                   }`}
                 >
                   {tab}
@@ -77,7 +77,7 @@ function ContentPanel({ active, children }: { active: string; children: React.Re
   return (
     <div className="bg-surface border border-border-gold rounded-2xl py-7.5 px-6">
       <div className="mb-2">
-        <h2 className="text-white text-2xl font-semibold tracking-tight">
+        <h2 className="text-heading text-2xl font-semibold tracking-tight">
           {active === 'About' ? 'About Me' : active}
         </h2>
       </div>
@@ -113,15 +113,21 @@ export default function App() {
   return (
     <div className="min-[1200px]:h-screen min-[1200px]:overflow-hidden">
       {/* Desktop layout (>=1200px) */}
-      <div className="hidden min-[1200px]:flex items-stretch max-w-300 px-5 gap-7.5 h-[90vh] my-[5vh] mx-auto">
-        <SidebarFull />
-        <div className="flex-1 min-w-0 relative bg-surface border border-border-gold rounded-2xl">
-          <div className="h-full overflow-y-auto overflow-x-hidden py-7.5 px-6">
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-2 gap-3">
-              <h2 className="text-white text-2xl font-semibold tracking-tight">
+      <div className="hidden min-[1200px]:flex flex-col max-w-300 px-5 h-[90vh] my-[5vh] mx-auto">
+        <div className="flex -mb-px">
+          <div className="w-85 shrink-0" />
+          <div className="flex-1 flex justify-end ml-7.5">
+            <NavTabs active={active} setActive={setActive} />
+          </div>
+        </div>
+        <div className="flex items-stretch gap-7.5 flex-1 min-h-0">
+          <SidebarFull />
+          <div className="flex-1 min-w-0 relative bg-surface border border-border-gold rounded-2xl rounded-tr-none">
+            <div className="h-full overflow-y-auto overflow-x-hidden py-7.5 px-6">
+              <div className="mb-2">
+              <h2 className="text-heading text-2xl font-semibold tracking-tight">
                 {active === 'About' ? 'About Me' : active}
               </h2>
-              <NavTabs active={active} setActive={setActive} />
             </div>
             <SectionLine />
             <main className="mt-5">
@@ -131,6 +137,7 @@ export default function App() {
             {showCvPreview && <CvPreviewModal onClose={() => setShowCvPreview(false)} />}
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-8 pointer-events-none rounded-b-2xl bg-linear-to-t from-surface to-transparent" />
+        </div>
         </div>
       </div>
 

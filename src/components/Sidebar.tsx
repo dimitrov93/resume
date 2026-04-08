@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiChevronDown, FiDownload, FiEye } from 'react-icons/fi'
+import { FiChevronDown, FiDownload, FiEye, FiSun, FiMoon } from 'react-icons/fi'
+import useTheme from '../hooks/useTheme'
 import { contacts } from '../data/contacts'
 import { profile } from '../data/profile'
 import ContactItem from './ContactItem'
@@ -8,6 +9,7 @@ import SocialLinks from './ui/SocialLinks'
 import Divider from './ui/Divider'
 
 export function SidebarFull() {
+  const { theme, toggle } = useTheme()
   return (
     <motion.aside
       initial={{ x: -60, opacity: 0 }}
@@ -19,7 +21,7 @@ export function SidebarFull() {
         <div className="overflow-hidden w-45 h-45 rounded-3xl bg-surface-2">
           <img src={profile.avatar} alt={profile.name} className="w-full h-full object-cover" />
         </div>
-        <h1 className="text-xl sm:text-2xl text-white font-semibold tracking-tight mt-3">
+        <h1 className="text-xl sm:text-2xl text-heading font-semibold tracking-tight mt-3">
           {profile.name}
         </h1>
         <div className="py-2.5 px-6 rounded-[10px] text-sm font-medium bg-gold-glow text-accent">
@@ -58,6 +60,13 @@ export function SidebarFull() {
           <FiDownload size={12} />
           Download CV
         </a>
+        <button
+          onClick={toggle}
+          className="w-8 h-8 rounded-lg bg-white/5 border border-white/8 flex items-center justify-center text-accent cursor-pointer hover:bg-white/10 transition-all duration-300"
+          aria-label="Toggle theme"
+        >
+          {theme === 'dark' ? <FiSun size={14} /> : <FiMoon size={14} />}
+        </button>
       </div>
     </motion.aside>
   )
@@ -65,6 +74,7 @@ export function SidebarFull() {
 
 export function SidebarCompact() {
   const [showContacts, setShowContacts] = useState(false)
+  const { theme, toggle } = useTheme()
 
   return (
     <motion.div
@@ -78,23 +88,32 @@ export function SidebarCompact() {
           <img src={profile.avatar} alt={profile.name} className="w-full h-full object-cover" />
         </div>
         <div className="flex flex-col gap-1.5">
-          <h1 className="text-white text-xl font-semibold tracking-tight">{profile.name}</h1>
-          <div className="py-1.5 px-4 rounded-lg text-[13px] font-medium bg-white/6 text-[#aaa] w-fit">
+          <h1 className="text-heading text-xl font-semibold tracking-tight">{profile.name}</h1>
+          <div className="py-1.5 px-4 rounded-lg text-[13px] font-medium bg-white/6 text-paragraph w-fit">
             {profile.title}
           </div>
         </div>
 
-        <button
-          onClick={() => setShowContacts(!showContacts)}
-          className="cursor-pointer ml-auto py-2 px-4 rounded-xl border border-accent/20 bg-transparent text-accent text-[13px] font-medium flex items-center gap-1.5 whitespace-nowrap transition-all duration-300"
-        >
-          <span className="max-sm:hidden">Show Contacts</span>
-          <FiChevronDown
-            size={14}
-            className="transition-transform duration-300"
-            style={{ transform: showContacts ? 'rotate(180deg)' : 'rotate(0)' }}
-          />
-        </button>
+        <div className="ml-auto flex items-center gap-2">
+          <button
+            onClick={toggle}
+            className="w-9 h-9 rounded-xl bg-white/5 border border-white/8 flex items-center justify-center text-accent cursor-pointer hover:bg-white/10 transition-all duration-300"
+            aria-label="Toggle theme"
+          >
+            {theme === 'dark' ? <FiSun size={15} /> : <FiMoon size={15} />}
+          </button>
+          <button
+            onClick={() => setShowContacts(!showContacts)}
+            className="cursor-pointer py-2 px-4 rounded-xl border border-accent/20 bg-transparent text-accent text-[13px] font-medium flex items-center gap-1.5 whitespace-nowrap transition-all duration-300"
+          >
+            <span className="max-sm:hidden">Show Contacts</span>
+            <FiChevronDown
+              size={14}
+              className="transition-transform duration-300"
+              style={{ transform: showContacts ? 'rotate(180deg)' : 'rotate(0)' }}
+            />
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>

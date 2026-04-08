@@ -38,7 +38,7 @@ export default function ContactForm() {
     return (
       <div className="flex flex-col items-center justify-center text-center bg-card border border-border-gold rounded-2xl py-12 px-4 gap-4">
         <FiCheckCircle size={48} color="#4ade80" />
-        <h3 className="text-lg font-semibold text-white">Message Sent!</h3>
+        <h3 className="text-lg font-semibold text-heading">Message Sent!</h3>
         <p className="text-sm text-dim">Thanks for reaching out.</p>
         <button
           onClick={() => { setSent(false); setForm({ name: '', email: '', subject: '', message: '' }) }}
@@ -54,32 +54,32 @@ export default function ContactForm() {
     <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col bg-card border border-border-gold rounded-2xl p-6 gap-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-medium mb-1.5 text-[#666]">Full Name</label>
+          <label className="block text-xs font-medium mb-1.5 text-dim">Full Name</label>
           <input
             name="name" value={form.name} onChange={handleChange} placeholder="Your name" required
-            className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-[#1a1a1b] border border-white/8 text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent/40"
+            className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-white/8 text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent/40"
           />
         </div>
         <div>
-          <label className="block text-xs font-medium mb-1.5 text-[#666]">Email</label>
+          <label className="block text-xs font-medium mb-1.5 text-dim">Email</label>
           <input
             name="email" type="email" value={form.email} onChange={handleChange} placeholder="your@email.com" required
-            className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-[#1a1a1b] border border-white/8 text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent/40"
+            className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-white/8 text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent/40"
           />
         </div>
       </div>
       <div>
-        <label className="block text-xs font-medium mb-1.5 text-[#666]">Subject</label>
+        <label className="block text-xs font-medium mb-1.5 text-dim">Subject</label>
         <input
           name="subject" value={form.subject} onChange={handleChange} placeholder="Say something..." required
-          className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-[#1a1a1b] border border-white/8 text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent/40"
+          className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-white/8 text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent/40"
         />
       </div>
       <div>
-        <label className="block text-xs font-medium mb-1.5 text-[#666]">Message</label>
+        <label className="block text-xs font-medium mb-1.5 text-dim">Message</label>
         <textarea
           name="message" value={form.message} onChange={handleChange} placeholder="Your message..." rows={4} required
-          className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-[#1a1a1b] border border-white/8 text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent/40 resize-none"
+          className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-white/8 text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent/40 resize-none"
         />
       </div>
       {error && (
@@ -91,7 +91,7 @@ export default function ContactForm() {
       <button
         type="submit" disabled={loading}
         className="flex items-center justify-center gap-2 w-fit ml-auto max-sm:mx-auto px-6 py-2.5 rounded-full text-sm font-semibold border-none text-[#1a1a1b] cursor-pointer"
-        style={{ background: loading ? 'rgba(255,219,110,0.5)' : 'linear-gradient(137.84deg, #FFDB6E 26.31%, #FFBC5E 93.75%)' }}
+        style={{ background: loading ? 'color-mix(in srgb, var(--color-accent) 50%, transparent)' : `linear-gradient(137.84deg, var(--color-accent) 26.31%, var(--color-accent-2) 93.75%)` }}
       >
         {loading ? 'Sending...' : <><FiSend size={15} />Send Message</>}
       </button>

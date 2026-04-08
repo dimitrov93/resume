@@ -16,6 +16,21 @@
   --color-gold-glow: rgba(255, 219, 110, 0.1);
 }
 
+[data-theme="light"] {
+  --color-accent: #4361EE;
+  --color-accent-2: #3A56D4;
+  --color-bg: #f5f5f5;
+  --color-surface: #ffffff;
+  --color-surface-2: #f0f0f0;
+  --color-card: #ffffff;
+  --color-heading: #1a1a2e;
+  --color-paragraph: #2a2a2a;
+  --color-muted: #555555;
+  --color-dim: #777777;
+  --color-border-gold: rgba(67, 97, 238, 0.2);
+  --color-gold-glow: rgba(67, 97, 238, 0.12);
+}
+
 @layer base {
   * {
     margin: 0;
@@ -32,7 +47,12 @@
     line-height: 1.65;
     min-height: 100vh;
     -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s, color 0.3s;
   }
+}
+
+[data-theme] *:not(iframe) {
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
 
 * {

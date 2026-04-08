@@ -1,16 +1,16 @@
 import { FiMail, FiPhone, FiMapPin } from 'react-icons/fi'
-import { FaFacebookF, FaLinkedinIn, FaGithub } from 'react-icons/fa6'
+import { FaLinkedinIn, FaGithub, FaFacebookMessenger } from 'react-icons/fa6'
 import type { IconType } from 'react-icons'
 import { profile } from './profile'
 
-export interface ContactEntry {
+interface ContactEntry {
   icon: IconType
   label: string
   value: string
   href: string
 }
 
-export interface SocialEntry {
+interface SocialEntry {
   icon: IconType
   label: string
   href: string
@@ -23,7 +23,7 @@ export const contacts: ContactEntry[] = [
 ]
 
 export const socials: SocialEntry[] = [
-  { icon: FaFacebookF, href: '#', label: 'Facebook' },
-  { icon: FaLinkedinIn, href: 'https://linkedin.com/in/tsvetomir-dimitrov', label: 'LinkedIn' },
   { icon: FaGithub, href: 'https://github.com/dimitrov93', label: 'GitHub' },
+  { icon: FaLinkedinIn, href: 'https://linkedin.com/in/tsvetomir-dimitrov', label: 'LinkedIn' },
+  { icon: FaFacebookMessenger, href: 'https://m.me/dimitrovtsvetomir', label: 'Messenger' },
 ]

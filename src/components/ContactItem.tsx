@@ -12,7 +12,7 @@ export default function ContactItem({ icon: Icon, label, value, href }: ContactI
   return (
     <a href={href} className="flex items-center gap-4 py-2 no-underline text-inherit transition-opacity duration-300">
       <IconBox>
-        <Icon size={18} color="#FFDB6E" />
+        <Icon size={18} style={{ color: 'var(--color-accent)' }} />
       </IconBox>
       <div>
         <p className="text-[11px] font-semibold uppercase tracking-wide text-muted mb-1">{label}</p>

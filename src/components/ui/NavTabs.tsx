@@ -9,34 +9,34 @@ interface NavTabsProps {
 
 function pillRadius(i: number) {
   const r = '12px'
-  if (i === 0) return `0 ${r} ${r} 16px`
-  if (i === tabs.length - 1) return `${r} 20px 0 ${r}`
+  if (i === 0) return `${r} ${r} ${r} 0`
+  if (i === tabs.length - 1) return `${r} ${r} 0 ${r}`
   return r
 }
 
 function btnRadius(i: number) {
-  if (i === 0) return '0 0 0 16px'
-  if (i === tabs.length - 1) return '0 20px 0 0'
+  if (i === 0) return '0'
+  if (i === tabs.length - 1) return '0'
   return '0'
 }
 
 export default function NavTabs({ active, setActive }: NavTabsProps) {
   return (
-    <nav className="relative mb-3 sm:absolute sm:top-0 sm:right-0 sm:mb-0">
-      <div className="flex bg-white/3 border border-white/6 rounded-tl-none rounded-tr-[20px] rounded-br-none rounded-bl-2xl overflow-hidden">
+    <nav className="relative">
+      <div className="flex bg-surface border border-border-gold rounded-t-[20px] rounded-br-none rounded-bl-none overflow-hidden">
         {tabs.map((tab, i) => (
           <button
             key={tab}
             onClick={() => setActive(tab)}
             className={`relative cursor-pointer text-[13px] font-medium px-5 py-3 border-none bg-transparent whitespace-nowrap transition-colors duration-300 ${
-              active === tab ? 'text-[#1a1a1b]' : 'text-dim hover:text-white/70'
+              active === tab ? 'text-heading' : 'text-dim hover:text-muted'
             }`}
             style={{ borderRadius: btnRadius(i) }}
           >
             {active === tab && (
               <motion.span
                 layoutId="nav-pill"
-                className="absolute inset-0 bg-linear-to-br from-accent to-accent-2 shadow-[0_2px_10px_rgba(255,219,110,0.3)]"
+                className="absolute inset-0 bg-linear-to-br from-accent to-accent-2 shadow-[0_2px_10px_var(--color-border-gold)]"
                 style={{ borderRadius: pillRadius(i) }}
                 transition={{ type: 'spring', stiffness: 380, damping: 30 }}
               />
