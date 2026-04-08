@@ -24,6 +24,6 @@ export const contacts: ContactEntry[] = [
 
 export const socials: SocialEntry[] = [
   { icon: FaFacebookF, href: '#', label: 'Facebook' },
-  { icon: FaLinkedinIn, href: '#', label: 'LinkedIn' },
-  { icon: FaGithub, href: '#', label: 'GitHub' },
+  { icon: FaLinkedinIn, href: 'https://linkedin.com/in/tsvetomir-dimitrov', label: 'LinkedIn' },
+  { icon: FaGithub, href: 'https://github.com/dimitrov93', label: 'GitHub' },
 ]

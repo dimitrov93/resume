@@ -1,10 +1,5 @@
 import { motion } from 'framer-motion'
-import {
-  SiReact, SiTypescript, SiNextdotjs, SiTailwindcss,
-  SiVuedotjs, SiAngular, SiNodedotjs, SiExpress,
-  SiSpringboot, SiPostgresql, SiMongodb, SiDocker,
-  SiGit, SiMariadb, SiJavascript,
-} from 'react-icons/si'
+import { skills, skillCategories } from '../../data/resume'
 import GradientCard from '../ui/GradientCard'
 import IconBox from '../ui/IconBox'
 
@@ -13,24 +8,6 @@ const services = [
   { icon: '/icons/web-dev.svg', title: 'Web Development', desc: 'Scalable React & Next.js applications with clean architecture.' },
   { icon: '/icons/mobile.svg', title: 'Team Leadership', desc: 'Coaching, mentoring and driving team performance through one-on-ones and KPI tracking.' },
   { icon: '/icons/photo.svg', title: 'Full-Stack Solutions', desc: 'End-to-end systems with Vue, Spring Boot, PostgreSQL, and Docker.' },
-]
-
-const techStack = [
-  { icon: SiReact, label: 'React', color: '#61DAFB' },
-  { icon: SiNextdotjs, label: 'Next.js', color: '#ffffff' },
-  { icon: SiTypescript, label: 'TypeScript', color: '#3178C6' },
-  { icon: SiJavascript, label: 'JavaScript', color: '#F7DF1E' },
-  { icon: SiVuedotjs, label: 'Vue', color: '#4FC08D' },
-  { icon: SiAngular, label: 'Angular', color: '#DD0031' },
-  { icon: SiTailwindcss, label: 'Tailwind', color: '#06B6D4' },
-  { icon: SiNodedotjs, label: 'Node.js', color: '#339933' },
-  { icon: SiExpress, label: 'Express', color: '#ffffff' },
-  { icon: SiSpringboot, label: 'Spring Boot', color: '#6DB33F' },
-  { icon: SiPostgresql, label: 'PostgreSQL', color: '#4169E1' },
-  { icon: SiMongodb, label: 'MongoDB', color: '#47A248' },
-  { icon: SiMariadb, label: 'MariaDB', color: '#003545' },
-  { icon: SiDocker, label: 'Docker', color: '#2496ED' },
-  { icon: SiGit, label: 'Git', color: '#F05032' },
 ]
 
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.09 } } }
@@ -72,17 +49,24 @@ export default function About() {
       </motion.div>
 
       <motion.div variants={item} className="mt-8">
-        <h3 className="text-lg sm:text-xl text-white font-semibold mb-4">Tech Stack</h3>
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {techStack.map(({ icon: Icon, label, color }) => (
-            <motion.div key={label} whileHover={{ y: -4 }}>
-              <GradientCard className="flex flex-col items-center gap-3 py-5">
-                <IconBox size={48}>
-                  <Icon size={22} color={color} />
-                </IconBox>
-                <span className="text-sm font-medium text-[#ccc]">{label}</span>
-              </GradientCard>
-            </motion.div>
+        <h3 className="text-lg sm:text-xl text-white font-semibold mb-5">My Skills</h3>
+        <div className="flex flex-col gap-5">
+          {skillCategories.map(cat => (
+            <div key={cat}>
+              <p className="text-xs font-semibold uppercase tracking-wider text-accent mb-3">{cat}</p>
+              <div className="flex flex-wrap gap-3">
+                {skills.filter(s => s.category === cat).map(({ icon: Icon, label, color }) => (
+                  <motion.div key={label} whileHover={{ y: -3 }}>
+                    <GradientCard className="flex items-center gap-2.5 py-2.5! px-4!">
+                      <IconBox size={32}>
+                        <Icon size={16} color={color} />
+                      </IconBox>
+                      <span className="text-sm font-medium text-[#ccc]">{label}</span>
+                    </GradientCard>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
       </motion.div>

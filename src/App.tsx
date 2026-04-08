@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { profile } from './data/profile'
 import { AnimatePresence, motion } from 'framer-motion'
 import { FiMenu, FiX } from 'react-icons/fi'
+import CvPreviewModal from './components/ui/CvPreviewModal'
 import { SidebarFull, SidebarCompact } from './components/Sidebar'
 import NavTabs from './components/ui/NavTabs'
 import SectionLine from './components/ui/SectionLine'
@@ -9,10 +10,11 @@ import About from './components/sections/About'
 import Resume from './components/sections/Skills'
 import Portfolio from './components/sections/Portfolio'
 import Blog from './components/sections/Blog'
+import Certifications from './components/sections/Certifications'
 import Contact from './components/sections/Contact'
 
-const sections: Record<string, React.FC> = { About, Resume, Portfolio, Blog, Contact }
-const tabs = ['About', 'Resume', 'Portfolio', 'Blog', 'Contact'] as const
+const sections: Record<string, React.FC> = { About, Resume, Certifications, Portfolio, Blog, Contact }
+const tabs = ['About', 'Resume', 'Certifications', 'Portfolio', 'Blog', 'Contact'] as const
 
 const pageVariants = {
   initial: { opacity: 0, y: 18 },
@@ -99,9 +101,13 @@ function AnimatedSection({ active }: { active: string }) {
 export default function App() {
   const [active, setActive] = useState<string>('About')
   const [menuOpen, setMenuOpen] = useState(false)
+  const [showCvPreview, setShowCvPreview] = useState(false)
 
   useEffect(() => {
     document.title = `${profile.name} — ${profile.title}`
+    const handler = () => setShowCvPreview(true)
+    window.addEventListener('cv-preview', handler)
+    return () => window.removeEventListener('cv-preview', handler)
   }, [])
 
   return (
@@ -121,6 +127,7 @@ export default function App() {
             <main className="mt-5">
               <AnimatedSection active={active} />
             </main>
+            {showCvPreview && <CvPreviewModal onClose={() => setShowCvPreview(false)} />}
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-8 pointer-events-none rounded-b-2xl bg-linear-to-t from-surface to-transparent" />
         </div>
@@ -133,6 +140,7 @@ export default function App() {
         <ContentPanel active={active}>
           <AnimatedSection active={active} />
         </ContentPanel>
+        {showCvPreview && <CvPreviewModal onClose={() => setShowCvPreview(false)} />}
       </div>
     </div>
   )
