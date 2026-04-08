@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { FiExternalLink } from 'react-icons/fi'
 import { skills, skillCategories } from '../../data/resume'
 import GradientCard from '../ui/GradientCard'
 import IconBox from '../ui/IconBox'
@@ -51,6 +52,38 @@ export default function About() {
             </motion.div>
           ))}
         </div>
+      </motion.div>
+
+      <motion.div variants={item} className="mt-8">
+        <h3 className="text-lg sm:text-xl text-heading font-semibold mb-4">{t('about.featuredProject')}</h3>
+        <a
+          href="https://lupygames.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group block no-underline"
+        >
+          <div className="bg-card border border-border-gold rounded-2xl overflow-hidden transition-all duration-300 hover:border-accent/30 hover:shadow-[0_8px_32px_var(--color-border-gold)]">
+            <div className="relative overflow-hidden aspect-[16/8]">
+              <img
+                src="/lupy-games.png"
+                alt="Lupy Games"
+                className="w-full h-full object-cover object-top"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-card via-transparent to-transparent" />
+            </div>
+            <div className="p-6 -mt-8 relative">
+              <div className="flex items-center gap-2 mb-2">
+                <PulseDot size="sm" />
+                <span className="text-xs font-semibold text-green-400 uppercase tracking-wider">Live Project</span>
+              </div>
+              <h4 className="text-heading font-bold text-xl mb-2 group-hover:text-accent transition-colors">Lupy Games</h4>
+              <p className="text-sm text-muted leading-relaxed mb-4">{t('about.lupyDesc')}</p>
+              <span className="inline-flex items-center gap-1.5 text-accent text-sm font-semibold group-hover:gap-2.5 transition-all">
+                {t('about.visitSite')} <FiExternalLink size={14} />
+              </span>
+            </div>
+          </div>
+        </a>
       </motion.div>
 
       <motion.div variants={item} className="mt-8">

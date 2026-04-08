@@ -14,6 +14,9 @@ const translations = {
       'A developer with genuine people management experience — in the field, not just on paper. Passionate about turning complex problems into simple, performant, and intuitive interfaces.',
     'about.whatImDoing': "What I'm Doing",
     'about.mySkills': 'My Skills',
+    'about.featuredProject': 'Featured Project',
+    'about.lupyDesc': 'Led the full platform migration from WordPress to Next.js 14, and continued upgrading through versions 15 and 16. Drove user engagement through gamification — achievements, ranks, level progression, and customizable themes/skins for a personalized experience. Built real-time notifications, leaderboards, user profile pages, and multi-language support. Continuously iterating on features and UX to keep pace with evolving community needs and modern web standards.',
+    'about.visitSite': 'Visit Site',
     'about.webDesign': 'Web Design',
     'about.webDesignDesc':
       'Clean, modern UI/UX built with attention to detail and user experience.',
@@ -25,7 +28,7 @@ const translations = {
       'Coaching, mentoring and driving team performance through one-on-ones and KPI tracking.',
     'about.fullStack': 'Full-Stack Solutions',
     'about.fullStackDesc':
-      'End-to-end systems with Vue, Spring Boot, PostgreSQL, and Docker.',
+      'End-to-end applications with MongoDB, Express, React, and Node.js (MERN stack).',
 
     'resume.currently': 'Currently',
     'resume.experience': 'Experience',
@@ -76,6 +79,9 @@ const translations = {
     'portfolio.loadMore': 'Load More',
     'portfolio.failed': 'Failed to load projects.',
     'portfolio.retry': 'Retry',
+    'portfolio.featured': 'Featured',
+    'portfolio.lupyDesc': 'Gamified platform with achievements, ranks, leaderboards, customizable themes, and multi-language support. Migrated from WordPress to Next.js 14→16.',
+    'portfolio.otherProjects': 'Other Projects',
     'portfolio.project': 'Project',
     'portfolio.source': 'Source',
     'portfolio.liveDemo': 'Live Demo',
@@ -138,6 +144,9 @@ const translations = {
       'Разработчик с истински опит в управлението на хора — на терен, не само на хартия. Страстен към превръщането на сложни проблеми в прости, бързи и интуитивни интерфейси.',
     'about.whatImDoing': 'Какво правя',
     'about.mySkills': 'Моите умения',
+    'about.featuredProject': 'Основен проект',
+    'about.lupyDesc': 'Ръководих пълната миграция на платформата от WordPress към Next.js 14 и продължих надграждането през версии 15 и 16. Повишаване на ангажираността чрез геймификация — постижения, рангове, нива и персонализируеми теми/скинове. Разработих нотификации в реално време, класации, потребителски профили и многоезична поддръжка. Непрекъснато подобряване на функционалности и UX спрямо нуждите на общността и съвременните уеб стандарти.',
+    'about.visitSite': 'Посети сайта',
     'about.webDesign': 'Уеб дизайн',
     'about.webDesignDesc':
       'Чист, модерен UI/UX, изграден с внимание към детайла и потребителското изживяване.',
@@ -149,7 +158,7 @@ const translations = {
       'Коучинг, менториране и управление на представянето на екипа чрез one-on-one срещи и проследяване на KPI.',
     'about.fullStack': 'Full-Stack решения',
     'about.fullStackDesc':
-      'Цялостни системи с Vue, Spring Boot, PostgreSQL и Docker.',
+      'Цялостни приложения с MongoDB, Express, React и Node.js (MERN stack).',
 
     'resume.currently': 'В момента',
     'resume.experience': 'Опит',
@@ -200,6 +209,9 @@ const translations = {
     'portfolio.loadMore': 'Зареди още',
     'portfolio.failed': 'Неуспешно зареждане на проекти.',
     'portfolio.retry': 'Опитай отново',
+    'portfolio.featured': 'Основен',
+    'portfolio.lupyDesc': 'Платформа с геймификация — постижения, рангове, класации, персонализируеми теми и многоезична поддръжка. Мигрирана от WordPress към Next.js 14→16.',
+    'portfolio.otherProjects': 'Други проекти',
     'portfolio.project': 'Проект',
     'portfolio.source': 'Код',
     'portfolio.liveDemo': 'Демо',

@@ -21,7 +21,13 @@ export default function Certifications() {
   const [activeFile, setActiveFile] = useState<{ title: string; file: string } | null>(null)
   const { t } = useLanguage()
 
-  const handleViewCert = (title: string, file: string) => setActiveFile({ title, file })
+  const handleViewCert = (title: string, file: string) => {
+    if (window.innerWidth < 640) {
+      window.open(file, '_blank')
+      return
+    }
+    setActiveFile({ title, file })
+  }
 
   return (
     <motion.div variants={container} initial="hidden" animate="show" className="flex flex-col gap-6">

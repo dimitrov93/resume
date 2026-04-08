@@ -1,7 +1,10 @@
 import { FiAward } from 'react-icons/fi'
 import useLanguage from '../../hooks/useLanguage'
 
-const isImage = (path: string) => /\.(jpg|jpeg|png|webp)$/i.test(path)
+function getThumbnail(file: string): string {
+  if (/\.(jpg|jpeg|png|webp)$/i.test(file)) return file
+  return file.replace(/\.pdf$/i, '.jpg')
+}
 
 export default function CertPreview({ file, title }: { file: string; title: string }) {
   const { t } = useLanguage()
@@ -15,18 +18,5 @@ export default function CertPreview({ file, title }: { file: string; title: stri
     )
   }
 
-  if (isImage(file)) {
-    return <img src={file} alt={title} className="w-full h-full object-cover" />
-  }
-
-  return (
-    <>
-      <iframe
-        src={`${file}#toolbar=0&navpanes=0&scrollbar=0&page=1`}
-        title={title}
-        className="w-full h-full border-none pointer-events-none"
-      />
-      <div className="absolute inset-0 bg-transparent" />
-    </>
-  )
+  return <img src={getThumbnail(file)} alt={title} className="w-full h-full object-cover" />
 }

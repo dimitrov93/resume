@@ -11,7 +11,7 @@ export default function CertModal({ title, file, onClose }: { title: string; fil
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         onClick={onClose}
-        className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
+        className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4 max-sm:p-2"
       >
         <motion.div
           initial={{ opacity: 0, scale: 0.92 }}
@@ -19,7 +19,7 @@ export default function CertModal({ title, file, onClose }: { title: string; fil
           exit={{ opacity: 0, scale: 0.92 }}
           transition={{ duration: 0.25 }}
           onClick={e => e.stopPropagation()}
-          className="relative w-full max-w-4xl max-h-[85vh] bg-surface border border-border-gold rounded-2xl overflow-hidden flex flex-col"
+          className="relative w-full max-w-4xl max-h-[85vh] bg-surface border border-border-gold rounded-2xl overflow-hidden flex flex-col max-sm:max-w-full max-sm:max-h-[95vh] max-sm:rounded-lg"
         >
           <div className="flex items-center justify-between px-5 py-3 border-b border-border-gold">
             <span className="text-heading font-semibold text-sm truncate">{title}</span>

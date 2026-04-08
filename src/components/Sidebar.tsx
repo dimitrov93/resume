@@ -1,6 +1,6 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiChevronDown, FiDownload, FiEye } from 'react-icons/fi'
+import { FiChevronDown, FiDownload, FiEye, FiMenu } from 'react-icons/fi'
 import useLanguage from '../hooks/useLanguage'
 import useTypewriter from '../hooks/useTypewriter'
 import { contacts } from '../data/contacts'
@@ -68,9 +68,16 @@ export function SidebarFull() {
   )
 }
 
-export function SidebarCompact() {
-  const [showContacts, setShowContacts] = useState(false)
+export function SidebarCompact({ onMenuToggle, active }: { onMenuToggle: () => void; active: string }) {
+  const [showContacts, setShowContacts] = useState(true)
   const { t } = useLanguage()
+  const initialTab = useRef(active)
+
+  useEffect(() => {
+    if (active !== initialTab.current) {
+      setShowContacts(false)
+    }
+  }, [active])
   const roles = useMemo(() => [t('sidebar.role1'), t('sidebar.role2'), t('sidebar.role3')], [t])
   const typedRole = useTypewriter(roles)
 
@@ -92,14 +99,21 @@ export function SidebarCompact() {
           </div>
         </div>
 
-        <div className="ml-auto flex items-center gap-2">
+        <div className="ml-auto flex flex-col items-end gap-2">
+          <button
+            onClick={onMenuToggle}
+            aria-label="Toggle menu"
+            className="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer border border-accent/20 bg-transparent text-accent transition-all duration-300"
+          >
+            <FiMenu size={18} />
+          </button>
           <button
             onClick={() => setShowContacts(!showContacts)}
-            className="cursor-pointer py-2 px-4 rounded-xl border border-accent/20 bg-transparent text-accent text-[13px] font-medium flex items-center gap-1.5 whitespace-nowrap transition-all duration-300"
+            aria-label="Toggle contacts"
+            className="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer border border-accent/20 bg-transparent text-accent transition-all duration-300"
           >
-            <span className="max-sm:hidden">{t('sidebar.showContacts')}</span>
             <FiChevronDown
-              size={14}
+              size={18}
               className="transition-transform duration-300"
               style={{ transform: showContacts ? 'rotate(180deg)' : 'rotate(0)' }}
             />
