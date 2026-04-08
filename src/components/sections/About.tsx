@@ -18,6 +18,13 @@ export default function About() {
   return (
     <motion.div variants={container} initial="hidden" animate="show">
       <motion.div variants={item} className="flex flex-col gap-3">
+        <div className="flex items-center gap-2 w-fit px-4 py-2 rounded-full bg-card border border-green-400/20">
+          <div className="relative flex items-center justify-center w-2 h-2">
+            <span className="absolute inline-flex w-full h-full rounded-full bg-green-400/40 animate-ping" />
+            <span className="relative inline-flex w-2 h-2 rounded-full bg-green-400 shadow-[0_0_6px_rgba(74,222,128,0.5)]" />
+          </div>
+          <span className="text-xs font-medium text-green-400">Available for freelance & opportunities</span>
+        </div>
         <p className="text-[#aaa] leading-[1.8]">
           Dual-role professional: Front-End Developer at Lupy Games and Team Lead at Montway Auto Transport,
           overseeing a LiveChat team. On one side, building scalable React/Next.js applications with clean

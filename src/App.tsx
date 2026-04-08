@@ -9,12 +9,12 @@ import SectionLine from './components/ui/SectionLine'
 import About from './components/sections/About'
 import Resume from './components/sections/Skills'
 import Portfolio from './components/sections/Portfolio'
-import Blog from './components/sections/Blog'
+
 import Certifications from './components/sections/Certifications'
 import Contact from './components/sections/Contact'
 
-const sections: Record<string, React.FC> = { About, Resume, Certifications, Portfolio, Blog, Contact }
-const tabs = ['About', 'Resume', 'Certifications', 'Portfolio', 'Blog', 'Contact'] as const
+const sections: Record<string, React.FC> = { About, Resume, Certifications, Portfolio, Contact }
+const tabs = ['About', 'Resume', 'Certifications', 'Portfolio', 'Contact'] as const
 
 const pageVariants = {
   initial: { opacity: 0, y: 18 },

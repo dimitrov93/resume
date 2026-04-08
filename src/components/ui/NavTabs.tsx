@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 
-const tabs = ['About', 'Resume', 'Certifications', 'Portfolio', 'Blog', 'Contact'] as const
+const tabs = ['About', 'Resume', 'Certifications', 'Portfolio', 'Contact'] as const
 
 interface NavTabsProps {
   active: string
