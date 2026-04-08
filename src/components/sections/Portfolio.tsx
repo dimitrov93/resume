@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import { FiExternalLink } from 'react-icons/fi'
 import ProjectCard from '../ui/ProjectCard'
 import SkeletonCard from '../ui/SkeletonCard'
+import PulseDot from '../ui/PulseDot'
 import useLanguage from '../../hooks/useLanguage'
 import type { TranslationKey } from '../../data/translations'
 
@@ -64,6 +66,37 @@ export default function Portfolio() {
 
   return (
     <motion.div variants={container} initial="hidden" animate="show" className="flex flex-col gap-6">
+      {/* Featured project */}
+      <motion.div variants={anim}>
+        <a
+          href="https://lupygames.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group block no-underline"
+        >
+          <div className="relative flex flex-col sm:flex-row items-stretch rounded-2xl overflow-hidden bg-card border border-border-gold transition-all duration-300 hover:border-accent/30 hover:shadow-[0_8px_32px_var(--color-border-gold)]">
+            <div className="sm:w-[55%] shrink-0 overflow-hidden h-52 sm:h-64">
+              <img
+                src="/lupy-games.png"
+                alt="Lupy Games"
+                className="w-full h-full object-cover object-top"
+              />
+            </div>
+            <div className="flex flex-col justify-center gap-4 p-6 sm:p-7 sm:w-[45%]">
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent bg-accent/10 px-2.5 py-1 rounded-md">{t('portfolio.featured')}</span>
+                <PulseDot size="sm" />
+              </div>
+              <h3 className="text-heading font-bold text-xl group-hover:text-accent transition-colors">Lupy Games</h3>
+              <p className="text-sm text-muted leading-relaxed">{t('portfolio.lupyDesc')}</p>
+              <span className="inline-flex items-center gap-1.5 text-accent text-sm font-semibold group-hover:gap-2.5 transition-all">
+                lupygames.com <FiExternalLink size={14} />
+              </span>
+            </div>
+          </div>
+        </a>
+      </motion.div>
+
       {/* Header: count + sort */}
       <motion.div variants={anim} className="flex items-center justify-between gap-4 flex-wrap">
         <p className="text-sm text-dim">
