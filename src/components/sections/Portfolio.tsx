@@ -1,82 +1,226 @@
-import { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { FiExternalLink } from 'react-icons/fi'
+import { useEffect, useState } from 'react'
+import { motion } from 'framer-motion'
+import { FiGithub, FiExternalLink } from 'react-icons/fi'
 
-const filters = ['All', 'Applications', 'UI/UX Design', 'Web Development'] as const
+interface Project {
+  _id: string
+  title: string
+  image: string
+  github: string
+  demo: string
+  createdAt: string
+}
 
-const projects = [
-  { title: 'Gourmania', category: 'Applications', image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&h=420&fit=crop' },
-  { title: 'Nurot', category: 'Web Development', image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=420&fit=crop' },
-  { title: 'Lorex', category: 'Web Development', image: 'https://images.unsplash.com/photo-1547658719-da2b51169166?w=600&h=420&fit=crop' },
-  { title: 'Canva', category: 'UI/UX Design', image: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=420&fit=crop' },
-  { title: 'Klama', category: 'Web Development', image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600&h=420&fit=crop' },
-  { title: 'Elemento', category: 'Applications', image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&h=420&fit=crop' },
+type SortKey = 'newest' | 'oldest' | 'a-z' | 'z-a'
+
+const sortOptions: { key: SortKey; label: string }[] = [
+  { key: 'newest', label: 'Newest' },
+  { key: 'oldest', label: 'Oldest' },
+  { key: 'a-z', label: 'A → Z' },
+  { key: 'z-a', label: 'Z → A' },
 ]
 
-export default function Portfolio() {
-  const [active, setActive] = useState<string>('All')
-  const [visible, setVisible] = useState(6)
+function sortProjects(projects: Project[], sort: SortKey) {
+  const sorted = [...projects]
+  switch (sort) {
+    case 'newest': return sorted.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+    case 'oldest': return sorted.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
+    case 'a-z': return sorted.sort((a, b) => a.title.localeCompare(b.title))
+    case 'z-a': return sorted.sort((a, b) => b.title.localeCompare(a.title))
+  }
+}
 
-  const filtered = active === 'All' ? projects : projects.filter(p => p.category === active)
-  const shown = filtered.slice(0, visible)
+const API_URL = 'https://nodejs.dimitrov93.eu/api/portfolio'
+
+function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const [hovered, setHovered] = useState(false)
+  const isEven = index % 2 === 0
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: isEven ? -40 : 40 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' as const }}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      className="group relative"
+    >
+      {/* Number watermark */}
+      <span className="absolute -top-6 -left-2 text-[80px] font-black text-white/2 leading-none select-none pointer-events-none z-0">
+        {String(index + 1).padStart(2, '0')}
+      </span>
+
+      <div className="relative flex flex-col sm:flex-row items-stretch gap-0 rounded-2xl overflow-hidden bg-[#141415] z-10">
+        {/* Image side */}
+        <div className="relative sm:w-[55%] shrink-0 overflow-hidden h-52 sm:h-64">
+          <motion.div
+            className="absolute inset-0 z-10 bg-accent/0"
+            animate={{ backgroundColor: hovered ? 'rgba(255,219,110,0.05)' : 'rgba(255,219,110,0)' }}
+          />
+          <motion.img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover"
+            animate={{
+              scale: hovered ? 1.04 : 1,
+              filter: hovered ? 'grayscale(0) brightness(1)' : 'grayscale(30%) brightness(0.85)',
+            }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+          />
+          {/* Diagonal slice overlay */}
+          <div className="hidden sm:block absolute top-0 right-0 bottom-0 w-20 bg-[#141415]" style={{ clipPath: 'polygon(100% 0, 100% 100%, 0 100%, 100% 0)' }} />
+        </div>
+
+        {/* Content side */}
+        <div className="flex flex-col justify-center gap-5 p-6 sm:p-7 sm:w-[45%] relative">
+          {/* Project number */}
+          <span className="text-accent/40 text-[11px] font-bold tracking-[0.3em] uppercase">
+            Project {String(index + 1).padStart(2, '0')}
+          </span>
+
+          <h3 className="text-white font-bold text-lg leading-snug">
+            {project.title}
+          </h3>
+
+          {/* Accent line */}
+          <motion.div
+            className="h-0.5 bg-linear-to-r from-accent to-accent-2 rounded-full"
+            animate={{ width: hovered ? 80 : 40 }}
+            transition={{ duration: 0.4 }}
+          />
+
+          {/* Links */}
+          <div className="flex items-center gap-3">
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group/link flex items-center gap-2 text-[#666] text-[13px] font-medium no-underline hover:text-white transition-colors"
+            >
+              <span className="w-9 h-9 rounded-xl bg-white/5 border border-white/8 flex items-center justify-center group-hover/link:bg-white/10 group-hover/link:border-white/15 transition-all">
+                <FiGithub size={15} />
+              </span>
+              Source
+            </a>
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group/link flex items-center gap-2 text-[#666] text-[13px] font-medium no-underline hover:text-accent transition-colors"
+            >
+              <span className="w-9 h-9 rounded-xl bg-accent/10 border border-accent/15 flex items-center justify-center text-accent group-hover/link:bg-accent/20 transition-all">
+                <FiExternalLink size={15} />
+              </span>
+              Live Demo
+            </a>
+          </div>
+        </div>
+
+        {/* Top accent border that animates in */}
+        <motion.div
+          className="absolute top-0 left-0 h-0.5 bg-linear-to-r from-accent to-accent-2"
+          animate={{ width: hovered ? '100%' : '0%' }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+        />
+      </div>
+    </motion.div>
+  )
+}
+
+function SkeletonCard() {
+  return (
+    <div className="flex flex-col sm:flex-row items-stretch rounded-2xl overflow-hidden bg-[#141415] animate-pulse">
+      <div className="sm:w-[55%] shrink-0 h-52 sm:h-64 bg-white/5" />
+      <div className="flex flex-col justify-center gap-5 p-6 sm:p-7 sm:w-[45%]">
+        <div className="h-3 w-20 rounded bg-white/5" />
+        <div className="flex flex-col gap-2">
+          <div className="h-5 w-full rounded bg-white/5" />
+          <div className="h-5 w-2/3 rounded bg-white/5" />
+        </div>
+        <div className="h-0.5 w-10 rounded bg-white/5" />
+        <div className="flex gap-3">
+          <div className="h-9 w-24 rounded-xl bg-white/5" />
+          <div className="h-9 w-28 rounded-xl bg-white/5" />
+        </div>
+      </div>
+    </div>
+  )
+}
+
+export default function Portfolio() {
+  const [projects, setProjects] = useState<Project[]>([])
+  const [loading, setLoading] = useState(true)
+  const [visible, setVisible] = useState(4)
+  const [sort, setSort] = useState<SortKey>('newest')
+
+  useEffect(() => {
+    fetch(API_URL)
+      .then(res => res.json())
+      .then(data => { setProjects(data); setLoading(false) })
+      .catch(() => setLoading(false))
+  }, [])
+
+  const sorted = sortProjects(projects, sort)
+  const shown = sorted.slice(0, visible)
 
   return (
     <div className="flex flex-col gap-6">
-      <div className="flex flex-wrap gap-2">
-        {filters.map(f => (
-          <button
-            key={f}
-            onClick={() => { setActive(f); setVisible(6) }}
-            className={`cursor-pointer text-xs font-semibold px-4 py-2 rounded-full transition-all duration-300 ${
-              active === f
-                ? 'border border-transparent text-[#1a1a1b]'
-                : 'border border-white/8 bg-white/4 text-dim'
-            }`}
-            style={active === f ? { background: 'linear-gradient(137.84deg, #FFDB6E 26.31%, #FFBC5E 93.75%)' } : undefined}
-          >
-            {f}
-          </button>
-        ))}
+      {/* Header: count + sort */}
+      <div className="flex items-center justify-between gap-4 flex-wrap">
+        <p className="text-sm text-[#555]">
+          {loading ? (
+            <span className="inline-block h-4 w-20 rounded bg-white/5 animate-pulse align-middle" />
+          ) : (
+            <><span className="text-accent font-bold">{projects.length}</span> Projects</>
+          )}
+        </p>
+        <div className="flex items-center gap-1.5">
+          {sortOptions.map(({ key, label }) => (
+            <button
+              key={key}
+              onClick={() => { setSort(key); setVisible(4) }}
+              className={`cursor-pointer text-[11px] font-medium px-3 py-1.5 rounded-lg border transition-all duration-300 ${
+                sort === key
+                  ? 'border-accent/30 bg-accent/10 text-accent'
+                  : 'border-white/8 bg-transparent text-[#555] hover:text-[#aaa] hover:border-white/15'
+              }`}
+            >
+              {label}
+            </button>
+          ))}
+        </div>
       </div>
 
-      <AnimatePresence mode="wait">
-        <motion.div
-          key={active}
-          className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4"
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-          transition={{ duration: 0.25 }}
-        >
-          {shown.map(project => (
-            <motion.div
-              key={project.title} layout whileHover={{ y: -5 }}
-              className="overflow-hidden cursor-pointer group bg-card border border-border-gold rounded-2xl transition-[border-color] duration-300"
-            >
-              <div className="relative overflow-hidden h-[200px]">
-                <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-[rgba(20,20,21,0.85)]">
-                  <div className="flex items-center justify-center rounded-full w-11 h-11" style={{ background: 'linear-gradient(137.84deg, #FFDB6E 26.31%, #FFBC5E 93.75%)' }}>
-                    <FiExternalLink size={18} color="#1a1a1b" />
-                  </div>
-                </div>
-              </div>
-              <div className="p-4">
-                <h3 className="font-semibold text-white text-sm">{project.title}</h3>
-                <p className="text-xs mt-1 text-accent">{project.category}</p>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-      </AnimatePresence>
+      {/* Cards */}
+      <div className="flex flex-col gap-8">
+        {loading ? (
+          <>
+            <SkeletonCard />
+            <SkeletonCard />
+            <SkeletonCard />
+          </>
+        ) : (
+          shown.map((project, i) => (
+            <ProjectCard key={project._id} project={project} index={i} />
+          ))
+        )}
+      </div>
 
-      {shown.length < filtered.length && (
-        <div className="text-center">
+      {/* Load more */}
+      {!loading && shown.length < sorted.length && (
+        <motion.div
+          className="text-center pt-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+        >
           <button
-            onClick={() => setVisible(v => v + 3)}
-            className="cursor-pointer px-8 py-3 rounded-full text-sm font-semibold bg-gold-glow text-accent border border-accent/25"
+            onClick={() => setVisible(v => v + 4)}
+            className="cursor-pointer px-8 py-3 rounded-full text-sm font-semibold bg-gold-glow text-accent border border-accent/25 transition-all duration-300 hover:shadow-[0_4px_16px_rgba(255,219,110,0.15)]"
           >
             Load More
           </button>
-        </div>
+        </motion.div>
       )}
     </div>
   )
