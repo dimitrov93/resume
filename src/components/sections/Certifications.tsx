@@ -41,7 +41,7 @@ export default function Certifications() {
                   className={`flex flex-col gap-3 h-full ${cert.pdf ? 'cursor-pointer' : ''}`}
                   onClick={cert.pdf ? () => handleViewCert(cert.title, cert.pdf) : undefined}
                 >
-                  <div className="w-full aspect-16/10 rounded-lg overflow-hidden bg-white/5 relative">
+                  <div className="w-full aspect-16/10 rounded-lg overflow-hidden bg-overlay-5 relative">
                     <CertPreview file={cert.pdf} title={cert.title} />
                   </div>
                   <div>

@@ -68,7 +68,7 @@ export default function Portfolio() {
       <motion.div variants={anim} className="flex items-center justify-between gap-4 flex-wrap">
         <p className="text-sm text-dim">
           {loading ? (
-            <span className="inline-block h-4 w-20 rounded bg-white/5 animate-pulse align-middle" />
+            <span className="inline-block h-4 w-20 rounded bg-overlay-5 animate-pulse align-middle" />
           ) : (
             <><span className="text-accent font-bold">{projects.length}</span> {t('portfolio.projects')}</>
           )}
@@ -81,7 +81,7 @@ export default function Portfolio() {
               className={`cursor-pointer text-[11px] font-medium px-3 py-1.5 rounded-lg border transition-all duration-300 ${
                 sort === key
                   ? 'border-accent/30 bg-accent/10 text-accent'
-                  : 'border-white/8 bg-transparent text-dim hover:text-paragraph hover:border-white/15'
+                  : 'border-border-subtle bg-transparent text-dim hover:text-paragraph hover:border-border-medium'
               }`}
             >
               {t(sortLabelKeys[key])}

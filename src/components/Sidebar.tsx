@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiChevronDown, FiDownload, FiEye } from 'react-icons/fi'
 import useLanguage from '../hooks/useLanguage'
+import useTypewriter from '../hooks/useTypewriter'
 import { contacts } from '../data/contacts'
 import { profile } from '../data/profile'
 import ContactItem from './ContactItem'
@@ -10,6 +11,8 @@ import Divider from './ui/Divider'
 
 export function SidebarFull() {
   const { t } = useLanguage()
+  const roles = useMemo(() => [t('sidebar.role1'), t('sidebar.role2'), t('sidebar.role3')], [t])
+  const typedRole = useTypewriter(roles)
   return (
     <motion.aside
       initial={{ x: -60, opacity: 0 }}
@@ -24,8 +27,8 @@ export function SidebarFull() {
         <h1 className="text-xl sm:text-2xl text-heading font-semibold tracking-tight mt-3">
           {profile.name}
         </h1>
-        <div className="py-2.5 px-6 rounded-[10px] text-sm font-medium bg-gold-glow text-accent">
-          {profile.title}
+        <div className="py-2.5 px-6 rounded-[10px] text-sm font-medium bg-gold-glow text-accent min-w-48 text-center">
+          {typedRole}<span className="animate-pulse">|</span>
         </div>
       </div>
 
@@ -55,7 +58,7 @@ export function SidebarFull() {
         <a
           href="/cv.pdf"
           download="Tsvetomir_Dimitrov_CV.pdf"
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-linear-to-r from-accent to-accent-2 text-[#1a1a1b] text-[11px] font-semibold no-underline transition-all duration-300 hover:brightness-110"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-linear-to-r from-accent to-accent-2 text-accent-text text-[11px] font-semibold no-underline transition-all duration-300 hover:brightness-110"
         >
           <FiDownload size={12} />
           {t('sidebar.downloadCv')}
@@ -68,6 +71,8 @@ export function SidebarFull() {
 export function SidebarCompact() {
   const [showContacts, setShowContacts] = useState(false)
   const { t } = useLanguage()
+  const roles = useMemo(() => [t('sidebar.role1'), t('sidebar.role2'), t('sidebar.role3')], [t])
+  const typedRole = useTypewriter(roles)
 
   return (
     <motion.div
@@ -82,8 +87,8 @@ export function SidebarCompact() {
         </div>
         <div className="flex flex-col gap-1.5">
           <h1 className="text-heading text-xl font-semibold tracking-tight">{profile.name}</h1>
-          <div className="py-1.5 px-4 rounded-lg text-[13px] font-medium bg-white/6 text-paragraph w-fit">
-            {profile.title}
+          <div className="py-1.5 px-4 rounded-lg text-[13px] font-medium bg-overlay-5 text-accent w-fit">
+            {typedRole}<span className="animate-pulse">|</span>
           </div>
         </div>
 
@@ -133,7 +138,7 @@ export function SidebarCompact() {
                 <a
                   href="/cv.pdf"
                   download="Tsvetomir_Dimitrov_CV.pdf"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-linear-to-r from-accent to-accent-2 text-[#1a1a1b] text-[11px] font-semibold no-underline transition-all duration-300 hover:brightness-110"
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-linear-to-r from-accent to-accent-2 text-accent-text text-[11px] font-semibold no-underline transition-all duration-300 hover:brightness-110"
                 >
                   <FiDownload size={12} />
                   {t('sidebar.downloadCv')}

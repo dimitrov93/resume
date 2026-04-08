@@ -28,7 +28,7 @@ export default function SoftUniHero({ onViewCert }: { onViewCert: (title: string
         className="flex flex-col sm:flex-row items-stretch cursor-pointer"
         onClick={() => onViewCert(diploma.title, diploma.pdf)}
       >
-        <div className="sm:w-[45%] shrink-0 aspect-16/10 sm:aspect-auto overflow-hidden relative bg-white/5">
+        <div className="sm:w-[45%] shrink-0 aspect-16/10 sm:aspect-auto overflow-hidden relative bg-overlay-5">
           <CertPreview file={diploma.pdf} title={diploma.title} />
         </div>
         <div className="flex flex-col justify-center gap-4 p-6 sm:p-8 flex-1">
@@ -63,13 +63,13 @@ export default function SoftUniHero({ onViewCert }: { onViewCert: (title: string
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={() => scroll('left')}
-                    className="w-7 h-7 rounded-lg bg-white/5 border border-white/8 flex items-center justify-center text-dim cursor-pointer hover:text-heading hover:bg-white/10 transition-colors"
+                    className="w-7 h-7 rounded-lg bg-overlay-5 border border-border-subtle flex items-center justify-center text-dim cursor-pointer hover:text-heading hover:bg-overlay-10 transition-colors"
                   >
                     <FiChevronLeft size={14} />
                   </button>
                   <button
                     onClick={() => scroll('right')}
-                    className="w-7 h-7 rounded-lg bg-white/5 border border-white/8 flex items-center justify-center text-dim cursor-pointer hover:text-heading hover:bg-white/10 transition-colors"
+                    className="w-7 h-7 rounded-lg bg-overlay-5 border border-border-subtle flex items-center justify-center text-dim cursor-pointer hover:text-heading hover:bg-overlay-10 transition-colors"
                   >
                     <FiChevronRight size={14} />
                   </button>
@@ -86,7 +86,7 @@ export default function SoftUniHero({ onViewCert }: { onViewCert: (title: string
                     className="shrink-0 w-56 cursor-pointer group"
                     onClick={() => cert.pdf && onViewCert(cert.title, cert.pdf)}
                   >
-                    <div className="aspect-16/10 rounded-lg overflow-hidden bg-white/5 relative mb-2 border border-transparent group-hover:border-accent/20 transition-colors">
+                    <div className="aspect-16/10 rounded-lg overflow-hidden bg-overlay-5 relative mb-2 border border-transparent group-hover:border-accent/20 transition-colors">
                       <CertPreview file={cert.pdf} title={cert.title} />
                     </div>
                     <h4 className="text-heading text-xs font-medium group-hover:text-accent transition-colors truncate">{cert.title}</h4>

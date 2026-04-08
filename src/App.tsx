@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { profile } from './data/profile'
 import { AnimatePresence, motion } from 'framer-motion'
-import { FiMenu, FiX } from 'react-icons/fi'
+import { FiMenu, FiX, FiSun, FiMoon } from 'react-icons/fi'
 import CvPreviewModal from './components/ui/CvPreviewModal'
 import { SidebarFull, SidebarCompact } from './components/Sidebar'
 import NavTabs from './components/ui/NavTabs'
@@ -13,6 +13,7 @@ import Portfolio from './components/sections/Portfolio'
 import Certifications from './components/sections/Certifications'
 import Contact from './components/sections/Contact'
 import useLanguage from './hooks/useLanguage'
+import useTheme from './hooks/useTheme'
 
 const sections: Record<string, React.FC> = { About, Resume, Certifications, Portfolio, Contact }
 const tabs = ['About', 'Resume', 'Certifications', 'Portfolio', 'Contact'] as const
@@ -37,11 +38,13 @@ function MobileNav({ active, setActive, menuOpen, setMenuOpen }: {
   menuOpen: boolean
   setMenuOpen: (open: boolean) => void
 }) {
-  const { t } = useLanguage()
+  const { t, lang, toggle: toggleLang } = useLanguage()
+  const { theme, toggle: toggleTheme } = useTheme()
   return (
     <>
       <button
         onClick={() => setMenuOpen(!menuOpen)}
+        aria-label="Toggle menu"
         className="fixed top-4 left-4 z-100 w-11 h-11 rounded-full border-none items-center justify-center cursor-pointer shadow-lg hidden max-[1199px]:flex bg-linear-to-br from-accent to-accent-2"
       >
         {menuOpen ? <FiX size={20} /> : <FiMenu size={20} />}
@@ -75,6 +78,22 @@ function MobileNav({ active, setActive, menuOpen, setMenuOpen }: {
                   {t(tabTranslationKeys[tab])}
                 </button>
               ))}
+              <div className="mt-auto flex items-center gap-2 pt-4 border-t border-border-subtle">
+                <button
+                  onClick={toggleTheme}
+                  className="w-9 h-9 rounded-lg flex items-center justify-center text-dim cursor-pointer hover:text-accent hover:bg-overlay-5 transition-all duration-300 bg-transparent border-none"
+                  aria-label="Toggle theme"
+                >
+                  {theme === 'dark' ? <FiSun size={16} /> : <FiMoon size={16} />}
+                </button>
+                <button
+                  onClick={toggleLang}
+                  className="h-9 px-2 rounded-lg flex items-center justify-center gap-1 cursor-pointer hover:bg-overlay-5 transition-all duration-300 bg-transparent border-none text-sm leading-none"
+                  aria-label="Toggle language"
+                >
+                  {lang === 'en' ? <><span>🇧🇬</span><span className="text-xs font-semibold text-dim">BG</span></> : <><span>🇺🇸</span><span className="text-xs font-semibold text-dim">EN</span></>}
+                </button>
+              </div>
             </motion.nav>
           </>
         )}

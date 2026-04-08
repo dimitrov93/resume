@@ -61,14 +61,14 @@ export default function NavTabs({ active, setActive }: NavTabsProps) {
         <div className="flex items-center gap-1 px-3 ml-auto border-l border-border-gold">
           <button
             onClick={toggleTheme}
-            className="w-7 h-7 rounded-lg flex items-center justify-center text-dim cursor-pointer hover:text-accent hover:bg-white/5 transition-all duration-300 bg-transparent border-none"
+            className="w-7 h-7 rounded-lg flex items-center justify-center text-dim cursor-pointer hover:text-accent hover:bg-overlay-5 transition-all duration-300 bg-transparent border-none"
             aria-label="Toggle theme"
           >
             {theme === 'dark' ? <FiSun size={13} /> : <FiMoon size={13} />}
           </button>
           <button
             onClick={toggleLang}
-            className="h-7 px-1.5 rounded-lg flex items-center justify-center gap-1 cursor-pointer hover:bg-white/5 transition-all duration-300 bg-transparent border-none text-[12px] leading-none"
+            className="h-7 px-1.5 rounded-lg flex items-center justify-center gap-1 cursor-pointer hover:bg-overlay-5 transition-all duration-300 bg-transparent border-none text-[12px] leading-none"
             aria-label="Toggle language"
           >
             {lang === 'en' ? <><span>🇧🇬</span><span className="text-[10px] font-semibold text-dim">BG</span></> : <><span>🇺🇸</span><span className="text-[10px] font-semibold text-dim">EN</span></>}

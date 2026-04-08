@@ -76,7 +76,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
               rel="noopener noreferrer"
               className="group/link flex items-center gap-2 text-dim text-[13px] font-medium no-underline hover:text-heading transition-colors"
             >
-              <span className="w-9 h-9 rounded-xl bg-white/5 border border-white/8 flex items-center justify-center group-hover/link:bg-white/10 group-hover/link:border-white/15 transition-all">
+              <span className="w-9 h-9 rounded-xl bg-overlay-5 border border-border-subtle flex items-center justify-center group-hover/link:bg-overlay-10 group-hover/link:border-border-medium transition-all">
                 <FiGithub size={15} />
               </span>
               {t('portfolio.source')}

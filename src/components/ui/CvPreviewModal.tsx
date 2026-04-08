@@ -1,7 +1,9 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { FiDownload, FiX } from 'react-icons/fi'
+import useLanguage from '../../hooks/useLanguage'
 
 export default function CvPreviewModal({ onClose }: { onClose: () => void }) {
+  const { t } = useLanguage()
   return (
     <AnimatePresence>
       <motion.div
@@ -20,7 +22,7 @@ export default function CvPreviewModal({ onClose }: { onClose: () => void }) {
           className="relative w-full max-w-4xl h-[85vh] bg-surface border border-border-gold rounded-2xl overflow-hidden flex flex-col"
         >
           <div className="flex items-center justify-between px-5 py-3 border-b border-border-gold">
-            <span className="text-heading font-semibold text-sm">CV Preview</span>
+            <span className="text-heading font-semibold text-sm">{t('certs.cvPreview')}</span>
             <div className="flex items-center gap-3">
               <a
                 href="/cv.pdf"
@@ -28,11 +30,11 @@ export default function CvPreviewModal({ onClose }: { onClose: () => void }) {
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-linear-to-r from-accent to-accent-2 text-heading text-xs font-semibold no-underline transition-all duration-300 hover:brightness-110"
               >
                 <FiDownload size={14} />
-                Download
+                {t('certs.download')}
               </a>
               <button
                 onClick={onClose}
-                className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 border-none cursor-pointer text-heading hover:bg-white/20 transition-colors"
+                className="w-8 h-8 flex items-center justify-center rounded-full bg-overlay-10 border-none cursor-pointer text-heading hover:bg-overlay-20 transition-colors"
               >
                 <FiX size={16} />
               </button>
@@ -40,7 +42,7 @@ export default function CvPreviewModal({ onClose }: { onClose: () => void }) {
           </div>
           <iframe
             src="/cv.pdf"
-            title="CV Preview"
+            title={t('certs.cvPreview')}
             className="flex-1 w-full border-none"
           />
         </motion.div>

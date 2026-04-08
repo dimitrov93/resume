@@ -14,6 +14,12 @@
   --color-dim: #888888;
   --color-border-gold: rgba(255, 219, 110, 0.08);
   --color-gold-glow: rgba(255, 219, 110, 0.1);
+  --color-overlay-5: rgba(255, 255, 255, 0.05);
+  --color-overlay-10: rgba(255, 255, 255, 0.1);
+  --color-overlay-20: rgba(255, 255, 255, 0.2);
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-border-medium: rgba(255, 255, 255, 0.15);
+  --color-accent-text: #1a1a1b;
 }
 
 [data-theme="light"] {
@@ -29,6 +35,12 @@
   --color-dim: #777777;
   --color-border-gold: rgba(67, 97, 238, 0.2);
   --color-gold-glow: rgba(67, 97, 238, 0.12);
+  --color-overlay-5: rgba(0, 0, 0, 0.04);
+  --color-overlay-10: rgba(0, 0, 0, 0.08);
+  --color-overlay-20: rgba(0, 0, 0, 0.15);
+  --color-border-subtle: rgba(0, 0, 0, 0.08);
+  --color-border-medium: rgba(0, 0, 0, 0.12);
+  --color-accent-text: #ffffff;
 }
 
 @layer base {

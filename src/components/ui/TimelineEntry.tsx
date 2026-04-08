@@ -33,15 +33,15 @@ export default function TimelineEntry({ title, period, desc, roles }: TimelineEn
         <p className="text-[13px] leading-relaxed text-muted">{desc}</p>
 
         {roles && (
-          <div className="mt-4 pt-4 border-t border-white/5">
+          <div className="mt-4 pt-4 border-t border-border-subtle">
             <p className="text-[11px] uppercase tracking-wider text-accent/70 font-semibold mb-3">{t('resume.careerProgression')}</p>
             <div className="flex flex-col gap-2">
               {roles.map((r, i) => (
                 <div key={r.role} className="flex items-center gap-3">
                   <div className="flex items-center gap-1.5 shrink-0">
-                    <div className={`w-1.5 h-1.5 rounded-full ${i === 0 ? 'bg-accent shadow-[0_0_6px_var(--color-border-gold)]' : 'bg-white/20'}`} />
+                    <div className={`w-1.5 h-1.5 rounded-full ${i === 0 ? 'bg-accent shadow-[0_0_6px_var(--color-border-gold)]' : 'bg-overlay-20'}`} />
                     {i < roles.length - 1 && (
-                      <div className="absolute ml-[2.5px] mt-6 w-px h-3 bg-white/10" />
+                      <div className="absolute ml-[2.5px] mt-6 w-px h-3 bg-overlay-10" />
                     )}
                   </div>
                   <span className={`text-[13px] font-medium ${i === 0 ? 'text-heading' : 'text-dim'}`}>{r.role}</span>

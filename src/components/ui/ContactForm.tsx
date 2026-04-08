@@ -59,14 +59,14 @@ export default function ContactForm() {
           <label className="block text-xs font-medium mb-1.5 text-dim">{t('contact.fullName')}</label>
           <input
             name="name" value={form.name} onChange={handleChange} placeholder={t('contact.yourName')} required
-            className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-white/8 text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent/40"
+            className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-border-subtle text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent/40"
           />
         </div>
         <div>
           <label className="block text-xs font-medium mb-1.5 text-dim">{t('contact.email')}</label>
           <input
             name="email" type="email" value={form.email} onChange={handleChange} placeholder={t('contact.emailPlaceholder')} required
-            className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-white/8 text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent/40"
+            className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-border-subtle text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent/40"
           />
         </div>
       </div>
@@ -74,14 +74,14 @@ export default function ContactForm() {
         <label className="block text-xs font-medium mb-1.5 text-dim">{t('contact.subject')}</label>
         <input
           name="subject" value={form.subject} onChange={handleChange} placeholder={t('contact.subjectPlaceholder')} required
-          className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-white/8 text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent/40"
+          className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-border-subtle text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent/40"
         />
       </div>
       <div>
         <label className="block text-xs font-medium mb-1.5 text-dim">{t('contact.message')}</label>
         <textarea
           name="message" value={form.message} onChange={handleChange} placeholder={t('contact.messagePlaceholder')} rows={4} required
-          className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-white/8 text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent/40 resize-none"
+          className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-border-subtle text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent/40 resize-none"
         />
       </div>
       {error && (
@@ -92,7 +92,7 @@ export default function ContactForm() {
       )}
       <button
         type="submit" disabled={loading}
-        className="flex items-center justify-center gap-2 w-fit ml-auto max-sm:mx-auto px-6 py-2.5 rounded-full text-sm font-semibold border-none text-[#1a1a1b] cursor-pointer"
+        className="flex items-center justify-center gap-2 w-fit ml-auto max-sm:mx-auto px-6 py-2.5 rounded-full text-sm font-semibold border-none text-accent-text cursor-pointer"
         style={{ background: loading ? 'color-mix(in srgb, var(--color-accent) 50%, transparent)' : `linear-gradient(137.84deg, var(--color-accent) 26.31%, var(--color-accent-2) 93.75%)` }}
       >
         {loading ? t('contact.sending') : <><FiSend size={15} />{t('contact.sendMessage')}</>}

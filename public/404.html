@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 — Page Not Found</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap" rel="stylesheet" />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: #121212;
+        color: #d6d6d6;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .container {
+        text-center: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        padding: 20px;
+      }
+      .code {
+        font-size: clamp(100px, 20vw, 180px);
+        font-weight: 900;
+        line-height: 1;
+        background: linear-gradient(135deg, #FFDB6E 0%, #FFBC5E 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      h1 {
+        font-size: clamp(18px, 3vw, 28px);
+        font-weight: 600;
+        color: #fcfcfc;
+      }
+      p {
+        font-size: 14px;
+        color: #9c9c9c;
+        max-width: 400px;
+        line-height: 1.6;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 28px;
+        border-radius: 12px;
+        background: linear-gradient(137.84deg, #FFDB6E 26.31%, #FFBC5E 93.75%);
+        color: #1a1a1b;
+        font-size: 14px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: filter 0.3s;
+      }
+      .btn:hover { filter: brightness(1.1); }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="code">404</div>
+      <h1>Page Not Found</h1>
+      <p>The page you're looking for doesn't exist or has been moved.</p>
+      <a href="/" class="btn">← Back to Home</a>
+    </div>
+  </body>
+</html>

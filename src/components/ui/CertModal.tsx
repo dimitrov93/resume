@@ -25,7 +25,7 @@ export default function CertModal({ title, file, onClose }: { title: string; fil
             <span className="text-heading font-semibold text-sm truncate">{title}</span>
             <button
               onClick={onClose}
-              className="w-8 h-8 flex items-center justify-center rounded-full bg-white/10 border-none cursor-pointer text-heading hover:bg-white/20 transition-colors"
+              className="w-8 h-8 flex items-center justify-center rounded-full bg-overlay-10 border-none cursor-pointer text-heading hover:bg-overlay-20 transition-colors"
             >
               <FiX size={16} />
             </button>

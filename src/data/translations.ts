@@ -90,6 +90,8 @@ const translations = {
     'certs.individualCourses': 'Individual Courses',
     'certs.notAdded': 'Not added yet',
     'certs.certifications': 'Certifications',
+    'certs.cvPreview': 'CV Preview',
+    'certs.download': 'Download',
 
     'contact.getInTouch': 'Get in touch',
     'contact.clickToEmail': 'Click to send me an email',
@@ -117,6 +119,9 @@ const translations = {
     'sidebar.email': 'EMAIL',
     'sidebar.phone': 'PHONE',
     'sidebar.location': 'LOCATION',
+    'sidebar.role1': 'Front-End Developer',
+    'sidebar.role2': 'Team Lead',
+    'sidebar.role3': 'React / Next.js',
   },
   bg: {
     'nav.about': 'За мен',
@@ -209,6 +214,8 @@ const translations = {
     'certs.individualCourses': 'Отделни курсове',
     'certs.notAdded': 'Все още не е добавен',
     'certs.certifications': 'Сертификати',
+    'certs.cvPreview': 'Преглед на CV',
+    'certs.download': 'Изтегли',
 
     'contact.getInTouch': 'Свържете се',
     'contact.clickToEmail': 'Натиснете, за да ми изпратите имейл',
@@ -236,6 +243,9 @@ const translations = {
     'sidebar.email': 'ИМЕЙЛ',
     'sidebar.phone': 'ТЕЛЕФОН',
     'sidebar.location': 'ЛОКАЦИЯ',
+    'sidebar.role1': 'Front-End разработчик',
+    'sidebar.role2': 'Ръководител на екип',
+    'sidebar.role3': 'React / Next.js',
   },
 } as const
 
