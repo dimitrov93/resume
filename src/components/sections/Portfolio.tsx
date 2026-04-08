@@ -75,7 +75,7 @@ export default function Portfolio() {
           className="group block no-underline"
         >
           <div className="relative flex flex-col sm:flex-row items-stretch rounded-2xl overflow-hidden bg-card border border-border-gold transition-all duration-300 hover:border-accent/30 hover:shadow-[0_8px_32px_var(--color-border-gold)]">
-            <div className="sm:w-[55%] shrink-0 overflow-hidden h-52 sm:h-64">
+            <div className="sm:w-[55%] shrink-0 overflow-hidden h-52 sm:h-auto">
               <img
                 src="/lupy-games.png"
                 alt="Lupy Games"
