@@ -1,13 +1,16 @@
 import { FiAward } from 'react-icons/fi'
+import useLanguage from '../../hooks/useLanguage'
 
 const isImage = (path: string) => /\.(jpg|jpeg|png|webp)$/i.test(path)
 
 export default function CertPreview({ file, title }: { file: string; title: string }) {
+  const { t } = useLanguage()
+
   if (!file) {
     return (
       <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-accent/30">
         <FiAward size={24} />
-        <span className="text-[10px] font-medium">Not added yet</span>
+        <span className="text-[10px] font-medium">{t('certs.notAdded')}</span>
       </div>
     )
   }

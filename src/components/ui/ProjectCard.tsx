@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FiGithub, FiExternalLink } from 'react-icons/fi'
+import useLanguage from '../../hooks/useLanguage'
 
 interface Project {
   _id: string
@@ -13,6 +14,7 @@ interface Project {
 
 export default function ProjectCard({ project, index }: { project: Project; index: number }) {
   const [hovered, setHovered] = useState(false)
+  const { t } = useLanguage()
 
   return (
     <div
@@ -52,7 +54,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
         <div className="flex flex-col justify-center gap-5 p-6 sm:p-7 sm:w-[45%] relative">
           {/* Project number */}
           <span className="text-accent/40 text-[11px] font-bold tracking-[0.3em] uppercase">
-            Project {String(index + 1).padStart(2, '0')}
+            {t('portfolio.project')} {String(index + 1).padStart(2, '0')}
           </span>
 
           <h3 className="text-heading font-bold text-lg leading-snug">
@@ -77,7 +79,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
               <span className="w-9 h-9 rounded-xl bg-white/5 border border-white/8 flex items-center justify-center group-hover/link:bg-white/10 group-hover/link:border-white/15 transition-all">
                 <FiGithub size={15} />
               </span>
-              Source
+              {t('portfolio.source')}
             </a>
             <a
               href={project.demo}
@@ -88,7 +90,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
               <span className="w-9 h-9 rounded-xl bg-accent/10 border border-accent/15 flex items-center justify-center text-accent group-hover/link:bg-accent/20 transition-all">
                 <FiExternalLink size={15} />
               </span>
-              Live Demo
+              {t('portfolio.liveDemo')}
             </a>
           </div>
         </div>

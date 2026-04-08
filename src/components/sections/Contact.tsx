@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { FiMail } from 'react-icons/fi'
 import { profile } from '../../data/profile'
 import useTheme from '../../hooks/useTheme'
+import useLanguage from '../../hooks/useLanguage'
 import ContactForm from '../ui/ContactForm'
 
 const anim = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.45 } } }
@@ -9,6 +10,7 @@ const container = { hidden: {}, show: { transition: { staggerChildren: 0.09 } } 
 
 export default function Contact() {
   const { theme } = useTheme()
+  const { t } = useLanguage()
   return (
     <motion.div variants={container} initial="hidden" animate="show" className="flex flex-col gap-6">
       <motion.div variants={anim}>
@@ -20,20 +22,20 @@ export default function Contact() {
             <FiMail size={24} className="text-[#1a1a1b]" />
           </div>
           <div className="flex flex-col gap-1">
-            <span className="text-[11px] uppercase tracking-wider font-semibold text-dim">Get in touch</span>
+            <span className="text-[11px] uppercase tracking-wider font-semibold text-dim">{t('contact.getInTouch')}</span>
             <span className="text-base sm:text-lg font-semibold text-heading group-hover:text-accent transition-colors duration-300 break-all">{profile.email}</span>
-            <span className="text-xs text-dim">Click to send me an email</span>
+            <span className="text-xs text-dim">{t('contact.clickToEmail')}</span>
           </div>
         </a>
       </motion.div>
 
       <motion.div variants={anim}>
-        <p className="text-xs uppercase tracking-wider font-semibold text-dim mb-4">Or use the form below</p>
+        <p className="text-xs uppercase tracking-wider font-semibold text-dim mb-4">{t('contact.orUseForm')}</p>
         <ContactForm />
       </motion.div>
 
       <motion.div variants={anim}>
-        <p className="text-xs uppercase tracking-wider font-semibold text-dim mb-4">Where I'm based</p>
+        <p className="text-xs uppercase tracking-wider font-semibold text-dim mb-4">{t('contact.whereImBased')}</p>
         <div className="rounded-2xl overflow-hidden border border-border-gold h-60 sm:h-72">
           <iframe
             title="Location"

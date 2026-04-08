@@ -5,6 +5,7 @@ import GradientCard from '../ui/GradientCard'
 import CertModal from '../ui/CertModal'
 import CertPreview from '../ui/CertPreview'
 import SoftUniHero from '../ui/SoftUniHero'
+import useLanguage from '../../hooks/useLanguage'
 
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.09 } } }
 const anim = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.45 } } }
@@ -18,6 +19,7 @@ const otherCerts = certifications.filter(c => c !== diploma && !jsPathTitles.inc
 
 export default function Certifications() {
   const [activeFile, setActiveFile] = useState<{ title: string; file: string } | null>(null)
+  const { t } = useLanguage()
 
   const handleViewCert = (title: string, file: string) => setActiveFile({ title, file })
 
@@ -31,7 +33,7 @@ export default function Certifications() {
       {/* Other certifications */}
       {otherCerts.length > 0 && (
         <motion.div variants={anim}>
-          <h3 className="text-lg text-heading font-semibold mb-4">Other Certifications</h3>
+          <h3 className="text-lg text-heading font-semibold mb-4">{t('certs.otherCerts')}</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {otherCerts.map(cert => (
               <motion.div key={cert.title} variants={anim} whileHover={{ y: -4 }}>

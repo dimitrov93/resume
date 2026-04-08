@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { FiChevronDown, FiDownload, FiEye, FiSun, FiMoon } from 'react-icons/fi'
-import useTheme from '../hooks/useTheme'
+import { FiChevronDown, FiDownload, FiEye } from 'react-icons/fi'
+import useLanguage from '../hooks/useLanguage'
 import { contacts } from '../data/contacts'
 import { profile } from '../data/profile'
 import ContactItem from './ContactItem'
@@ -9,7 +9,7 @@ import SocialLinks from './ui/SocialLinks'
 import Divider from './ui/Divider'
 
 export function SidebarFull() {
-  const { theme, toggle } = useTheme()
+  const { t } = useLanguage()
   return (
     <motion.aside
       initial={{ x: -60, opacity: 0 }}
@@ -50,7 +50,7 @@ export function SidebarFull() {
           className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-accent bg-transparent text-accent text-[11px] font-semibold cursor-pointer transition-all duration-300 hover:bg-accent/10"
         >
           <FiEye size={12} />
-          Preview CV
+          {t('sidebar.previewCv')}
         </button>
         <a
           href="/cv.pdf"
@@ -58,15 +58,8 @@ export function SidebarFull() {
           className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-linear-to-r from-accent to-accent-2 text-[#1a1a1b] text-[11px] font-semibold no-underline transition-all duration-300 hover:brightness-110"
         >
           <FiDownload size={12} />
-          Download CV
+          {t('sidebar.downloadCv')}
         </a>
-        <button
-          onClick={toggle}
-          className="w-8 h-8 rounded-lg bg-white/5 border border-white/8 flex items-center justify-center text-accent cursor-pointer hover:bg-white/10 transition-all duration-300"
-          aria-label="Toggle theme"
-        >
-          {theme === 'dark' ? <FiSun size={14} /> : <FiMoon size={14} />}
-        </button>
       </div>
     </motion.aside>
   )
@@ -74,7 +67,7 @@ export function SidebarFull() {
 
 export function SidebarCompact() {
   const [showContacts, setShowContacts] = useState(false)
-  const { theme, toggle } = useTheme()
+  const { t } = useLanguage()
 
   return (
     <motion.div
@@ -96,17 +89,10 @@ export function SidebarCompact() {
 
         <div className="ml-auto flex items-center gap-2">
           <button
-            onClick={toggle}
-            className="w-9 h-9 rounded-xl bg-white/5 border border-white/8 flex items-center justify-center text-accent cursor-pointer hover:bg-white/10 transition-all duration-300"
-            aria-label="Toggle theme"
-          >
-            {theme === 'dark' ? <FiSun size={15} /> : <FiMoon size={15} />}
-          </button>
-          <button
             onClick={() => setShowContacts(!showContacts)}
             className="cursor-pointer py-2 px-4 rounded-xl border border-accent/20 bg-transparent text-accent text-[13px] font-medium flex items-center gap-1.5 whitespace-nowrap transition-all duration-300"
           >
-            <span className="max-sm:hidden">Show Contacts</span>
+            <span className="max-sm:hidden">{t('sidebar.showContacts')}</span>
             <FiChevronDown
               size={14}
               className="transition-transform duration-300"
@@ -142,7 +128,7 @@ export function SidebarCompact() {
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-accent bg-transparent text-accent text-[11px] font-semibold cursor-pointer transition-all duration-300 hover:bg-accent/10"
                 >
                   <FiEye size={12} />
-                  Preview CV
+                  {t('sidebar.previewCv')}
                 </button>
                 <a
                   href="/cv.pdf"
@@ -150,7 +136,7 @@ export function SidebarCompact() {
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-linear-to-r from-accent to-accent-2 text-[#1a1a1b] text-[11px] font-semibold no-underline transition-all duration-300 hover:brightness-110"
                 >
                   <FiDownload size={12} />
-                  Download CV
+                  {t('sidebar.downloadCv')}
                 </a>
               </div>
             </div>

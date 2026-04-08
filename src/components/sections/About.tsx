@@ -3,39 +3,39 @@ import { skills, skillCategories } from '../../data/resume'
 import GradientCard from '../ui/GradientCard'
 import IconBox from '../ui/IconBox'
 import PulseDot from '../ui/PulseDot'
-
-const services = [
-  { icon: '/icons/web-design.svg', title: 'Web Design', desc: 'Clean, modern UI/UX built with attention to detail and user experience.' },
-  { icon: '/icons/web-dev.svg', title: 'Web Development', desc: 'Scalable React & Next.js applications with clean architecture.' },
-  { icon: '/icons/mobile.svg', title: 'Team Leadership', desc: 'Coaching, mentoring and driving team performance through one-on-ones and KPI tracking.' },
-  { icon: '/icons/photo.svg', title: 'Full-Stack Solutions', desc: 'End-to-end systems with Vue, Spring Boot, PostgreSQL, and Docker.' },
-]
+import useLanguage from '../../hooks/useLanguage'
 
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.09 } } }
 const item = { hidden: { opacity: 0, y: 22 }, show: { opacity: 1, y: 0, transition: { duration: 0.45 } } }
 const iconFilter = 'invert(92%) sepia(85%) saturate(652%) hue-rotate(319deg) brightness(102%) contrast(101%)'
 
 export default function About() {
+  const { t } = useLanguage()
+
+  const services = [
+    { icon: '/icons/web-design.svg', title: t('about.webDesign'), desc: t('about.webDesignDesc') },
+    { icon: '/icons/web-dev.svg', title: t('about.webDev'), desc: t('about.webDevDesc') },
+    { icon: '/icons/mobile.svg', title: t('about.teamLead'), desc: t('about.teamLeadDesc') },
+    { icon: '/icons/photo.svg', title: t('about.fullStack'), desc: t('about.fullStackDesc') },
+  ]
+
   return (
     <motion.div variants={container} initial="hidden" animate="show">
       <motion.div variants={item} className="flex flex-col gap-3">
         <div className="flex items-center gap-2 w-fit px-4 py-2 rounded-full bg-card border border-green-400/20">
           <PulseDot size="sm" />
-          <span className="text-xs font-medium text-green-400">Available for freelance & opportunities</span>
+          <span className="text-xs font-medium text-green-400">{t('about.available')}</span>
         </div>
         <p className="text-paragraph leading-[1.8]">
-          Dual-role professional: Front-End Developer at Lupy Games and Team Lead at Montway Auto Transport,
-          overseeing a LiveChat team. On one side, building scalable React/Next.js applications with clean
-          architecture. On the other, running one-on-ones, monitoring performance, and developing team members day-to-day.
+          {t('about.bio1')}
         </p>
         <p className="text-paragraph leading-[1.8]">
-          A developer with genuine people management experience — in the field, not just on paper.
-          Passionate about turning complex problems into simple, performant, and intuitive interfaces.
+          {t('about.bio2')}
         </p>
       </motion.div>
 
       <motion.div variants={item} className="mt-8">
-        <h3 className="text-lg sm:text-xl text-heading font-semibold mb-4">What I'm Doing</h3>
+        <h3 className="text-lg sm:text-xl text-heading font-semibold mb-4">{t('about.whatImDoing')}</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {services.map(({ icon, title, desc }) => (
             <motion.div key={title} whileHover={{ y: -4 }}>
@@ -54,7 +54,7 @@ export default function About() {
       </motion.div>
 
       <motion.div variants={item} className="mt-8">
-        <h3 className="text-lg sm:text-xl text-heading font-semibold mb-5">My Skills</h3>
+        <h3 className="text-lg sm:text-xl text-heading font-semibold mb-5">{t('about.mySkills')}</h3>
         <div className="flex flex-col gap-5">
           {skillCategories.map(cat => (
             <div key={cat}>

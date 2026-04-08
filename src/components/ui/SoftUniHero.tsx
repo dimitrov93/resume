@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { FiChevronLeft, FiChevronRight, FiLayers } from 'react-icons/fi'
 import { certifications } from '../../data/resume'
 import CertPreview from './CertPreview'
+import useLanguage from '../../hooks/useLanguage'
 
 const jsPathTitles = [
   'ReactJS', 'Angular', 'JS Applications', 'JS Back-End', 'HTML & CSS', 'Programming Basics',
@@ -14,6 +15,7 @@ const softuniCourses = certifications.filter(c => jsPathTitles.includes(c.title)
 export default function SoftUniHero({ onViewCert }: { onViewCert: (title: string, file: string) => void }) {
   const [expanded, setExpanded] = useState(false)
   const scrollRef = useRef<HTMLDivElement>(null)
+  const { t } = useLanguage()
 
   const scroll = (dir: 'left' | 'right') => {
     scrollRef.current?.scrollBy({ left: dir === 'left' ? -280 : 280, behavior: 'smooth' })
@@ -30,17 +32,17 @@ export default function SoftUniHero({ onViewCert }: { onViewCert: (title: string
           <CertPreview file={diploma.pdf} title={diploma.title} />
         </div>
         <div className="flex flex-col justify-center gap-4 p-6 sm:p-8 flex-1">
-          <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-accent/50">SoftUni Diploma</span>
+          <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-accent/50">{t('certs.diplomaLabel')}</span>
           <h3 className="text-heading font-bold text-xl leading-snug">{diploma.title}</h3>
           <p className="text-[13px] text-muted leading-relaxed">
-            Full JavaScript Web Developer track — {softuniCourses.length} courses completed.
+            {t('certs.trackDesc')} {softuniCourses.length} {t('certs.coursesCompleted')}
           </p>
           <button
             onClick={e => { e.stopPropagation(); setExpanded(!expanded) }}
             className="flex items-center gap-2 w-fit text-accent text-[13px] font-semibold cursor-pointer bg-transparent border-none hover:underline"
           >
             <FiLayers size={14} />
-            {expanded ? 'Hide courses' : `View all ${softuniCourses.length} courses`}
+            {expanded ? t('certs.hideCourses') : `${t('certs.viewAll')} ${softuniCourses.length} ${t('certs.courses')}`}
           </button>
         </div>
       </div>
@@ -57,7 +59,7 @@ export default function SoftUniHero({ onViewCert }: { onViewCert: (title: string
           >
             <div className="border-t border-border-gold px-6 py-5">
               <div className="flex items-center justify-between mb-4">
-                <span className="text-xs font-semibold text-dim uppercase tracking-wider">Individual Courses</span>
+                <span className="text-xs font-semibold text-dim uppercase tracking-wider">{t('certs.individualCourses')}</span>
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={() => scroll('left')}

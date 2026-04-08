@@ -12,9 +12,18 @@ import Portfolio from './components/sections/Portfolio'
 
 import Certifications from './components/sections/Certifications'
 import Contact from './components/sections/Contact'
+import useLanguage from './hooks/useLanguage'
 
 const sections: Record<string, React.FC> = { About, Resume, Certifications, Portfolio, Contact }
 const tabs = ['About', 'Resume', 'Certifications', 'Portfolio', 'Contact'] as const
+
+const tabTranslationKeys: Record<string, 'nav.about' | 'nav.resume' | 'nav.certifications' | 'nav.portfolio' | 'nav.contact'> = {
+  About: 'nav.about',
+  Resume: 'nav.resume',
+  Certifications: 'nav.certifications',
+  Portfolio: 'nav.portfolio',
+  Contact: 'nav.contact',
+}
 
 const pageVariants = {
   initial: { opacity: 0, y: 14, scale: 0.99 },
@@ -28,6 +37,7 @@ function MobileNav({ active, setActive, menuOpen, setMenuOpen }: {
   menuOpen: boolean
   setMenuOpen: (open: boolean) => void
 }) {
+  const { t } = useLanguage()
   return (
     <>
       <button
@@ -62,7 +72,7 @@ function MobileNav({ active, setActive, menuOpen, setMenuOpen }: {
                     active === tab ? 'text-accent' : 'text-paragraph'
                   }`}
                 >
-                  {tab}
+                  {t(tabTranslationKeys[tab])}
                 </button>
               ))}
             </motion.nav>
@@ -74,11 +84,12 @@ function MobileNav({ active, setActive, menuOpen, setMenuOpen }: {
 }
 
 function ContentPanel({ active, children }: { active: string; children: React.ReactNode }) {
+  const { t } = useLanguage()
   return (
     <div className="bg-surface border border-border-gold rounded-2xl py-7.5 px-6">
       <div className="mb-2">
         <h2 className="text-heading text-2xl font-semibold tracking-tight">
-          {active === 'About' ? 'About Me' : active}
+          {active === 'About' ? t('page.aboutMe') : t(tabTranslationKeys[active])}
         </h2>
       </div>
       <SectionLine />
@@ -102,6 +113,7 @@ export default function App() {
   const [active, setActive] = useState<string>('About')
   const [menuOpen, setMenuOpen] = useState(false)
   const [showCvPreview, setShowCvPreview] = useState(false)
+  const { t } = useLanguage()
 
   useEffect(() => {
     document.title = `${profile.name} — ${profile.title}`
@@ -126,7 +138,7 @@ export default function App() {
             <div className="h-full overflow-y-auto overflow-x-hidden py-7.5 px-6">
               <div className="mb-2">
               <h2 className="text-heading text-2xl font-semibold tracking-tight">
-                {active === 'About' ? 'About Me' : active}
+                {active === 'About' ? t('page.aboutMe') : t(tabTranslationKeys[active])}
               </h2>
             </div>
             <SectionLine />

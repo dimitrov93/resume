@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import ProjectCard from '../ui/ProjectCard'
 import SkeletonCard from '../ui/SkeletonCard'
+import useLanguage from '../../hooks/useLanguage'
+import type { TranslationKey } from '../../data/translations'
 
 interface Project {
   _id: string
@@ -14,12 +16,14 @@ interface Project {
 
 type SortKey = 'newest' | 'oldest' | 'a-z' | 'z-a'
 
-const sortOptions: { key: SortKey; label: string }[] = [
-  { key: 'newest', label: 'Newest' },
-  { key: 'oldest', label: 'Oldest' },
-  { key: 'a-z', label: 'A → Z' },
-  { key: 'z-a', label: 'Z → A' },
-]
+const sortLabelKeys: Record<SortKey, TranslationKey> = {
+  newest: 'portfolio.newest',
+  oldest: 'portfolio.oldest',
+  'a-z': 'portfolio.az',
+  'z-a': 'portfolio.za',
+}
+
+const sortKeys: SortKey[] = ['newest', 'oldest', 'a-z', 'z-a']
 
 function sortProjects(projects: Project[], sort: SortKey) {
   const sorted = [...projects]
@@ -42,6 +46,7 @@ export default function Portfolio() {
   const [error, setError] = useState(false)
   const [visible, setVisible] = useState(4)
   const [sort, setSort] = useState<SortKey>('newest')
+  const { t } = useLanguage()
 
   const fetchProjects = () => {
     setLoading(true)
@@ -65,11 +70,11 @@ export default function Portfolio() {
           {loading ? (
             <span className="inline-block h-4 w-20 rounded bg-white/5 animate-pulse align-middle" />
           ) : (
-            <><span className="text-accent font-bold">{projects.length}</span> Projects</>
+            <><span className="text-accent font-bold">{projects.length}</span> {t('portfolio.projects')}</>
           )}
         </p>
         <div className="flex items-center gap-1.5">
-          {sortOptions.map(({ key, label }) => (
+          {sortKeys.map(key => (
             <button
               key={key}
               onClick={() => { setSort(key); setVisible(4) }}
@@ -79,7 +84,7 @@ export default function Portfolio() {
                   : 'border-white/8 bg-transparent text-dim hover:text-paragraph hover:border-white/15'
               }`}
             >
-              {label}
+              {t(sortLabelKeys[key])}
             </button>
           ))}
         </div>
@@ -95,12 +100,12 @@ export default function Portfolio() {
           </>
         ) : error ? (
           <div className="flex flex-col items-center gap-4 py-12 text-center">
-            <p className="text-muted text-sm">Failed to load projects.</p>
+            <p className="text-muted text-sm">{t('portfolio.failed')}</p>
             <button
               onClick={fetchProjects}
               className="cursor-pointer px-6 py-2.5 rounded-full text-sm font-semibold bg-gold-glow text-accent border border-accent/25 transition-all duration-300 hover:shadow-[0_4px_16px_var(--color-border-gold)]"
             >
-              Retry
+              {t('portfolio.retry')}
             </button>
           </div>
         ) : (
@@ -117,7 +122,7 @@ export default function Portfolio() {
             onClick={() => setVisible(v => v + 4)}
             className="cursor-pointer px-8 py-3 rounded-full text-sm font-semibold bg-gold-glow text-accent border border-accent/25 transition-all duration-300 hover:shadow-[0_4px_16px_var(--color-border-gold)]"
           >
-            Load More
+            {t('portfolio.loadMore')}
           </button>
         </motion.div>
       )}

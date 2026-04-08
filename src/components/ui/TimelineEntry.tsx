@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import useLanguage from '../../hooks/useLanguage'
 
 interface TimelineEntryProps {
   title: string
@@ -8,6 +9,7 @@ interface TimelineEntryProps {
 }
 
 export default function TimelineEntry({ title, period, desc, roles }: TimelineEntryProps) {
+  const { t } = useLanguage()
   return (
     <motion.div
       className="relative pl-8"
@@ -32,7 +34,7 @@ export default function TimelineEntry({ title, period, desc, roles }: TimelineEn
 
         {roles && (
           <div className="mt-4 pt-4 border-t border-white/5">
-            <p className="text-[11px] uppercase tracking-wider text-accent/70 font-semibold mb-3">Career Progression</p>
+            <p className="text-[11px] uppercase tracking-wider text-accent/70 font-semibold mb-3">{t('resume.careerProgression')}</p>
             <div className="flex flex-col gap-2">
               {roles.map((r, i) => (
                 <div key={r.role} className="flex items-center gap-3">
