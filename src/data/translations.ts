@@ -72,6 +72,7 @@ const translations = {
     'edu.unweDesc': "Bachelor's degree in Accounting and Finance.",
 
     'portfolio.projects': 'Projects',
+    'portfolio.sort': 'Sort',
     'portfolio.newest': 'Newest',
     'portfolio.oldest': 'Oldest',
     'portfolio.az': 'A → Z',
@@ -202,6 +203,7 @@ const translations = {
     'edu.unweDesc': 'Бакалавърска степен по Счетоводство и финанси.',
 
     'portfolio.projects': 'Проекти',
+    'portfolio.sort': 'Подреди',
     'portfolio.newest': 'Най-нови',
     'portfolio.oldest': 'Най-стари',
     'portfolio.az': 'А → Я',
