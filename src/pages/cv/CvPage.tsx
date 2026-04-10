@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type ChangeEvent } from 'react'
 import './cv.css'
 import cvCssRaw from './cv.css?raw'
+import useTheme from '../../hooks/useTheme'
 import {
   THEMES,
   applyTheme,
@@ -10,6 +11,11 @@ import {
   fetchAsDataUrl,
   type Theme,
 } from './cvHelpers'
+
+function themeForSiteMode(siteTheme: 'dark' | 'light'): Theme {
+  const name = siteTheme === 'dark' ? 'Noir' : 'Classic'
+  return THEMES.find((t) => t.name === name) ?? THEMES[0]
+}
 
 const STORAGE_KEY = 'cv_td_v1'
 const THEME_KEY = 'cv_theme'
@@ -35,6 +41,7 @@ const EDITABLE_SELECTORS = [
 ].join(', ')
 
 export default function CvPage() {
+  const { theme: siteTheme } = useTheme()
   const rootRef = useRef<HTMLDivElement>(null)
   const pageRef = useRef<HTMLDivElement>(null)
   const photoWrapRef = useRef<HTMLDivElement>(null)
@@ -163,23 +170,19 @@ export default function CvPage() {
     }
   }
 
-  function getCurrentThemeOverride(): Theme | null {
-    return THEMES.find((t) => t.name === activeTheme) || null
-  }
-
   async function downloadCurrentHtml() {
     const wasEditing = editMode
     if (wasEditing) setEditMode(false)
     await ensurePhotoEmbedded()
     const page = pageRef.current
     if (!page) return
-    const theme = getCurrentThemeOverride()
+    const theme = themeForSiteMode(siteTheme)
     const html = buildStandaloneHtml({
       scopedCss: cvCssRaw,
       pageInnerHtml: page.innerHTML,
       theme,
     })
-    const themeSlug = (theme?.name ?? 'classic').toLowerCase()
+    const themeSlug = theme.name.toLowerCase()
     downloadBlob(new Blob([html], { type: 'text/html' }), `cv-tsvetomir-dimitrov-${themeSlug}.html`)
     if (wasEditing) setEditMode(true)
   }

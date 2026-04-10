@@ -14,6 +14,7 @@ import Certifications from '../components/sections/Certifications'
 import Contact from '../components/sections/Contact'
 import useLanguage from '../hooks/useLanguage'
 import useTheme from '../hooks/useTheme'
+import useCvPdf from '../hooks/useCvPdf'
 
 const sections: Record<string, React.FC> = { About, Resume, Certifications, Portfolio, Contact }
 const tabs = ['About', 'Resume', 'Certifications', 'Portfolio', 'Contact'] as const
@@ -135,19 +136,23 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [showCvPreview, setShowCvPreview] = useState(false)
   const { t } = useLanguage()
+  const cvPdf = useCvPdf()
 
   useEffect(() => {
     document.title = `${profile.name} — ${profile.title}`
+  }, [])
+
+  useEffect(() => {
     const handler = () => {
       if (window.innerWidth < 640) {
-        window.open('/cv.pdf', '_blank')
+        window.open(cvPdf, '_blank')
         return
       }
       setShowCvPreview(true)
     }
     window.addEventListener('cv-preview', handler)
     return () => window.removeEventListener('cv-preview', handler)
-  }, [])
+  }, [cvPdf])
 
   return (
     <div className="min-[1200px]:h-screen min-[1200px]:overflow-hidden">
