@@ -1,10 +1,28 @@
 import { motion } from 'framer-motion'
-import { FiExternalLink } from 'react-icons/fi'
+import { FiCpu, FiExternalLink } from 'react-icons/fi'
+import { SiOpenai, SiLangchain, SiClaude, SiTypescript, SiNodedotjs } from 'react-icons/si'
+import type { IconType } from 'react-icons'
 import { skills, skillCategories } from '../../data/resume'
+import { frameworkIcons } from '../../data/projects'
 import GradientCard from '../ui/GradientCard'
 import IconBox from '../ui/IconBox'
 import PulseDot from '../ui/PulseDot'
 import useLanguage from '../../hooks/useLanguage'
+import useFrameworkColors from '../../hooks/useFrameworkColors'
+
+interface LearningTech {
+  name: string
+  Icon: IconType
+  color: string
+}
+
+const learningStack: LearningTech[] = [
+  { name: 'OpenAI',     Icon: SiOpenai,     color: '#10A37F' },
+  { name: 'LangChain',  Icon: SiLangchain,  color: '#1C3C3C' },
+  { name: 'Claude',     Icon: SiClaude,     color: '#D97757' },
+  { name: 'Node.js',    Icon: SiNodedotjs,  color: '#5FA04E' },
+  { name: 'TypeScript', Icon: SiTypescript, color: '#3178C6' },
+]
 
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.09 } } }
 const item = { hidden: { opacity: 0, y: 22 }, show: { opacity: 1, y: 0, transition: { duration: 0.45 } } }
@@ -12,6 +30,7 @@ const iconFilter = 'invert(92%) sepia(85%) saturate(652%) hue-rotate(319deg) bri
 
 export default function About() {
   const { t } = useLanguage()
+  const frameworkColors = useFrameworkColors()
 
   const services = [
     { icon: '/icons/web-design.svg', title: t('about.webDesign'), desc: t('about.webDesignDesc') },
@@ -54,36 +73,93 @@ export default function About() {
         </div>
       </motion.div>
 
+      {/* Currently Learning — AI focus */}
       <motion.div variants={item} className="mt-8">
-        <h3 className="text-lg sm:text-xl text-heading font-semibold mb-4">{t('about.featuredProject')}</h3>
-        <a
-          href="https://lupygames.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group block no-underline"
-        >
-          <div className="bg-card border border-border-gold rounded-2xl overflow-hidden transition-all duration-300 hover:border-accent/30 hover:shadow-[0_8px_32px_var(--color-border-gold)]">
-            <div className="relative overflow-hidden aspect-[16/8]">
-              <img
-                src="/lupy-games.png"
-                alt="Lupy Games"
-                className="w-full h-full object-cover object-top"
-              />
-              <div className="absolute inset-0 bg-linear-to-t from-card via-transparent to-transparent" />
-            </div>
-            <div className="p-6 -mt-8 relative">
+        <GradientCard>
+          <div className="flex items-start gap-4">
+            <IconBox size={56}>
+              <FiCpu size={26} style={{ color: '#FFDB6E' }} />
+            </IconBox>
+            <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-2">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent bg-accent/10 px-2 py-0.5 rounded-md">Focus</span>
                 <PulseDot size="sm" />
-                <span className="text-xs font-semibold text-green-400 uppercase tracking-wider">Live Project</span>
               </div>
-              <h4 className="text-heading font-bold text-xl mb-2 group-hover:text-accent transition-colors">Lupy Games</h4>
-              <p className="text-sm text-muted leading-relaxed mb-4">{t('about.lupyDesc')}</p>
-              <span className="inline-flex items-center gap-1.5 text-accent text-sm font-semibold group-hover:gap-2.5 transition-all">
-                {t('about.visitSite')} <FiExternalLink size={14} />
-              </span>
+              <h4 className="text-heading font-bold mb-2 text-base">Currently Learning</h4>
+              <p className="text-sm leading-relaxed text-muted">
+                Expanding into <span className="text-accent font-semibold">generative AI</span> and
+                building intelligent, production-grade apps on top of Node.js. Currently working
+                through the <em className="text-heading font-medium not-italic">Generative AI for Node.js:
+                OpenAI, LangChain — TypeScript</em> Udemy course, and getting hands-on with Claude
+                and the broader Anthropic ecosystem.
+              </p>
+              <div className="flex flex-wrap gap-2 mt-4">
+                {learningStack.map(({ name, Icon, color }) => (
+                  <motion.span
+                    key={name}
+                    whileHover={{ y: -2 }}
+                    className="inline-flex items-center gap-2 text-xs font-semibold bg-overlay-5 border border-border-subtle rounded-full pl-2.5 pr-3 py-1.5 text-paragraph"
+                  >
+                    <Icon size={14} style={{ color }} />
+                    {name}
+                  </motion.span>
+                ))}
+              </div>
             </div>
           </div>
-        </a>
+        </GradientCard>
+      </motion.div>
+
+      <motion.div variants={item} className="mt-8">
+        <h3 className="text-lg sm:text-xl text-heading font-semibold mb-4">{t('about.featuredProject')}</h3>
+        <div className="relative">
+          <motion.div
+            aria-hidden
+            className="absolute -inset-1 rounded-3xl bg-linear-to-r from-accent via-accent-2 to-accent blur-xl pointer-events-none"
+            animate={{ opacity: [0.25, 0.55, 0.25] }}
+            transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
+          />
+          <a
+            href="https://lupygames.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative block no-underline"
+          >
+            <div className="bg-card border border-accent/40 rounded-2xl overflow-hidden transition-all duration-300 hover:border-accent/70 shadow-[0_8px_40px_rgba(0,0,0,0.25)] hover:shadow-[0_12px_48px_var(--color-border-gold)]">
+              <div className="relative overflow-hidden aspect-16/8">
+                <img
+                  src="/lupy-games.png"
+                  alt="Lupy Games"
+                  className="w-full h-full object-cover object-top"
+                />
+                <div className="absolute inset-0 bg-linear-to-t from-card via-transparent to-transparent" />
+              </div>
+              <div className="p-6 -mt-8 relative">
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <div className="flex items-center gap-2">
+                    <PulseDot size="sm" />
+                    <span className="text-xs font-semibold text-green-400 uppercase tracking-wider">Live Project</span>
+                  </div>
+                  <span
+                    className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.15em] bg-overlay-5 border border-border-subtle px-2 py-1 rounded-md"
+                    style={{ color: frameworkColors['Next.js'] }}
+                  >
+                    {(() => {
+                      const Icon = frameworkIcons['Next.js']
+                      return <Icon size={12} />
+                    })()}
+                    Next.js
+                  </span>
+                </div>
+                <h4 className="text-heading font-bold text-xl mb-2 group-hover:text-accent transition-colors">Lupy Games</h4>
+                <p className="text-sm text-muted leading-relaxed mb-4">{t('about.lupyDesc')}</p>
+                <span className="inline-flex items-center gap-1.5 text-accent text-sm font-semibold group-hover:gap-2.5 transition-all">
+                  {t('about.visitSite')} <FiExternalLink size={14} />
+                </span>
+              </div>
+            </div>
+          </a>
+        </div>
       </motion.div>
 
       <motion.div variants={item} className="mt-8">

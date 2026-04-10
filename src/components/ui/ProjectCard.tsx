@@ -2,17 +2,13 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FiGithub, FiExternalLink } from 'react-icons/fi'
 import useLanguage from '../../hooks/useLanguage'
-
-interface Project {
-  _id: string
-  title: string
-  image: string
-  github: string
-  demo: string
-  createdAt: string
-}
+import useFrameworkColors from '../../hooks/useFrameworkColors'
+import { frameworkIcons, type Project } from '../../data/projects'
 
 export default function ProjectCard({ project, index }: { project: Project; index: number }) {
+  const FrameworkIcon = frameworkIcons[project.framework]
+  const frameworkColors = useFrameworkColors()
+  const frameworkColor = frameworkColors[project.framework]
   const [hovered, setHovered] = useState(false)
   const { t } = useLanguage()
 
@@ -51,15 +47,28 @@ export default function ProjectCard({ project, index }: { project: Project; inde
         </div>
 
         {/* Content side */}
-        <div className="flex flex-col justify-center gap-5 p-6 sm:p-7 sm:w-[45%] relative">
-          {/* Project number */}
-          <span className="text-accent/40 text-[11px] font-bold tracking-[0.3em] uppercase">
-            {t('portfolio.project')} {String(index + 1).padStart(2, '0')}
-          </span>
+        <div className="flex flex-col justify-center gap-4 p-6 sm:p-7 sm:w-[45%] relative">
+          {/* Project number + framework */}
+          <div className="flex items-center justify-between gap-2">
+            <span className="text-accent/40 text-[11px] font-bold tracking-[0.3em] uppercase">
+              {t('portfolio.project')} {String(index + 1).padStart(2, '0')}
+            </span>
+            <span
+              className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.15em] bg-overlay-5 border border-border-subtle px-2 py-1 rounded-md"
+              style={{ color: frameworkColor }}
+            >
+              <FrameworkIcon size={12} />
+              {project.framework}
+            </span>
+          </div>
 
           <h3 className="text-heading font-bold text-lg leading-snug">
             {project.title}
           </h3>
+
+          <p className="text-[13px] text-dim leading-relaxed">
+            {project.description}
+          </p>
 
           {/* Accent line */}
           <motion.div

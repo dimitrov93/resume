@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FiChevronDown, FiDownload, FiEye, FiMenu } from 'react-icons/fi'
 import useLanguage from '../hooks/useLanguage'
 import useTypewriter from '../hooks/useTypewriter'
+import useCvPdf from '../hooks/useCvPdf'
 import { contacts } from '../data/contacts'
 import { profile } from '../data/profile'
 import ContactItem from './ContactItem'
@@ -11,6 +12,7 @@ import Divider from './ui/Divider'
 
 export function SidebarFull() {
   const { t } = useLanguage()
+  const cvPdf = useCvPdf()
   const roles = useMemo(() => [t('sidebar.role1'), t('sidebar.role2'), t('sidebar.role3')], [t])
   const typedRole = useTypewriter(roles)
   return (
@@ -56,7 +58,7 @@ export function SidebarFull() {
           {t('sidebar.previewCv')}
         </button>
         <a
-          href="/cv.pdf"
+          href={cvPdf}
           download="Tsvetomir_Dimitrov_CV.pdf"
           className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-linear-to-r from-accent to-accent-2 text-accent-text text-[11px] font-semibold no-underline transition-all duration-300 hover:brightness-110"
         >
@@ -71,6 +73,7 @@ export function SidebarFull() {
 export function SidebarCompact({ onMenuToggle, active }: { onMenuToggle: () => void; active: string }) {
   const [showContacts, setShowContacts] = useState(true)
   const { t } = useLanguage()
+  const cvPdf = useCvPdf()
   const initialTab = useRef(active)
 
   useEffect(() => {
@@ -150,7 +153,7 @@ export function SidebarCompact({ onMenuToggle, active }: { onMenuToggle: () => v
                   {t('sidebar.previewCv')}
                 </button>
                 <a
-                  href="/cv.pdf"
+                  href={cvPdf}
                   download="Tsvetomir_Dimitrov_CV.pdf"
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-linear-to-r from-accent to-accent-2 text-accent-text text-[11px] font-semibold no-underline transition-all duration-300 hover:brightness-110"
                 >

@@ -1,0 +1,91 @@
+---
+title: Syncing your dev branch with main
+description: Two ways to bring the latest main changes into your dev branch — merge vs rebase.
+---
+
+# Syncing `dev` with `main`
+
+When `main` has moved ahead of your `dev` branch, you need to pull those new commits in so `dev` doesn't fall behind. There are two common ways to do this: **merge** and **rebase**. They produce the same final code, but they shape your git history differently.
+
+---
+
+## Option 1: Merge (safe, preserves history)
+
+This is the safest option, especially if `dev` is shared with other people. It creates a **merge commit** that ties the two histories together — nothing gets rewritten, so collaborators won't have their local copies broken.
+
+```bash
+git checkout dev
+git pull origin dev          # make sure local dev is up to date
+git fetch origin main        # grab the latest main from remote
+git merge origin/main        # merge main into dev
+git push origin dev          # publish the merged dev
+```
+
+### When to use merge
+- `dev` is shared with teammates.
+- You want a full audit trail of when syncs happened.
+- You're not comfortable resolving conflicts during a rebase.
+
+---
+
+## Option 2: Rebase (clean, linear history)
+
+Rebasing **replays** your `dev` commits on top of the latest `main`, as if you had branched off `main` just now. The history stays linear and tidy — no merge commits — but it **rewrites** your `dev` commits (they get new SHAs).
+
+```bash
+git checkout dev
+git pull origin dev               # make sure local dev is up to date
+git fetch origin main             # grab the latest main from remote
+git rebase origin/main            # replay dev commits on top of main
+git push --force-with-lease origin dev
+```
+
+> ⚠️ The `--force-with-lease` flag is required because rebasing rewrites history. It's safer than `--force` because it refuses to overwrite remote work you haven't seen yet.
+
+### When to use rebase
+- `dev` is **your** branch only — nobody else is working on it.
+- You want a clean, linear history (e.g. before opening a PR).
+- You're okay with resolving conflicts commit-by-commit.
+
+---
+
+## Handling conflicts
+
+Either approach can produce merge conflicts if the same lines changed on both branches.
+
+**During a merge:**
+```bash
+# fix the conflicting files, then:
+git add <files>
+git commit
+```
+
+**During a rebase:**
+```bash
+# fix the conflicting files, then:
+git add <files>
+git rebase --continue
+# or, if you want to bail out:
+git rebase --abort
+```
+
+---
+
+## Quick comparison
+
+| | Merge | Rebase |
+|---|---|---|
+| History shape | Branched, with merge commits | Linear |
+| Rewrites commits? | No | Yes |
+| Safe on shared branches? | Yes | No |
+| Force push needed? | No | Yes (`--force-with-lease`) |
+| Conflict resolution | Once, at the end | Possibly per commit |
+
+---
+
+## TL;DR
+
+- **Shared branch?** → `git merge origin/main`
+- **Solo branch, want clean history?** → `git rebase origin/main` + `git push --force-with-lease`
+
+Both leave `dev` containing every change from `main`. Pick based on who else touches the branch and how much you care about history shape.
