@@ -33,7 +33,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
           />
           <motion.img
             src={project.image}
-            alt={project.title}
+            alt={t(project.titleKey)}
             loading="lazy"
             className="w-full h-full object-cover"
             animate={{
@@ -63,11 +63,11 @@ export default function ProjectCard({ project, index }: { project: Project; inde
           </div>
 
           <h3 className="text-heading font-bold text-lg leading-snug">
-            {project.title}
+            {t(project.titleKey)}
           </h3>
 
           <p className="text-[13px] text-dim leading-relaxed">
-            {project.description}
+            {t(project.descriptionKey)}
           </p>
 
           {/* Accent line */}

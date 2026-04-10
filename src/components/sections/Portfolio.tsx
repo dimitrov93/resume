@@ -25,13 +25,13 @@ const sortLabelKeys: Record<SortKey, TranslationKey> = {
 
 const sortKeys: SortKey[] = ['newest', 'oldest', 'a-z', 'z-a']
 
-function sortProjects(projects: Project[], sort: SortKey) {
+function sortProjects(projects: Project[], sort: SortKey, t: (key: TranslationKey) => string) {
   const sorted = [...projects]
   switch (sort) {
     case 'newest': return sorted.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
     case 'oldest': return sorted.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime())
-    case 'a-z': return sorted.sort((a, b) => a.title.localeCompare(b.title))
-    case 'z-a': return sorted.sort((a, b) => b.title.localeCompare(a.title))
+    case 'a-z': return sorted.sort((a, b) => t(a.titleKey).localeCompare(t(b.titleKey)))
+    case 'z-a': return sorted.sort((a, b) => t(b.titleKey).localeCompare(t(a.titleKey)))
   }
 }
 
@@ -87,7 +87,7 @@ export default function Portfolio() {
   }, [])
 
   const filtered = framework === 'All' ? projects : projects.filter(p => p.framework === framework)
-  const sorted = sortProjects(filtered, sort)
+  const sorted = sortProjects(filtered, sort, t)
   const shown = sorted.slice(0, visible)
 
   return (
@@ -162,7 +162,7 @@ export default function Portfolio() {
                 const color = framework === 'All' ? undefined : frameworkColors[framework]
                 return <Icon size={14} style={{ color }} />
               })()}
-              <span className="flex-1 text-left">{framework}</span>
+              <span className="flex-1 text-left">{framework === 'All' ? t('portfolio.all') : framework}</span>
               <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-md ${framework !== 'All' ? 'bg-accent/20 text-accent' : 'bg-overlay-10 text-dim'}`}>
                 {frameworkCounts[framework]}
               </span>
@@ -201,7 +201,7 @@ export default function Portfolio() {
                         }`}
                       >
                         <Icon size={14} style={{ color: active ? undefined : color }} />
-                        <span className="flex-1 text-left whitespace-nowrap">{fw}</span>
+                        <span className="flex-1 text-left whitespace-nowrap">{fw === 'All' ? t('portfolio.all') : fw}</span>
                         <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-md ${active ? 'bg-accent/20 text-accent' : 'bg-overlay-10 text-dim'}`}>
                           {frameworkCounts[fw]}
                         </span>

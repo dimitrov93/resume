@@ -82,17 +82,11 @@ export default function About() {
             </IconBox>
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent bg-accent/10 px-2 py-0.5 rounded-md">Focus</span>
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent bg-accent/10 px-2 py-0.5 rounded-md">{t('about.focus')}</span>
                 <PulseDot size="sm" />
               </div>
-              <h4 className="text-heading font-bold mb-2 text-base">Currently Learning</h4>
-              <p className="text-sm leading-relaxed text-muted">
-                Expanding into <span className="text-accent font-semibold">generative AI</span> and
-                building intelligent, production-grade apps on top of Node.js. Currently working
-                through the <em className="text-heading font-medium not-italic">Generative AI for Node.js:
-                OpenAI, LangChain — TypeScript</em> Udemy course, and getting hands-on with Claude
-                and the broader Anthropic ecosystem.
-              </p>
+              <h4 className="text-heading font-bold mb-2 text-base">{t('about.currentlyLearning')}</h4>
+              <p className="text-sm leading-relaxed text-muted">{t('about.learningDesc')}</p>
               <div className="flex flex-wrap gap-2 mt-4">
                 {learningStack.map(({ name, Icon, color }) => (
                   <motion.span
@@ -138,7 +132,7 @@ export default function About() {
                 <div className="flex items-center justify-between gap-2 mb-2">
                   <div className="flex items-center gap-2">
                     <PulseDot size="sm" />
-                    <span className="text-xs font-semibold text-green-400 uppercase tracking-wider">Live Project</span>
+                    <span className="text-xs font-semibold text-green-400 uppercase tracking-wider">{t('about.liveProject')}</span>
                   </div>
                   <span
                     className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.15em] bg-overlay-5 border border-border-subtle px-2 py-1 rounded-md"
