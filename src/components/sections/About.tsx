@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion'
-import { FiExternalLink } from 'react-icons/fi'
+import { FiCpu, FiExternalLink } from 'react-icons/fi'
+import { SiOpenai, SiLangchain, SiClaude, SiTypescript, SiNodedotjs } from 'react-icons/si'
+import type { IconType } from 'react-icons'
 import { skills, skillCategories } from '../../data/resume'
 import { frameworkIcons } from '../../data/projects'
 import GradientCard from '../ui/GradientCard'
@@ -7,6 +9,20 @@ import IconBox from '../ui/IconBox'
 import PulseDot from '../ui/PulseDot'
 import useLanguage from '../../hooks/useLanguage'
 import useFrameworkColors from '../../hooks/useFrameworkColors'
+
+interface LearningTech {
+  name: string
+  Icon: IconType
+  color: string
+}
+
+const learningStack: LearningTech[] = [
+  { name: 'OpenAI',     Icon: SiOpenai,     color: '#10A37F' },
+  { name: 'LangChain',  Icon: SiLangchain,  color: '#1C3C3C' },
+  { name: 'Claude',     Icon: SiClaude,     color: '#D97757' },
+  { name: 'Node.js',    Icon: SiNodedotjs,  color: '#5FA04E' },
+  { name: 'TypeScript', Icon: SiTypescript, color: '#3178C6' },
+]
 
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.09 } } }
 const item = { hidden: { opacity: 0, y: 22 }, show: { opacity: 1, y: 0, transition: { duration: 0.45 } } }
@@ -55,6 +71,43 @@ export default function About() {
             </motion.div>
           ))}
         </div>
+      </motion.div>
+
+      {/* Currently Learning — AI focus */}
+      <motion.div variants={item} className="mt-8">
+        <GradientCard>
+          <div className="flex items-start gap-4">
+            <IconBox size={56}>
+              <FiCpu size={26} style={{ color: '#FFDB6E' }} />
+            </IconBox>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent bg-accent/10 px-2 py-0.5 rounded-md">Focus</span>
+                <PulseDot size="sm" />
+              </div>
+              <h4 className="text-heading font-bold mb-2 text-base">Currently Learning</h4>
+              <p className="text-sm leading-relaxed text-muted">
+                Expanding into <span className="text-accent font-semibold">generative AI</span> and
+                building intelligent, production-grade apps on top of Node.js. Currently working
+                through the <em className="text-heading font-medium not-italic">Generative AI for Node.js:
+                OpenAI, LangChain — TypeScript</em> Udemy course, and getting hands-on with Claude
+                and the broader Anthropic ecosystem.
+              </p>
+              <div className="flex flex-wrap gap-2 mt-4">
+                {learningStack.map(({ name, Icon, color }) => (
+                  <motion.span
+                    key={name}
+                    whileHover={{ y: -2 }}
+                    className="inline-flex items-center gap-2 text-xs font-semibold bg-overlay-5 border border-border-subtle rounded-full pl-2.5 pr-3 py-1.5 text-paragraph"
+                  >
+                    <Icon size={14} style={{ color }} />
+                    {name}
+                  </motion.span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </GradientCard>
       </motion.div>
 
       <motion.div variants={item} className="mt-8">

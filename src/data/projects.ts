@@ -109,7 +109,7 @@ export const projects: Project[] = [
     image: 'https://github.com/dimitrov93/Projects/blob/main/react-portfolio/client/src/assets/portfolio2.jpg?raw=true',
     github: 'https://github.com/dimitrov93/Projects/tree/main/javascript-space-invaders',
     demo: 'https://space-invaders-dimitrov93.netlify.app/',
-    createdAt: '2023-03-05T10:00:00.000Z',
+    createdAt: '2023-02-13T10:00:00.000Z',
   },
   {
     id: '63e9f95034f4826ac40e0bf7',
@@ -119,6 +119,6 @@ export const projects: Project[] = [
     image: 'https://raw.githubusercontent.com/dimitrov93/Projects/refs/heads/main/react-portfolio/client/src/assets/portfolio1.jpg',
     github: 'https://github.com/dimitrov93/Projects/tree/main/javascript-pacman',
     demo: 'https://packman-dimitrov93.netlify.app/',
-    createdAt: '2023-02-13T10:00:00.000Z',
+    createdAt: '2023-03-05T10:00:00.000Z',
   },
 ]
