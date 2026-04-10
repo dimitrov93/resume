@@ -7,7 +7,7 @@ export default function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/cv-private-x7k2" element={<CvPage />} />
+        <Route path="/build-cv-hidden" element={<CvPage />} />
       </Routes>
     </BrowserRouter>
   )

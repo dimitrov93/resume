@@ -506,7 +506,7 @@ export default function CvPage() {
               <div className="job">
                 <div className="job-meta">
                   <div className="company">Vola</div>
-                  <div className="period">Jul 2023 – Present</div>
+                  <div className="period">Jul 2023 – Feb 2024</div>
                   <div className="location">Remote</div>
                 </div>
                 <div className="job-content">
