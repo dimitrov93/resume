@@ -39,6 +39,15 @@
 - Use `framer-motion` variants pattern for stagger/animation consistency.
 - Page-specific CSS that doesn't fit Tailwind (e.g. `pages/cv/cv.css` for the print-formatted CV) should be scoped under a parent class (`.cv-root .x`) so it can't leak into the rest of the site.
 
+## i18n
+- The site ships in two languages: **English** and **Bulgarian**. Both are first-class — every visitor-facing string must exist in both.
+- All translations live in `src/data/translations.ts` as a strict keyed object. `TranslationKey` is a type derived from the `en` keys; missing keys in `bg` are a type error.
+- Any new UI copy — labels, headings, paragraphs, button text, aria-labels, alt text — must be added as a translation key and rendered via `const { t } = useLanguage(); t('my.key')`. Never hardcode user-facing strings.
+- Data files that contain visitor-facing copy (e.g. `src/data/projects.ts`) should store **translation keys**, not raw strings. The consuming component calls `t(project.titleKey)` at render time so both languages work.
+- Sorting/searching on translated fields must use the resolved string, not the key — pass `t` into the sort comparator and compare on `t(a.key).localeCompare(t(b.key))`.
+- Proper nouns (brand names, frameworks like "React" / "Next.js", product names like "Lupy Games") can stay unchanged in both locales — but still add a key if you want consistency across the table.
+- When adding a new page or section, write BOTH `en` and `bg` copy in the same commit. Don't ship half-translated features.
+
 ## Don't break what's working
 - This is a live deployed site. Before touching shared files (`App.tsx`, `main.tsx`, layout components, hooks, providers), confirm the change doesn't affect existing routes or behaviors.
 - Run `npm run build` after structural changes (file moves, router edits, new dependencies) to catch broken imports before commit.

@@ -46,7 +46,7 @@ function MobileNav({ active, setActive, menuOpen, setMenuOpen }: {
       {menuOpen && (
         <button
           onClick={() => setMenuOpen(false)}
-          aria-label="Close menu"
+          aria-label={t('a11y.closeMenu')}
           className="fixed top-4 left-4 z-100 w-11 h-11 rounded-full border-none items-center justify-center cursor-pointer shadow-lg flex bg-linear-to-br from-accent to-accent-2"
         >
           <FiX size={20} className="text-black" />
@@ -85,14 +85,14 @@ function MobileNav({ active, setActive, menuOpen, setMenuOpen }: {
                 <button
                   onClick={toggleTheme}
                   className="w-9 h-9 rounded-lg flex items-center justify-center text-dim cursor-pointer hover:text-accent hover:bg-overlay-5 transition-all duration-300 bg-transparent border-none"
-                  aria-label="Toggle theme"
+                  aria-label={t('a11y.toggleTheme')}
                 >
                   {theme === 'dark' ? <FiSun size={16} /> : <FiMoon size={16} />}
                 </button>
                 <button
                   onClick={toggleLang}
                   className="h-9 px-2 rounded-lg flex items-center justify-center gap-1 cursor-pointer hover:bg-overlay-5 transition-all duration-300 bg-transparent border-none text-sm leading-none"
-                  aria-label="Toggle language"
+                  aria-label={t('a11y.toggleLanguage')}
                 >
                   {lang === 'en' ? <><span>🇧🇬</span><span className="text-xs font-semibold text-dim">BG</span></> : <><span>🇺🇸</span><span className="text-xs font-semibold text-dim">EN</span></>}
                 </button>

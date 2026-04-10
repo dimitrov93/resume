@@ -1,13 +1,14 @@
 import type { IconType } from 'react-icons'
 import { SiJavascript, SiReact, SiAngular, SiNextdotjs, SiTrpc } from 'react-icons/si'
+import type { TranslationKey } from './translations'
 
 export type Framework = 'JavaScript' | 'React' | 'Angular' | 'Next.js' | 'T3 Stack'
 
 export interface Project {
   id: string
-  title: string
+  titleKey: TranslationKey
   framework: Framework
-  description: string
+  descriptionKey: TranslationKey
   image: string
   github: string
   demo: string
@@ -33,9 +34,9 @@ export const frameworkColors: Record<Framework, string> = {
 export const projects: Project[] = [
   {
     id: '649d3738155933e911b5048d',
-    title: 'Fairy Tale',
+    titleKey: 'projects.fairyTale.title',
     framework: 'React',
-    description: "Party agency website showcasing children's event services, packages, and bookings.",
+    descriptionKey: 'projects.fairyTale.desc',
     image: 'https://raw.githubusercontent.com/dimitrov93/Projects/refs/heads/main/react-portfolio/client/src/assets/portfolio5.png?raw=true',
     github: 'https://github.com/dimitrov93/party-agency',
     demo: 'https://fairy-tale.bg/',
@@ -43,9 +44,9 @@ export const projects: Project[] = [
   },
   {
     id: '649d38ce155933e911b504a1',
-    title: 'Admin Panel',
+    titleKey: 'projects.adminPanel.title',
     framework: 'React',
-    description: 'Dashboard UI with data tables, charts, and user management views.',
+    descriptionKey: 'projects.adminPanel.desc',
     image: 'https://raw.githubusercontent.com/dimitrov93/Projects/refs/heads/main/react-portfolio/client/src/assets/portfolio8.png?raw=true',
     github: 'https://github.com/dimitrov93/Projects/tree/main/react-admin-pannel',
     demo: 'https://admin-pannel-nine.vercel.app/',
@@ -53,9 +54,9 @@ export const projects: Project[] = [
   },
   {
     id: '63e9fe08a47de9ef35213828',
-    title: 'Office Board',
+    titleKey: 'projects.officeBoard.title',
     framework: 'Angular',
-    description: 'Team collaboration board for posting announcements, tasks, and daily office updates.',
+    descriptionKey: 'projects.officeBoard.desc',
     image: 'https://raw.githubusercontent.com/dimitrov93/Projects/refs/heads/main/react-portfolio/client/src/assets/portfolio4.jpg?raw=true',
     github: 'https://github.com/dimitrov93/Projects/tree/main/angular-office-board',
     demo: 'https://angular-office-board-dimitrov93.vercel.app/',
@@ -63,9 +64,9 @@ export const projects: Project[] = [
   },
   {
     id: '649d3eb1155933e911b504ac',
-    title: 'Twitter Clone',
+    titleKey: 'projects.twitterClone.title',
     framework: 'T3 Stack',
-    description: 'Twitter-like social feed built with the T3 stack — Next.js, tRPC, Prisma, Tailwind.',
+    descriptionKey: 'projects.twitterClone.desc',
     image: 'https://raw.githubusercontent.com/dimitrov93/Projects/refs/heads/main/react-portfolio/client/src/assets/portfolio9.png?raw=true',
     github: 'https://github.com/dimitrov93/Projects/tree/main/nextjs-twitter-clone',
     demo: 'https://twitter-clone-dimitrov93.vercel.app/',
@@ -73,9 +74,9 @@ export const projects: Project[] = [
   },
   {
     id: '649d37ca155933e911b50497',
-    title: 'Food Recipes',
+    titleKey: 'projects.foodRecipes.title',
     framework: 'Next.js',
-    description: 'Recipe discovery app with categorized meals and detailed cooking instructions.',
+    descriptionKey: 'projects.foodRecipes.desc',
     image: 'https://raw.githubusercontent.com/dimitrov93/Projects/refs/heads/main/react-portfolio/client/src/assets/portfolio6.png?raw=true',
     github: 'https://github.com/dimitrov93/Projects/tree/main/nextjs-receipt-app',
     demo: 'https://receipt-food-dimitrov93.vercel.app/',
@@ -83,9 +84,9 @@ export const projects: Project[] = [
   },
   {
     id: '649d387c155933e911b5049c',
-    title: 'Blog Posts',
+    titleKey: 'projects.blogPosts.title',
     framework: 'Next.js',
-    description: 'Simple blog platform with post listing and individual article pages.',
+    descriptionKey: 'projects.blogPosts.desc',
     image: 'https://raw.githubusercontent.com/dimitrov93/Projects/refs/heads/main/react-portfolio/client/src/assets/portfolio7.png?raw=true',
     github: 'https://github.com/dimitrov93/Projects/tree/main/nextjs-blog-posts-app',
     demo: 'https://blog-posts-two-rho.vercel.app/',
@@ -93,32 +94,32 @@ export const projects: Project[] = [
   },
   {
     id: '63e9fde0a47de9ef35213826',
-    title: 'xoxo Store',
+    titleKey: 'projects.xoxoStore.title',
     framework: 'React',
-    description: 'E-commerce storefront with product catalog, shopping cart, and checkout flow.',
+    descriptionKey: 'projects.xoxoStore.desc',
     image: 'https://raw.githubusercontent.com/dimitrov93/Projects/refs/heads/main/react-portfolio/client/src/assets/portfolio3.jpg?raw=true',
     github: 'https://github.com/dimitrov93/Projects/tree/main/react-xoxoStore',
     demo: 'https://xoxo-store-dimitrov93.vercel.app/',
     createdAt: '2023-05-10T10:00:00.000Z',
   },
   {
-    id: '63e9fab4a47de9ef35213819',
-    title: 'Space Invaders',
-    framework: 'JavaScript',
-    description: 'Recreation of the 1978 arcade classic built with the HTML5 Canvas API and vanilla JavaScript.',
-    image: 'https://github.com/dimitrov93/Projects/blob/main/react-portfolio/client/src/assets/portfolio2.jpg?raw=true',
-    github: 'https://github.com/dimitrov93/Projects/tree/main/javascript-space-invaders',
-    demo: 'https://space-invaders-dimitrov93.netlify.app/',
-    createdAt: '2023-02-13T10:00:00.000Z',
-  },
-  {
     id: '63e9f95034f4826ac40e0bf7',
-    title: 'Pac-Man',
+    titleKey: 'projects.pacman.title',
     framework: 'JavaScript',
-    description: 'Classic arcade Pac-Man recreated in vanilla JavaScript with collision detection, maze navigation, and ghost AI.',
+    descriptionKey: 'projects.pacman.desc',
     image: 'https://raw.githubusercontent.com/dimitrov93/Projects/refs/heads/main/react-portfolio/client/src/assets/portfolio1.jpg',
     github: 'https://github.com/dimitrov93/Projects/tree/main/javascript-pacman',
     demo: 'https://packman-dimitrov93.netlify.app/',
     createdAt: '2023-03-05T10:00:00.000Z',
+  },
+  {
+    id: '63e9fab4a47de9ef35213819',
+    titleKey: 'projects.spaceInvaders.title',
+    framework: 'JavaScript',
+    descriptionKey: 'projects.spaceInvaders.desc',
+    image: 'https://github.com/dimitrov93/Projects/blob/main/react-portfolio/client/src/assets/portfolio2.jpg?raw=true',
+    github: 'https://github.com/dimitrov93/Projects/tree/main/javascript-space-invaders',
+    demo: 'https://space-invaders-dimitrov93.netlify.app/',
+    createdAt: '2023-02-13T10:00:00.000Z',
   },
 ]

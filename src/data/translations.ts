@@ -29,6 +29,11 @@ const translations = {
     'about.fullStack': 'Full-Stack Solutions',
     'about.fullStackDesc':
       'End-to-end applications with MongoDB, Express, React, and Node.js (MERN stack).',
+    'about.focus': 'Focus',
+    'about.currentlyLearning': 'Currently Learning',
+    'about.learningDesc':
+      'Expanding into generative AI and building intelligent, production-grade apps on top of Node.js. Currently working through the Generative AI for Node.js: OpenAI, LangChain — TypeScript Udemy course, and getting hands-on with Claude and the broader Anthropic ecosystem.',
+    'about.liveProject': 'Live Project',
 
     'resume.currently': 'Currently',
     'resume.experience': 'Experience',
@@ -86,6 +91,40 @@ const translations = {
     'portfolio.project': 'Project',
     'portfolio.source': 'Source',
     'portfolio.liveDemo': 'Live Demo',
+    'portfolio.all': 'All',
+
+    'projects.pacman.title': 'Pac-Man',
+    'projects.pacman.desc':
+      'Classic arcade Pac-Man recreated in vanilla JavaScript with collision detection, maze navigation, and ghost AI.',
+    'projects.spaceInvaders.title': 'Space Invaders',
+    'projects.spaceInvaders.desc':
+      'Recreation of the 1978 arcade classic built with the HTML5 Canvas API and vanilla JavaScript.',
+    'projects.xoxoStore.title': 'xoxo Store',
+    'projects.xoxoStore.desc':
+      'E-commerce storefront with product catalog, shopping cart, and checkout flow.',
+    'projects.officeBoard.title': 'Office Board',
+    'projects.officeBoard.desc':
+      'Team collaboration board for posting announcements, tasks, and daily office updates.',
+    'projects.fairyTale.title': 'Fairy Tale',
+    'projects.fairyTale.desc':
+      "Party agency website showcasing children's event services, packages, and bookings.",
+    'projects.foodRecipes.title': 'Food Recipes',
+    'projects.foodRecipes.desc':
+      'Recipe discovery app with categorized meals and detailed cooking instructions.',
+    'projects.blogPosts.title': 'Blog Posts',
+    'projects.blogPosts.desc':
+      'Simple blog platform with post listing and individual article pages.',
+    'projects.adminPanel.title': 'Admin Panel',
+    'projects.adminPanel.desc':
+      'Dashboard UI with data tables, charts, and user management views.',
+    'projects.twitterClone.title': 'Twitter Clone',
+    'projects.twitterClone.desc':
+      'Twitter-like social feed built with the T3 stack — Next.js, tRPC, Prisma, Tailwind.',
+
+    'notFound.title': 'Page Not Found',
+    'notFound.description':
+      "The page you're looking for doesn't exist or has been moved.",
+    'notFound.backHome': '← Back to Home',
 
     'certs.otherCerts': 'Other Certifications',
     'certs.diplomaLabel': 'SoftUni Diploma',
@@ -119,6 +158,13 @@ const translations = {
     'contact.sendAnother': 'Send Another',
     'contact.sending': 'Sending...',
     'contact.sendMessage': 'Send Message',
+    'contact.mapTitle': 'Location map',
+
+    'a11y.toggleMenu': 'Toggle menu',
+    'a11y.closeMenu': 'Close menu',
+    'a11y.toggleContacts': 'Toggle contacts',
+    'a11y.toggleTheme': 'Toggle theme',
+    'a11y.toggleLanguage': 'Toggle language',
 
     'sidebar.previewCv': 'Preview CV',
     'sidebar.downloadCv': 'Download CV',
@@ -160,6 +206,11 @@ const translations = {
     'about.fullStack': 'Full-Stack решения',
     'about.fullStackDesc':
       'Цялостни приложения с MongoDB, Express, React и Node.js (MERN stack).',
+    'about.focus': 'Фокус',
+    'about.currentlyLearning': 'В момента уча',
+    'about.learningDesc':
+      'Разширявам знанията си в генеративния AI и изграждането на интелигентни, production-grade приложения върху Node.js. В момента преминавам през Udemy курса Generative AI for Node.js: OpenAI, LangChain — TypeScript и експериментирам с Claude и по-широката екосистема на Anthropic.',
+    'about.liveProject': 'Активен проект',
 
     'resume.currently': 'В момента',
     'resume.experience': 'Опит',
@@ -217,6 +268,40 @@ const translations = {
     'portfolio.project': 'Проект',
     'portfolio.source': 'Код',
     'portfolio.liveDemo': 'Демо',
+    'portfolio.all': 'Всички',
+
+    'projects.pacman.title': 'Pac-Man',
+    'projects.pacman.desc':
+      'Класическата аркадна игра Pac-Man, пресъздадена с чист JavaScript — с откриване на колизии, навигация в лабиринта и изкуствен интелект за призраците.',
+    'projects.spaceInvaders.title': 'Space Invaders',
+    'projects.spaceInvaders.desc':
+      'Пресъздаване на аркадната класика от 1978 г. с HTML5 Canvas API и чист JavaScript.',
+    'projects.xoxoStore.title': 'xoxo Store',
+    'projects.xoxoStore.desc':
+      'Онлайн магазин с продуктов каталог, количка и цялостен процес на поръчка.',
+    'projects.officeBoard.title': 'Office Board',
+    'projects.officeBoard.desc':
+      'Табло за екипна работа с публикуване на съобщения, задачи и ежедневни офис актуализации.',
+    'projects.fairyTale.title': 'Fairy Tale',
+    'projects.fairyTale.desc':
+      'Сайт на агенция за детски партита с услуги, пакети и резервации.',
+    'projects.foodRecipes.title': 'Food Recipes',
+    'projects.foodRecipes.desc':
+      'Приложение за откриване на рецепти с категоризирани ястия и подробни инструкции за готвене.',
+    'projects.blogPosts.title': 'Blog Posts',
+    'projects.blogPosts.desc':
+      'Проста блог платформа със списък на публикации и отделни страници за всяка статия.',
+    'projects.adminPanel.title': 'Admin Panel',
+    'projects.adminPanel.desc':
+      'Админ интерфейс с таблици с данни, графики и управление на потребители.',
+    'projects.twitterClone.title': 'Twitter Clone',
+    'projects.twitterClone.desc':
+      'Социален feed в стила на Twitter, изграден с T3 стека — Next.js, tRPC, Prisma, Tailwind.',
+
+    'notFound.title': 'Страницата не е намерена',
+    'notFound.description':
+      'Страницата, която търсите, не съществува или е преместена.',
+    'notFound.backHome': '← Обратно към началото',
 
     'certs.otherCerts': 'Други сертификати',
     'certs.diplomaLabel': 'Диплома от SoftUni',
@@ -250,6 +335,13 @@ const translations = {
     'contact.sendAnother': 'Изпрати ново',
     'contact.sending': 'Изпращане...',
     'contact.sendMessage': 'Изпрати',
+    'contact.mapTitle': 'Карта на местоположението',
+
+    'a11y.toggleMenu': 'Отвори/затвори менюто',
+    'a11y.closeMenu': 'Затвори менюто',
+    'a11y.toggleContacts': 'Покажи/скрий контактите',
+    'a11y.toggleTheme': 'Смени темата',
+    'a11y.toggleLanguage': 'Смени езика',
 
     'sidebar.previewCv': 'Преглед на CV',
     'sidebar.downloadCv': 'Изтегли CV',
