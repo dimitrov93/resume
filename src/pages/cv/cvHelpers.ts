@@ -131,43 +131,38 @@ export async function fetchAsDataUrl(src: string): Promise<string | null> {
   }
 }
 
-// React strips inline event handlers when serializing innerHTML — re-inject the
-// onclick/onchange the standalone HTML's vanilla script depends on.
-function reinjectInlineHandlers(innerHtml: string): string {
-  return innerHtml
-    .replace(
-      /<div([^>]*?)class="photo-overlay edit-visible"([^>]*?)>/,
-      `<div$1class="photo-overlay edit-visible" onclick="document.getElementById('photo-input').click()"$2>`,
-    )
-    .replace(
-      /<input([^>]*?)id="photo-input"([^>]*?)\/?>/,
-      `<input$1id="photo-input"$2 onchange="handlePhoto(event)" />`,
-    )
-}
-
-function applyThemeToTemplate(template: string, t: Theme): string {
-  return template
-    .replace(/--accent:\s*[^;]+;/, `--accent: ${t.accent};`)
-    .replace(/--accent-rgb:\s*[^;]+;/, `--accent-rgb: ${t.accentRgb};`)
-    .replace(/--dark:\s*[^;]+;/, `--dark: ${t.dark};`)
-    .replace(/--dark-rgb:\s*[^;]+;/, `--dark-rgb: ${t.darkRgb};`)
-    .replace(/--sidebar-start:\s*[^;]+;/, `--sidebar-start: ${t.sideStart};`)
-    .replace(/--sidebar-end:\s*[^;]+;/, `--sidebar-end: ${t.sideEnd};`)
-    .replace(/--sidebar-border:\s*[^;]+;/, `--sidebar-border: ${t.sideBorder};`)
-    .replace(/--edu-border:\s*[^;]+;/, `--edu-border: ${t.eduBorder};`)
-    .replace(/--chip-bg:\s*[^;]+;/, `--chip-bg: ${t.chipBg};`)
+function themeInlineStyle(t: Theme): string {
+  return [
+    `--accent: ${t.accent}`,
+    `--accent-rgb: ${t.accentRgb}`,
+    `--dark: ${t.dark}`,
+    `--dark-rgb: ${t.darkRgb}`,
+    `--sidebar-start: ${t.sideStart}`,
+    `--sidebar-end: ${t.sideEnd}`,
+    `--sidebar-border: ${t.sideBorder}`,
+    `--edu-border: ${t.eduBorder}`,
+    `--chip-bg: ${t.chipBg}`,
+  ].join('; ')
 }
 
 export function buildStandaloneHtml(opts: {
-  template: string
+  scopedCss: string
   pageInnerHtml: string
   theme?: Theme | null
 }): string {
-  let html = opts.template
-  if (opts.theme) html = applyThemeToTemplate(html, opts.theme)
-  const inner = reinjectInlineHandlers(opts.pageInnerHtml)
-  return html.replace(
-    /(<div class="page" id="cv-page">)[\s\S]*?(<\/div><!-- \/page -->)/,
-    (_match, openTag: string, closeTag: string) => `${openTag}${inner}${closeTag}`,
-  )
+  const themeStyle = opts.theme ? ` style="${themeInlineStyle(opts.theme)}"` : ''
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Tsvetomir Dimitrov — CV</title>
+<style>${opts.scopedCss}</style>
+</head>
+<body>
+<div class="cv-root"${themeStyle}>
+<div class="page" id="cv-page">${opts.pageInnerHtml}</div>
+</div>
+</body>
+</html>`
 }

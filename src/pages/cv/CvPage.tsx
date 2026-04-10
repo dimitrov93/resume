@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState, type ChangeEvent } from 'react'
 import './cv.css'
+import cvCssRaw from './cv.css?raw'
 import {
   THEMES,
   applyTheme,
@@ -9,11 +10,6 @@ import {
   fetchAsDataUrl,
   type Theme,
 } from './cvHelpers'
-
-async function loadTemplate(): Promise<string> {
-  const mod = await import('../../cv-tsvetomir-dimitrov.html?raw')
-  return mod.default
-}
 
 const STORAGE_KEY = 'cv_td_v1'
 const THEME_KEY = 'cv_theme'
@@ -177,13 +173,13 @@ export default function CvPage() {
     await ensurePhotoEmbedded()
     const page = pageRef.current
     if (!page) return
-    const template = await loadTemplate()
+    const theme = getCurrentThemeOverride()
     const html = buildStandaloneHtml({
-      template,
+      scopedCss: cvCssRaw,
       pageInnerHtml: page.innerHTML,
-      theme: getCurrentThemeOverride(),
+      theme,
     })
-    const themeSlug = (getCurrentThemeOverride()?.name ?? 'classic').toLowerCase()
+    const themeSlug = (theme?.name ?? 'classic').toLowerCase()
     downloadBlob(new Blob([html], { type: 'text/html' }), `cv-tsvetomir-dimitrov-${themeSlug}.html`)
     if (wasEditing) setEditMode(true)
   }
@@ -194,11 +190,10 @@ export default function CvPage() {
     await ensurePhotoEmbedded()
     const page = pageRef.current
     if (!page) return
-    const template = await loadTemplate()
     const innerHtml = page.innerHTML
     const files = THEMES.map((t) => ({
       name: `cv-tsvetomir-dimitrov-${t.name.toLowerCase()}.html`,
-      data: buildStandaloneHtml({ template, pageInnerHtml: innerHtml, theme: t }),
+      data: buildStandaloneHtml({ scopedCss: cvCssRaw, pageInnerHtml: innerHtml, theme: t }),
     }))
     const zip = buildZip(files)
     const blob = new Blob([zip.buffer as ArrayBuffer], { type: 'application/zip' })
