@@ -158,6 +158,13 @@ const translations = {
     'contact.sendAnother': 'Send Another',
     'contact.sending': 'Sending...',
     'contact.sendMessage': 'Send Message',
+    'contact.mapTitle': 'Location map',
+
+    'a11y.toggleMenu': 'Toggle menu',
+    'a11y.closeMenu': 'Close menu',
+    'a11y.toggleContacts': 'Toggle contacts',
+    'a11y.toggleTheme': 'Toggle theme',
+    'a11y.toggleLanguage': 'Toggle language',
 
     'sidebar.previewCv': 'Preview CV',
     'sidebar.downloadCv': 'Download CV',
@@ -328,6 +335,13 @@ const translations = {
     'contact.sendAnother': 'Изпрати ново',
     'contact.sending': 'Изпращане...',
     'contact.sendMessage': 'Изпрати',
+    'contact.mapTitle': 'Карта на местоположението',
+
+    'a11y.toggleMenu': 'Отвори/затвори менюто',
+    'a11y.closeMenu': 'Затвори менюто',
+    'a11y.toggleContacts': 'Покажи/скрий контактите',
+    'a11y.toggleTheme': 'Смени темата',
+    'a11y.toggleLanguage': 'Смени езика',
 
     'sidebar.previewCv': 'Преглед на CV',
     'sidebar.downloadCv': 'Изтегли CV',

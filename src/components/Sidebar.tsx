@@ -105,14 +105,14 @@ export function SidebarCompact({ onMenuToggle, active }: { onMenuToggle: () => v
         <div className="ml-auto flex flex-col items-end gap-2">
           <button
             onClick={onMenuToggle}
-            aria-label="Toggle menu"
+            aria-label={t('a11y.toggleMenu')}
             className="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer border border-accent/20 bg-transparent text-accent transition-all duration-300"
           >
             <FiMenu size={18} />
           </button>
           <button
             onClick={() => setShowContacts(!showContacts)}
-            aria-label="Toggle contacts"
+            aria-label={t('a11y.toggleContacts')}
             className="w-10 h-10 rounded-full flex items-center justify-center cursor-pointer border border-accent/20 bg-transparent text-accent transition-all duration-300"
           >
             <FiChevronDown

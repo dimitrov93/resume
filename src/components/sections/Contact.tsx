@@ -38,7 +38,7 @@ export default function Contact() {
         <p className="text-xs uppercase tracking-wider font-semibold text-dim mb-4">{t('contact.whereImBased')}</p>
         <div className="rounded-2xl overflow-hidden border border-border-gold h-60 sm:h-72">
           <iframe
-            title="Location"
+            title={t('contact.mapTitle')}
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46732.0!2d23.225!3d43.4125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40ab37e2e1e43ac1%3A0xa000f1e0f39c0!2sMontana%2C%20Bulgaria!5e0!3m2!1sen!2sbg!4v1700000000000"
             className={`w-full h-full border-none ${theme === 'dark' ? 'grayscale-80 contrast-[1.1] invert-[0.9] hue-rotate-180' : ''}`}
             loading="lazy"
