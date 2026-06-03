@@ -9,7 +9,7 @@ export default function ContactForm() {
   const [sent, setSent] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm(p => ({ ...p, [e.target.name]: e.target.value }))
@@ -19,11 +19,24 @@ export default function ContactForm() {
     setLoading(true)
     setError('')
 
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+    const templateId = lang === 'bg'
+      ? import.meta.env.VITE_EMAILJS_TEMPLATE_ID_BG
+      : import.meta.env.VITE_EMAILJS_TEMPLATE_ID_EN
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+    if (!serviceId || !templateId || !publicKey) {
+      setLoading(false)
+      setError(t('contact.sendFailed'))
+      console.error('EmailJS env vars are missing — check VITE_EMAILJS_* configuration.')
+      return
+    }
+
     emailjs.sendForm(
-      import.meta.env.VITE_EMAILJS_SERVICE_ID,
-      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      serviceId,
+      templateId,
       formRef.current!,
-      import.meta.env.VITE_EMAILJS_PUBLIC_KEY,
+      publicKey,
     )
       .then(() => {
         setLoading(false)
