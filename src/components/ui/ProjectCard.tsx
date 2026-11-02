@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { FiGithub, FiExternalLink } from 'react-icons/fi'
 import useLanguage from '../../hooks/useLanguage'
 import useFrameworkColors from '../../hooks/useFrameworkColors'
+import useMediaQuery from '../../hooks/useMediaQuery'
 import { frameworkIcons, type Project } from '../../data/projects'
 
 export default function ProjectCard({ project, index }: { project: Project; index: number }) {
@@ -10,6 +11,8 @@ export default function ProjectCard({ project, index }: { project: Project; inde
   const frameworkColors = useFrameworkColors()
   const frameworkColor = frameworkColors[project.framework]
   const [hovered, setHovered] = useState(false)
+  // Touch screens never hover, so images would stay dimmed forever; show them in full color there.
+  const canHover = useMediaQuery('(hover: hover)')
   const { t } = useLanguage()
 
   return (
@@ -38,7 +41,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
             className="w-full h-full object-cover"
             animate={{
               scale: hovered ? 1.04 : 1,
-              filter: hovered ? 'grayscale(0) brightness(1)' : 'grayscale(30%) brightness(0.85)',
+              filter: hovered || !canHover ? 'grayscale(0) brightness(1)' : 'grayscale(30%) brightness(0.85)',
             }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
           />
