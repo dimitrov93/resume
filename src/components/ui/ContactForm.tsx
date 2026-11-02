@@ -69,36 +69,36 @@ export default function ContactForm() {
     <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col bg-card border border-border-gold rounded-2xl p-6 gap-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-medium mb-1.5 text-dim">{t('contact.fullName')}</label>
+          <label htmlFor="contact-name" className="block text-xs font-medium mb-1.5 text-dim">{t('contact.fullName')}</label>
           <input
-            name="name" value={form.name} onChange={handleChange} placeholder={t('contact.yourName')} required
+            id="contact-name" name="name" value={form.name} onChange={handleChange} placeholder={t('contact.yourName')} required
             className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-border-subtle text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent/40"
           />
         </div>
         <div>
-          <label className="block text-xs font-medium mb-1.5 text-dim">{t('contact.email')}</label>
+          <label htmlFor="contact-email" className="block text-xs font-medium mb-1.5 text-dim">{t('contact.email')}</label>
           <input
-            name="email" type="email" value={form.email} onChange={handleChange} placeholder={t('contact.emailPlaceholder')} required
+            id="contact-email" name="email" type="email" value={form.email} onChange={handleChange} placeholder={t('contact.emailPlaceholder')} required
             className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-border-subtle text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent/40"
           />
         </div>
       </div>
       <div>
-        <label className="block text-xs font-medium mb-1.5 text-dim">{t('contact.subject')}</label>
+        <label htmlFor="contact-subject" className="block text-xs font-medium mb-1.5 text-dim">{t('contact.subject')}</label>
         <input
-          name="subject" value={form.subject} onChange={handleChange} placeholder={t('contact.subjectPlaceholder')} required
+          id="contact-subject" name="subject" value={form.subject} onChange={handleChange} placeholder={t('contact.subjectPlaceholder')} required
           className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-border-subtle text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent/40"
         />
       </div>
       <div>
-        <label className="block text-xs font-medium mb-1.5 text-dim">{t('contact.message')}</label>
+        <label htmlFor="contact-message" className="block text-xs font-medium mb-1.5 text-dim">{t('contact.message')}</label>
         <textarea
-          name="message" value={form.message} onChange={handleChange} placeholder={t('contact.messagePlaceholder')} rows={4} required
+          id="contact-message" name="message" value={form.message} onChange={handleChange} placeholder={t('contact.messagePlaceholder')} rows={4} required
           className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-border-subtle text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent/40 resize-none"
         />
       </div>
       {error && (
-        <div className="flex items-center gap-2 text-red-400 text-sm">
+        <div role="alert" className="flex items-center gap-2 text-red-400 text-sm">
           <FiAlertCircle size={16} />
           {error}
         </div>

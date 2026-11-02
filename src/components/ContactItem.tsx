@@ -19,7 +19,11 @@ interface ContactItemProps {
 export default function ContactItem({ icon: Icon, label, value, href }: ContactItemProps) {
   const { t } = useLanguage()
   return (
-    <a href={href} className="flex items-center gap-4 py-2 no-underline text-inherit transition-opacity duration-300">
+    <a
+      href={href}
+      {...(href.startsWith('http') && { target: '_blank', rel: 'noopener noreferrer' })}
+      className="flex items-center gap-4 py-2 no-underline text-inherit transition-opacity duration-300"
+    >
       <IconBox>
         <Icon size={18} style={{ color: 'var(--color-accent)' }} />
       </IconBox>

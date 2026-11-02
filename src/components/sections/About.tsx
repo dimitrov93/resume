@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { FiCpu, FiExternalLink } from 'react-icons/fi'
 import { SiOpenai, SiLangchain, SiClaude, SiTypescript, SiNodedotjs } from 'react-icons/si'
 import type { IconType } from 'react-icons'
@@ -29,6 +29,7 @@ const item = { hidden: { opacity: 0, y: 22 }, show: { opacity: 1, y: 0, transiti
 const iconFilter = 'invert(92%) sepia(85%) saturate(652%) hue-rotate(319deg) brightness(102%) contrast(101%)'
 
 export default function About() {
+  const reduceMotion = useReducedMotion()
   const { t } = useLanguage()
   const frameworkColors = useFrameworkColors()
 
@@ -110,8 +111,8 @@ export default function About() {
           <motion.div
             aria-hidden
             className="absolute -inset-1 rounded-3xl bg-linear-to-r from-accent via-accent-2 to-accent blur-xl pointer-events-none"
-            animate={{ opacity: [0.25, 0.55, 0.25] }}
-            transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
+            animate={reduceMotion ? { opacity: 0.4 } : { opacity: [0.25, 0.55, 0.25] }}
+            transition={reduceMotion ? { duration: 0 } : { duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
           />
           <a
             href="https://lupygames.com"

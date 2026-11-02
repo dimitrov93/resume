@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { FiExternalLink } from 'react-icons/fi'
 import PulseDot from './PulseDot'
 import useLanguage from '../../hooks/useLanguage'
@@ -14,6 +14,7 @@ type Props = {
 }
 
 export default function FeaturedProjectCard({ href, image, title, desc, framework }: Props) {
+  const reduceMotion = useReducedMotion()
   const { t } = useLanguage()
   const frameworkColors = useFrameworkColors()
   const Icon = frameworkIcons[framework]
@@ -23,8 +24,8 @@ export default function FeaturedProjectCard({ href, image, title, desc, framewor
       <motion.div
         aria-hidden
         className="absolute -inset-1 rounded-3xl bg-linear-to-r from-accent via-accent-2 to-accent blur-xl pointer-events-none"
-        animate={{ opacity: [0.25, 0.55, 0.25] }}
-        transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
+        animate={reduceMotion ? { opacity: 0.4 } : { opacity: [0.25, 0.55, 0.25] }}
+        transition={reduceMotion ? { duration: 0 } : { duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
       />
       <a
         href={href}

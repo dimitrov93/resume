@@ -15,6 +15,7 @@ import Contact from '../components/sections/Contact'
 import useLanguage from '../hooks/useLanguage'
 import useTheme from '../hooks/useTheme'
 import useCvPdf from '../hooks/useCvPdf'
+import LangFlag from '../components/ui/LangFlag'
 
 const sections: Record<string, React.FC> = { About, Resume, Certifications, Portfolio, Contact }
 const tabs = ['About', 'Resume', 'Certifications', 'Portfolio', 'Contact'] as const
@@ -94,7 +95,7 @@ function MobileNav({ active, setActive, menuOpen, setMenuOpen }: {
                   className="h-9 px-2 rounded-lg flex items-center justify-center gap-1 cursor-pointer hover:bg-overlay-5 transition-all duration-300 bg-transparent border-none text-sm leading-none"
                   aria-label={t('a11y.toggleLanguage')}
                 >
-                  {lang === 'en' ? <><span>🇧🇬</span><span className="text-xs font-semibold text-dim">BG</span></> : <><span>🇺🇸</span><span className="text-xs font-semibold text-dim">EN</span></>}
+                  {lang === 'en' ? <><LangFlag lang="bg" className="w-5 h-3.5" /><span className="text-xs font-semibold text-dim">BG</span></> : <><LangFlag lang="en" className="w-5 h-3.5" /><span className="text-xs font-semibold text-dim">EN</span></>}
                 </button>
               </div>
             </motion.nav>

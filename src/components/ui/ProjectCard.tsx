@@ -90,17 +90,19 @@ export default function ProjectCard({ project, index }: { project: Project; inde
               </span>
               {t('portfolio.source')}
             </a>
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group/link flex items-center gap-2 text-dim text-[13px] font-medium no-underline hover:text-accent transition-colors"
-            >
-              <span className="w-9 h-9 rounded-xl bg-accent/10 border border-accent/15 flex items-center justify-center text-accent group-hover/link:bg-accent/20 transition-all">
-                <FiExternalLink size={15} />
-              </span>
-              {t('portfolio.liveDemo')}
-            </a>
+            {project.demo && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group/link flex items-center gap-2 text-dim text-[13px] font-medium no-underline hover:text-accent transition-colors"
+              >
+                <span className="w-9 h-9 rounded-xl bg-accent/10 border border-accent/15 flex items-center justify-center text-accent group-hover/link:bg-accent/20 transition-all">
+                  <FiExternalLink size={15} />
+                </span>
+                {t('portfolio.liveDemo')}
+              </a>
+            )}
           </div>
         </div>
 

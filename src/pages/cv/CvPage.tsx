@@ -56,7 +56,15 @@ export default function CvPage() {
   useEffect(() => {
     const prevTitle = document.title
     document.title = 'Tsvetomir Dimitrov — CV'
-    return () => { document.title = prevTitle }
+    // Hidden builder page: keep it out of search results without listing it in robots.txt.
+    const robots = document.createElement('meta')
+    robots.name = 'robots'
+    robots.content = 'noindex, nofollow'
+    document.head.appendChild(robots)
+    return () => {
+      document.title = prevTitle
+      robots.remove()
+    }
   }, [])
 
   useEffect(() => {

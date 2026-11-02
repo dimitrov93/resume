@@ -3,6 +3,7 @@ import { FiSun, FiMoon } from 'react-icons/fi'
 import useLanguage from '../../hooks/useLanguage'
 import useTheme from '../../hooks/useTheme'
 import type { TranslationKey } from '../../data/translations'
+import LangFlag from './LangFlag'
 
 const tabs = ['About', 'Resume', 'Certifications', 'Portfolio', 'Contact'] as const
 
@@ -71,7 +72,7 @@ export default function NavTabs({ active, setActive }: NavTabsProps) {
             className="h-7 px-1.5 rounded-lg flex items-center justify-center gap-1 cursor-pointer hover:bg-overlay-5 transition-all duration-300 bg-transparent border-none text-[12px] leading-none"
             aria-label={t('a11y.toggleLanguage')}
           >
-            {lang === 'en' ? <><span>🇧🇬</span><span className="text-[10px] font-semibold text-dim">BG</span></> : <><span>🇺🇸</span><span className="text-[10px] font-semibold text-dim">EN</span></>}
+            {lang === 'en' ? <><LangFlag lang="bg" /><span className="text-[10px] font-semibold text-dim">BG</span></> : <><LangFlag lang="en" /><span className="text-[10px] font-semibold text-dim">EN</span></>}
           </button>
         </div>
       </div>
