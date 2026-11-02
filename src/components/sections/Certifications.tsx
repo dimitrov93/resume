@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { certifications } from '../../data/resume'
 import GradientCard from '../ui/GradientCard'
 import CertModal from '../ui/CertModal'
+import { clickable } from '../ui/clickable'
 import CertPreview from '../ui/CertPreview'
 import SoftUniHero from '../ui/SoftUniHero'
 import useLanguage from '../../hooks/useLanguage'
@@ -45,8 +46,8 @@ export default function Certifications() {
             {otherCerts.map(cert => (
               <motion.div key={cert.title} variants={anim} whileHover={{ y: -4 }}>
                 <GradientCard
-                  className={`flex flex-col gap-3 h-full ${cert.pdf ? 'cursor-pointer' : ''}`}
-                  onClick={cert.pdf ? () => handleViewCert(cert.title, cert.pdf) : undefined}
+                  className={`flex flex-col gap-3 h-full ${cert.pdf ? 'cursor-pointer focus-visible:outline-2 focus-visible:outline-accent' : ''}`}
+                  {...(cert.pdf ? clickable(() => handleViewCert(cert.title, cert.pdf)) : {})}
                 >
                   <div className="w-full aspect-16/10 rounded-lg overflow-hidden bg-overlay-5 relative">
                     <CertPreview file={cert.pdf} title={cert.title} />

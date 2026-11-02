@@ -380,6 +380,8 @@ export default function CvPage() {
                 <span className="skill-chip">JavaScript</span>
                 <span className="skill-chip">Vue</span>
                 <span className="skill-chip">Angular</span>
+                <span className="skill-chip">Redux</span>
+                <span className="skill-chip">Tailwind</span>
               </div>
 
               <div className="skill-cat">Backend</div>

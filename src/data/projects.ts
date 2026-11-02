@@ -26,9 +26,9 @@ export const frameworkIcons: Record<Framework, IconType> = {
 export const frameworkColors: Record<Framework, string> = {
   'JavaScript': '#F7DF1E',
   'React': '#61DAFB',
-  'Angular': '#DD0031',
+  'Angular': '#FF6B84',
   'Next.js': '#ffffff',
-  'T3 Stack': '#398CCB',
+  'T3 Stack': '#5AAEE8',
 }
 
 export const projects: Project[] = [

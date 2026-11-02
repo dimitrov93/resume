@@ -50,7 +50,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
         <div className="flex flex-col justify-center gap-4 p-6 sm:p-7 sm:w-[45%] relative">
           {/* Project number + framework */}
           <div className="flex items-center justify-between gap-2">
-            <span className="text-accent/40 text-[11px] font-bold tracking-[0.3em] uppercase">
+            <span className="text-accent text-[11px] font-bold tracking-[0.3em] uppercase">
               {t('portfolio.project')} {String(index + 1).padStart(2, '0')}
             </span>
             <span

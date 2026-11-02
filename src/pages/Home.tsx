@@ -16,9 +16,13 @@ import useLanguage from '../hooks/useLanguage'
 import useTheme from '../hooks/useTheme'
 import useCvPdf from '../hooks/useCvPdf'
 import LangFlag from '../components/ui/LangFlag'
+import useDialog from '../hooks/useDialog'
+import useHashTab from '../hooks/useHashTab'
+import useMediaQuery from '../hooks/useMediaQuery'
 
 const sections: Record<string, React.FC> = { About, Resume, Certifications, Portfolio, Contact }
 const tabs = ['About', 'Resume', 'Certifications', 'Portfolio', 'Contact'] as const
+type Tab = (typeof tabs)[number]
 
 const tabTranslationKeys: Record<string, 'nav.about' | 'nav.resume' | 'nav.certifications' | 'nav.portfolio' | 'nav.contact'> = {
   About: 'nav.about',
@@ -34,74 +38,68 @@ const pageVariants = {
   exit: { opacity: 0, y: -8, scale: 0.99, transition: { duration: 0.18, ease: 'easeIn' as const } },
 }
 
-function MobileNav({ active, setActive, menuOpen, setMenuOpen }: {
+function MobileMenu({ active, onSelect, onClose }: {
   active: string
-  setActive: (tab: string) => void
-  menuOpen: boolean
-  setMenuOpen: (open: boolean) => void
+  onSelect: (tab: Tab) => void
+  onClose: () => void
 }) {
   const { t, lang, toggle: toggleLang } = useLanguage()
   const { theme, toggle: toggleTheme } = useTheme()
+  const closeRef = useDialog(onClose)
   return (
     <>
-      {menuOpen && (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        onClick={onClose}
+        className="fixed inset-0 bg-black/60 z-90"
+      />
+      <motion.nav
+        initial={{ x: '-100%' }}
+        animate={{ x: 0 }}
+        exit={{ x: '-100%' }}
+        transition={{ duration: 0.3, ease: 'easeOut' }}
+        aria-label={t('a11y.mainMenu')}
+        className="fixed top-0 left-0 bottom-0 w-70 bg-surface z-95 pt-20 px-6 pb-6 flex flex-col gap-2"
+      >
         <button
-          onClick={() => setMenuOpen(false)}
+          ref={closeRef}
+          onClick={onClose}
           aria-label={t('a11y.closeMenu')}
-          className="fixed top-4 left-4 z-100 w-11 h-11 rounded-full border-none items-center justify-center cursor-pointer shadow-lg flex bg-linear-to-br from-accent to-accent-2"
+          className="absolute top-4 left-4 w-11 h-11 rounded-full border-none flex items-center justify-center cursor-pointer shadow-lg bg-linear-to-br from-accent to-accent-2"
         >
           <FiX size={20} className="text-black" />
         </button>
-      )}
-
-      <AnimatePresence>
-        {menuOpen && (
-          <>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setMenuOpen(false)}
-              className="fixed inset-0 bg-black/60 z-90"
-            />
-            <motion.nav
-              initial={{ x: '-100%' }}
-              animate={{ x: 0 }}
-              exit={{ x: '-100%' }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
-              className="fixed top-0 left-0 bottom-0 w-70 bg-surface z-95 pt-20 px-6 pb-6 flex flex-col gap-2"
-            >
-              {tabs.map(tab => (
-                <button
-                  key={tab}
-                  onClick={() => { setActive(tab); setMenuOpen(false) }}
-                  className={`cursor-pointer bg-transparent border-none text-lg font-medium py-3 text-left transition-colors duration-300 ${
-                    active === tab ? 'text-accent' : 'text-paragraph'
-                  }`}
-                >
-                  {t(tabTranslationKeys[tab])}
-                </button>
-              ))}
-              <div className="mt-auto flex items-center gap-2 pt-4 border-t border-border-subtle">
-                <button
-                  onClick={toggleTheme}
-                  className="w-9 h-9 rounded-lg flex items-center justify-center text-dim cursor-pointer hover:text-accent hover:bg-overlay-5 transition-all duration-300 bg-transparent border-none"
-                  aria-label={t('a11y.toggleTheme')}
-                >
-                  {theme === 'dark' ? <FiSun size={16} /> : <FiMoon size={16} />}
-                </button>
-                <button
-                  onClick={toggleLang}
-                  className="h-9 px-2 rounded-lg flex items-center justify-center gap-1 cursor-pointer hover:bg-overlay-5 transition-all duration-300 bg-transparent border-none text-sm leading-none"
-                  aria-label={t('a11y.toggleLanguage')}
-                >
-                  {lang === 'en' ? <><LangFlag lang="bg" className="w-5 h-3.5" /><span className="text-xs font-semibold text-dim">BG</span></> : <><LangFlag lang="en" className="w-5 h-3.5" /><span className="text-xs font-semibold text-dim">EN</span></>}
-                </button>
-              </div>
-            </motion.nav>
-          </>
-        )}
-      </AnimatePresence>
+        {tabs.map(tab => (
+          <button
+            key={tab}
+            onClick={() => { onSelect(tab); onClose() }}
+            aria-current={active === tab ? 'page' : undefined}
+            className={`cursor-pointer bg-transparent border-none text-lg font-medium py-3 text-left transition-colors duration-300 ${
+              active === tab ? 'text-accent' : 'text-paragraph'
+            }`}
+          >
+            {t(tabTranslationKeys[tab])}
+          </button>
+        ))}
+        <div className="mt-auto flex items-center gap-2 pt-4 border-t border-border-subtle">
+          <button
+            onClick={toggleTheme}
+            className="w-9 h-9 rounded-lg flex items-center justify-center text-dim cursor-pointer hover:text-accent hover:bg-overlay-5 transition-all duration-300 bg-transparent border-none"
+            aria-label={t('a11y.toggleTheme')}
+          >
+            {theme === 'dark' ? <FiSun size={16} /> : <FiMoon size={16} />}
+          </button>
+          <button
+            onClick={toggleLang}
+            className="h-9 px-2 rounded-lg flex items-center justify-center gap-1 cursor-pointer hover:bg-overlay-5 transition-all duration-300 bg-transparent border-none text-sm leading-none"
+          >
+            <span className="sr-only">{t('a11y.switchLanguageTo')} </span>
+            {lang === 'en' ? <><LangFlag lang="bg" className="w-5 h-3.5" /><span className="text-xs font-semibold text-dim">BG</span></> : <><LangFlag lang="en" className="w-5 h-3.5" /><span className="text-xs font-semibold text-dim">EN</span></>}
+          </button>
+        </div>
+      </motion.nav>
     </>
   )
 }
@@ -133,7 +131,8 @@ function AnimatedSection({ active }: { active: string }) {
 }
 
 export default function Home() {
-  const [active, setActive] = useState<string>('About')
+  const [active, setActive] = useHashTab(tabs, 'About')
+  const isDesktop = useMediaQuery('(min-width: 1200px)')
   const [menuOpen, setMenuOpen] = useState(false)
   const [showCvPreview, setShowCvPreview] = useState(false)
   const { t } = useLanguage()
@@ -158,8 +157,9 @@ export default function Home() {
 
   return (
     <div className="min-[1200px]:h-screen min-[1200px]:overflow-hidden">
-      {/* Desktop layout (>=1200px) */}
-      <div className="hidden min-[1200px]:flex flex-col max-w-300 px-5 h-[90vh] my-[5vh] mx-auto">
+      {/* Desktop layout (>=1200px); only the matching layout is rendered */}
+      {isDesktop ? (
+      <div className="flex flex-col max-w-300 px-5 h-[90vh] my-[5vh] mx-auto">
         <div className="flex -mb-px">
           <div className="w-85 shrink-0" />
           <div className="flex-1 flex justify-end ml-7.5">
@@ -186,14 +186,18 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Mobile layout (<1200px) */}
-      <div className="flex min-[1200px]:hidden flex-col max-w-250 mx-auto mt-7.5 px-5 gap-6 pt-17.5 max-sm:px-3 max-sm:pt-15 max-sm:gap-4">
-        <MobileNav active={active} setActive={setActive} menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
+      ) : (
+      /* Mobile layout (<1200px) */
+      <div className="flex flex-col max-w-250 mx-auto mt-7.5 px-5 gap-6 pt-17.5 max-sm:px-3 max-sm:pt-15 max-sm:gap-4">
+        <AnimatePresence>
+          {menuOpen && <MobileMenu active={active} onSelect={setActive} onClose={() => setMenuOpen(false)} />}
+        </AnimatePresence>
         <SidebarCompact onMenuToggle={() => setMenuOpen(!menuOpen)} active={active} />
         <ContentPanel active={active}>
           <AnimatedSection active={active} />
         </ContentPanel>
       </div>
+      )}
 
       {/* One modal for both layouts (the hidden layout would otherwise mount a second copy). */}
       {showCvPreview && <CvPreviewModal onClose={() => setShowCvPreview(false)} />}

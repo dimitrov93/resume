@@ -17,7 +17,7 @@ const tabTranslationKeys: Record<string, TranslationKey> = {
 
 interface NavTabsProps {
   active: string
-  setActive: (tab: string) => void
+  setActive: (tab: (typeof tabs)[number]) => void
 }
 
 function pillRadius(i: number) {
@@ -27,26 +27,21 @@ function pillRadius(i: number) {
   return r
 }
 
-function btnRadius(i: number) {
-  if (i === 0) return '0'
-  if (i === tabs.length - 1) return '0'
-  return '0'
-}
 
 export default function NavTabs({ active, setActive }: NavTabsProps) {
   const { t, lang, toggle: toggleLang } = useLanguage()
   const { theme, toggle: toggleTheme } = useTheme()
   return (
-    <nav className="relative">
+    <nav className="relative" aria-label={t('a11y.mainMenu')}>
       <div className="flex items-center bg-surface border border-border-gold rounded-t-[20px] rounded-br-none rounded-bl-none overflow-hidden">
         {tabs.map((tab, i) => (
           <button
             key={tab}
             onClick={() => setActive(tab)}
+            aria-current={active === tab ? 'page' : undefined}
             className={`relative cursor-pointer text-[13px] font-medium px-5 py-3 min-w-[80px] text-center border-none bg-transparent whitespace-nowrap transition-colors duration-300 ${
               active === tab ? 'text-heading' : 'text-dim hover:text-muted'
             }`}
-            style={{ borderRadius: btnRadius(i) }}
           >
             {active === tab && (
               <motion.span
@@ -70,8 +65,8 @@ export default function NavTabs({ active, setActive }: NavTabsProps) {
           <button
             onClick={toggleLang}
             className="h-7 px-1.5 rounded-lg flex items-center justify-center gap-1 cursor-pointer hover:bg-overlay-5 transition-all duration-300 bg-transparent border-none text-[12px] leading-none"
-            aria-label={t('a11y.toggleLanguage')}
           >
+            <span className="sr-only">{t('a11y.switchLanguageTo')} </span>
             {lang === 'en' ? <><LangFlag lang="bg" /><span className="text-[10px] font-semibold text-dim">BG</span></> : <><LangFlag lang="en" /><span className="text-[10px] font-semibold text-dim">EN</span></>}
           </button>
         </div>
