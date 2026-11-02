@@ -3,7 +3,7 @@ import { FiSun, FiMoon } from 'react-icons/fi'
 import useLanguage from '../../hooks/useLanguage'
 import useTheme from '../../hooks/useTheme'
 import type { TranslationKey } from '../../data/translations'
-import LangFlag from './LangFlag'
+import LanguageSwitcher from './LanguageSwitcher'
 
 const tabs = ['About', 'Resume', 'Certifications', 'Portfolio', 'Contact'] as const
 
@@ -29,7 +29,7 @@ function pillRadius(i: number) {
 
 
 export default function NavTabs({ active, setActive }: NavTabsProps) {
-  const { t, lang, toggle: toggleLang } = useLanguage()
+  const { t } = useLanguage()
   const { theme, toggle: toggleTheme } = useTheme()
   return (
     <nav className="relative" aria-label={t('a11y.mainMenu')}>
@@ -62,13 +62,7 @@ export default function NavTabs({ active, setActive }: NavTabsProps) {
           >
             {theme === 'dark' ? <FiSun size={13} /> : <FiMoon size={13} />}
           </button>
-          <button
-            onClick={toggleLang}
-            className="h-7 px-1.5 rounded-lg flex items-center justify-center gap-1 cursor-pointer hover:bg-overlay-5 transition-all duration-300 bg-transparent border-none text-[12px] leading-none"
-          >
-            <span className="sr-only">{t('a11y.switchLanguageTo')} </span>
-            {lang === 'en' ? <><LangFlag lang="bg" /><span className="text-[10px] font-semibold text-dim">BG</span></> : <><LangFlag lang="en" /><span className="text-[10px] font-semibold text-dim">EN</span></>}
-          </button>
+          <LanguageSwitcher size="sm" placement="down" />
         </div>
       </div>
     </nav>

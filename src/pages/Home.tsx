@@ -15,7 +15,7 @@ import Contact from '../components/sections/Contact'
 import useLanguage from '../hooks/useLanguage'
 import useTheme from '../hooks/useTheme'
 import useCvPdf from '../hooks/useCvPdf'
-import LangFlag from '../components/ui/LangFlag'
+import LanguageSwitcher from '../components/ui/LanguageSwitcher'
 import useDialog from '../hooks/useDialog'
 import useHashTab from '../hooks/useHashTab'
 import useMediaQuery from '../hooks/useMediaQuery'
@@ -43,7 +43,7 @@ function MobileMenu({ active, onSelect, onClose }: {
   onSelect: (tab: Tab) => void
   onClose: () => void
 }) {
-  const { t, lang, toggle: toggleLang } = useLanguage()
+  const { t } = useLanguage()
   const { theme, toggle: toggleTheme } = useTheme()
   const closeRef = useDialog(onClose)
   return (
@@ -91,13 +91,7 @@ function MobileMenu({ active, onSelect, onClose }: {
           >
             {theme === 'dark' ? <FiSun size={16} /> : <FiMoon size={16} />}
           </button>
-          <button
-            onClick={toggleLang}
-            className="h-9 px-2 rounded-lg flex items-center justify-center gap-1 cursor-pointer hover:bg-overlay-5 transition-all duration-300 bg-transparent border-none text-sm leading-none"
-          >
-            <span className="sr-only">{t('a11y.switchLanguageTo')} </span>
-            {lang === 'en' ? <><LangFlag lang="bg" className="w-5 h-3.5" /><span className="text-xs font-semibold text-dim">BG</span></> : <><LangFlag lang="en" className="w-5 h-3.5" /><span className="text-xs font-semibold text-dim">EN</span></>}
-          </button>
+          <LanguageSwitcher size="md" placement="up" />
         </div>
       </motion.nav>
     </>
@@ -123,7 +117,7 @@ function AnimatedSection({ active }: { active: string }) {
   const ActiveSection = sections[active]
   return (
     <AnimatePresence mode="wait">
-      <motion.div key={active} variants={pageVariants} initial="initial" animate="animate" exit="exit">
+      <motion.div key={active} variants={pageVariants} initial="initial" animate="animate" exit="exit" className="flex-1 flex flex-col">
         <ActiveSection />
       </motion.div>
     </AnimatePresence>
@@ -182,14 +176,14 @@ export default function Home() {
         <div className="flex items-stretch gap-7.5 flex-1 min-h-0">
           <SidebarFull />
           <div className="flex-1 min-w-0 relative bg-surface border border-border-gold rounded-2xl rounded-tr-none">
-            <div ref={scrollRef} className="h-full overflow-y-auto overflow-x-hidden py-7.5 px-6">
+            <div ref={scrollRef} className="h-full overflow-y-auto overflow-x-hidden py-7.5 px-6 flex flex-col">
               <div className="mb-2">
               <h2 className="text-heading text-2xl font-semibold tracking-tight">
                 {active === 'About' ? t('page.aboutMe') : t(tabTranslationKeys[active])}
               </h2>
             </div>
             <SectionLine />
-            <main className="mt-5">
+            <main className="mt-5 flex-1 flex flex-col">
               <AnimatedSection active={active} />
             </main>
 

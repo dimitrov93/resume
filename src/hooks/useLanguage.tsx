@@ -3,17 +3,17 @@ import type { ReactNode } from 'react'
 import translations from '../data/translations'
 import type { TranslationKey } from '../data/translations'
 
-type Lang = 'en' | 'bg'
+export type Lang = 'en' | 'bg'
 
 interface LanguageContextValue {
   lang: Lang
-  toggle: () => void
+  setLang: (lang: Lang) => void
   t: (key: TranslationKey) => string
 }
 
 const LanguageContext = createContext<LanguageContextValue>({
   lang: 'en',
-  toggle: () => {},
+  setLang: () => {},
   t: (key) => key,
 })
 
@@ -30,8 +30,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     document.documentElement.setAttribute('lang', lang)
   }, [lang])
 
-  const toggle = () => setLang((l) => (l === 'en' ? 'bg' : 'en'))
-
   const t = useCallback(
     (key: TranslationKey): string => {
       return translations[lang][key] ?? key
@@ -40,7 +38,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   )
 
   return (
-    <LanguageContext.Provider value={{ lang, toggle, t }}>
+    <LanguageContext.Provider value={{ lang, setLang, t }}>
       {children}
     </LanguageContext.Provider>
   )

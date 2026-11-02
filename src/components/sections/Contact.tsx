@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion'
 import { FiMail } from 'react-icons/fi'
 import { profile } from '../../data/profile'
-import useTheme from '../../hooks/useTheme'
 import useLanguage from '../../hooks/useLanguage'
 import ContactForm from '../ui/ContactForm'
 
@@ -9,10 +8,9 @@ const anim = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transiti
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.09 } } }
 
 export default function Contact() {
-  const { theme } = useTheme()
   const { t } = useLanguage()
   return (
-    <motion.div variants={container} initial="hidden" animate="show" className="flex flex-col gap-6">
+    <motion.div variants={container} initial="hidden" animate="show" className="flex flex-col gap-6 flex-1">
       <motion.div variants={anim}>
         <a
           href={`mailto:${profile.email}`}
@@ -31,23 +29,12 @@ export default function Contact() {
         </a>
       </motion.div>
 
-      <motion.div variants={anim}>
+      {/* The form fills the rest of the section (desktop panel has a fixed height). */}
+      <motion.div variants={anim} className="flex-1 flex flex-col">
         <p className="text-xs uppercase tracking-wider font-semibold text-dim mb-4">{t('contact.orUseForm')}</p>
         <ContactForm />
       </motion.div>
 
-      <motion.div variants={anim}>
-        <p className="text-xs uppercase tracking-wider font-semibold text-dim mb-4">{t('contact.whereImBased')}</p>
-        <div className="rounded-2xl overflow-hidden border border-border-gold h-60 sm:h-72">
-          <iframe
-            title={t('contact.mapTitle')}
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d46732.0!2d23.225!3d43.4125!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40ab37e2e1e43ac1%3A0xa000f1e0f39c0!2sMontana%2C%20Bulgaria!5e0!3m2!1sen!2sbg!4v1700000000000"
-            className={`w-full h-full border-none ${theme === 'dark' ? 'grayscale-80 contrast-[1.1] invert-[0.9] hue-rotate-180' : ''}`}
-            loading="lazy"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </div>
-      </motion.div>
     </motion.div>
   )
 }

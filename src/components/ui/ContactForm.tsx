@@ -57,7 +57,7 @@ export default function ContactForm() {
 
   if (sent) {
     return (
-      <div role="status" className="flex flex-col items-center justify-center text-center bg-card border border-border-gold rounded-2xl py-12 px-4 gap-4">
+      <div role="status" className="flex-1 flex flex-col items-center justify-center text-center bg-card border border-border-gold rounded-2xl py-12 px-4 gap-4">
         <FiCheckCircle size={48} color="#4ade80" />
         <h3 className="text-lg font-semibold text-heading">{t('contact.sent')}</h3>
         <p className="text-sm text-dim">{t('contact.thanks')}</p>
@@ -72,7 +72,7 @@ export default function ContactForm() {
   }
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col bg-card border border-border-gold rounded-2xl p-6 gap-4">
+    <form ref={formRef} onSubmit={handleSubmit} className="flex-1 flex flex-col bg-card border border-border-gold rounded-2xl p-6 gap-4">
       <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
         <label htmlFor="contact-website">Website</label>
         <input id="contact-website" name="website" type="text" tabIndex={-1} autoComplete="off" defaultValue="" />
@@ -100,11 +100,11 @@ export default function ContactForm() {
           className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-border-subtle text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent focus:ring-2 focus:ring-accent/25"
         />
       </div>
-      <div>
+      <div className="flex-1 flex flex-col">
         <label htmlFor="contact-message" className="block text-xs font-medium mb-1.5 text-dim">{t('contact.message')}</label>
         <textarea
-          id="contact-message" name="message" value={form.message} onChange={handleChange} placeholder={t('contact.messagePlaceholder')} rows={4} required
-          className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-border-subtle text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent focus:ring-2 focus:ring-accent/25 resize-none"
+          id="contact-message" name="message" value={form.message} onChange={handleChange} placeholder={t('contact.messagePlaceholder')} rows={6} required
+          className="flex-1 min-h-36 w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-border-subtle text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent focus:ring-2 focus:ring-accent/25 resize-none"
         />
       </div>
       {error && (
