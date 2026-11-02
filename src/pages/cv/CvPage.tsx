@@ -362,11 +362,8 @@ export default function CvPage() {
             <div className="s-section">
               <h2>About Me</h2>
               <p className="about-text">
-                Front-End Developer and Team Lead. Built and shipped production React/Next.js
-                applications at Lupy Games, including the Kauzi charity gaming platform from scratch.
-                In parallel, Team Lead at Montway Auto Transport, overseeing a LiveChat team: running
-                one-on-ones, monitoring performance, and developing team members day-to-day. A developer
-                with genuine people management experience — in the field, not just on paper.
+                Front-End Developer and Team Lead. Shipped production React/Next.js apps at Lupy
+                Games, including Kauzi from scratch. In parallel, Team Lead at Montway Auto Transport — a developer with real people-management experience.
               </p>
             </div>
 
@@ -385,18 +382,21 @@ export default function CvPage() {
                 <span className="skill-chip">Tailwind</span>
               </div>
 
-              <div className="skill-cat">Backend</div>
+              <div className="skill-cat">Backend &amp; Data</div>
               <div className="skill-chips">
                 <span className="skill-chip">Node.js</span>
                 <span className="skill-chip">Express</span>
                 <span className="skill-chip">Spring Boot</span>
+                <span className="skill-chip">Supabase</span>
+                <span className="skill-chip">PostgreSQL</span>
+                <span className="skill-chip">MySQL</span>
+                <span className="skill-chip">MongoDB</span>
               </div>
 
-              <div className="skill-cat">Database &amp; Tools</div>
+              <div className="skill-cat">Testing &amp; Tools</div>
               <div className="skill-chips">
-                <span className="skill-chip">MongoDB</span>
-                <span className="skill-chip">PostgreSQL</span>
-                <span className="skill-chip">MariaDB</span>
+                <span className="skill-chip">Playwright</span>
+                <span className="skill-chip">Vitest</span>
                 <span className="skill-chip">Docker</span>
                 <span className="skill-chip">Git</span>
               </div>
@@ -481,10 +481,10 @@ export default function CvPage() {
                 <div className="job-content">
                   <div className="role">Front-End Developer</div>
                   <ul>
-                    <li>Led full platform migration from WordPress to Next.js — delivering measurable gains in performance and scalability</li>
-                    <li>Drove user engagement through gamification: achievements, ranks, level progression, and customizable themes</li>
-                    <li>Built Kauzi (kauzi.lupygames.com) from scratch — a charity platform where daily puzzle games raise points for a shared cause, with teams, leaderboards, and EN/BG support</li>
-                    <li>Continuously iterated on features and UX to keep pace with evolving community needs</li>
+                    <li>Top contributor to the Next.js front end (900+ commits, 140+ PRs); led the WordPress → Next.js migration and upgrades to Next.js 16 and React 19</li>
+                    <li>Built achievements, daily streaks and challenges, friends and themes, plus admin dashboards and Spring Boot APIs</li>
+                    <li>Co-built Puzzle Platform for media publishers; built Kauzi (kauzi.lupygames.com) from scratch</li>
+                    <li>Playwright e2e and Vitest suites; lint warnings 101 → 0 as a blocking CI gate</li>
                   </ul>
                 </div>
               </div>
@@ -501,9 +501,9 @@ export default function CvPage() {
                       <div className="role">Team Lead</div>
                     </div>
                     <ul>
-                      <li>Lead a LiveChat team at one of the largest auto transport companies in the U.S.</li>
-                      <li>Drive performance through coaching, one-on-ones, KPI tracking, and Salesforce reporting to management</li>
-                      <li>Mentor team members and foster their professional growth and independence</li>
+                      <li>Lead the LiveChat and uShip teams: coaching, 1-on-1s, KPI tracking and Salesforce reporting</li>
+                      <li>Develop team members toward growth and independence</li>
+                      <li>Built Montway Hub, the team’s searchable knowledge hub, and a Chrome extension for desk automation</li>
                     </ul>
                   </div>
                   <div className="role-block">
@@ -527,9 +527,8 @@ export default function CvPage() {
                 <div className="job-content">
                   <div className="role">Front-End Developer</div>
                   <ul>
-                    <li>Architected a full-stack jewellery inventory management system (Vue3, Vuex, Spring Boot, PostgreSQL, Docker)</li>
-                    <li>Delivered real-time sales tracking and multi-role access for distributors, store owners, and admins</li>
-                    <li>Automated resource and inventory workflows, contributing to the digital transformation of the client's business</li>
+                    <li>Main front-end contributor (390+ commits) to a jewellery inventory system — Vue 3, Vuetify, Pinia, Spring Boot, PostgreSQL</li>
+                    <li>Inventory, transfers, sales and returns, barcodes and multi-role access</li>
                   </ul>
                 </div>
               </div>

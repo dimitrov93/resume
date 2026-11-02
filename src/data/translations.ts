@@ -9,26 +9,26 @@ const translations = {
 
     'about.available': 'Available for freelance & opportunities',
     'about.bio1':
-      'Front-End Developer and Team Lead. Built and shipped production React/Next.js applications at Lupy Games, including the Kauzi charity gaming platform from scratch. In parallel, Team Lead at Montway Auto Transport, overseeing a LiveChat team: running one-on-ones, monitoring performance, and developing team members day-to-day.',
+      'Front-End Developer and Team Lead. Built and shipped production React/Next.js applications at Lupy Games, including the Kauzi charity gaming platform from scratch. In parallel, Team Lead at Montway Auto Transport, overseeing the LiveChat and uShip teams: running one-on-ones, monitoring performance, and developing team members day-to-day.',
     'about.bio2':
       'A developer with genuine people management experience — in the field, not just on paper. Passionate about turning complex problems into simple, performant, and intuitive interfaces.',
     'about.whatImDoing': "What I'm Doing",
     'about.mySkills': 'My Skills',
     'about.featuredProject': 'Featured Project',
-    'about.lupyDesc': 'Led the full platform migration from WordPress to Next.js 14, and continued upgrading through versions 15 and 16. Drove user engagement through gamification — achievements, ranks, level progression, and customizable themes/skins for a personalized experience. Built real-time notifications, leaderboards, user profile pages, and multi-language support. Continuously iterated on features and UX to keep pace with evolving community needs and modern web standards.',
+    'about.lupyDesc': 'Led the full platform migration from WordPress to Next.js 14, and kept upgrading through Next.js 16 and React 19. Drove engagement through gamification — achievements, ranks, daily streaks and challenges, friends, and customizable themes/skins. Built notifications, leaderboards, profile pages, admin analytics dashboards and EN/BG support, with Playwright e2e and Vitest tests in CI.',
     'about.visitSite': 'Visit Site',
     'about.webDesign': 'Web Design',
     'about.webDesignDesc':
       'Clean, modern UI/UX built with attention to detail and user experience.',
     'about.webDev': 'Web Development',
     'about.webDevDesc':
-      'Scalable React & Next.js applications with clean architecture.',
+      'Fast, accessible React & Next.js apps, covered by Playwright and Vitest tests.',
     'about.teamLead': 'Team Leadership',
     'about.teamLeadDesc':
       'Coaching, mentoring and driving team performance through one-on-ones and KPI tracking.',
     'about.fullStack': 'Full-Stack Solutions',
     'about.fullStackDesc':
-      'End-to-end applications with MongoDB, Express, React, and Node.js (MERN stack).',
+      'End-to-end products with Next.js, Supabase/PostgreSQL and Spring Boot — from database schema to deployment.',
     'about.liveProject': 'Live Project',
 
     'resume.education': 'Education',
@@ -37,15 +37,15 @@ const translations = {
     'exp.lupyTitle': 'Front-End Developer — Lupy Games',
     'exp.lupyPeriod': 'Apr 2024 — Oct 2026',
     'exp.lupyDesc':
-      'Led full platform migration from WordPress to Next.js. Drove user engagement through gamification: achievements, ranks, level progression, and customizable themes. Built Kauzi (kauzi.lupygames.com) from scratch — a charity platform where daily puzzle games raise points for a shared cause.',
+      'Top contributor to the Next.js platform (900+ commits, 140+ PRs): led the migration from WordPress to Next.js and kept it current through Next.js 16 and React 19. Built the engagement layer — achievements, daily streaks and challenges, friends, themes — plus admin dashboards and features in the Spring Boot backend. Co-built Puzzle Platform, an embeddable games platform for media publishers, and built Kauzi (kauzi.lupygames.com) from scratch.',
     'exp.montwayTitle': 'Team Lead — Montway Auto Transport',
     'exp.montwayPeriod': 'Sep 2016 — Present',
     'exp.montwayDesc':
-      'Lead a LiveChat team at one of the largest auto transport companies in the U.S. Drive performance through coaching, one-on-ones, KPI tracking, and Salesforce reporting.',
+      'Lead the LiveChat and uShip teams at one of the largest auto transport companies in the U.S. — coaching, one-on-ones, KPI tracking and Salesforce reporting, developing each member toward growth and independence. Built Montway Hub, the team’s internal knowledge hub that makes thousands of procedures searchable in seconds, plus a Chrome extension that automates daily desk work.',
     'exp.volaTitle': 'Front-End Developer — Vola',
     'exp.volaPeriod': 'Jul 2023 — Feb 2024',
     'exp.volaDesc':
-      'Architected a full-stack jewellery inventory management system (Vue3, Vuex, Spring Boot, PostgreSQL, Docker). Delivered real-time sales tracking and multi-role access.',
+      'Main front-end contributor (390+ commits) to a full-stack jewellery inventory system (Vue 3, Vuetify, Vuex/Pinia, Spring Boot, PostgreSQL, Docker): resource and product management, transfers, sales and returns, barcodes, and multi-role access.',
     'exp.sutherlandTitle': 'Sales Support Specialist — Sutherland',
     'exp.sutherlandPeriod': 'Jan 2018 — Apr 2018',
     'exp.sutherlandDesc':
@@ -77,7 +77,8 @@ const translations = {
     'portfolio.za': 'Z → A',
     'portfolio.loadMore': 'Load More',
     'portfolio.featured': 'Featured',
-    'portfolio.lupyDesc': 'Gamified platform with achievements, ranks, leaderboards, customizable themes, and multi-language support. Migrated from WordPress to Next.js 14→16.',
+    'portfolio.lupyDesc': 'Gamified platform with achievements, daily streaks and challenges, friends, leaderboards, customizable themes, and EN/BG support. Migrated from WordPress to Next.js 14→16.',
+    'portfolio.poofDesc': 'Chrome extension that expands typed shortcuts into full text on any website. Manifest V3 extension (React 19, Tiptap), marketing site and Supabase backend with Stripe subscriptions, an admin with MFA, and a sync engine that cut database traffic ~1000×. My own product.',
     'portfolio.kauziDesc': 'Games for a cause: free daily puzzles (Word Search, Wordle, Mini Sudoku, Patches) where every finished game adds points to a shared charity goal. Teams, leaderboards, daily reminders, and EN/BG support. Built from scratch.',
     'portfolio.project': 'Project',
     'portfolio.source': 'Source',
@@ -177,26 +178,26 @@ const translations = {
 
     'about.available': 'Свободен за freelance и нови възможности',
     'about.bio1':
-      'Front-End Developer и Team Lead. Разработвах и пусках в продукция React/Next.js приложения в Lupy Games, включително благотворителната игрова платформа Kauzi от нулата. Паралелно съм Team Lead в Montway Auto Transport, управляващ LiveChat екип: one-on-one срещи, проследяване на представянето и ежедневно развитие на членовете на екипа.',
+      'Front-End Developer и Team Lead. Разработвах и пусках в продукция React/Next.js приложения в Lupy Games, включително благотворителната игрова платформа Kauzi от нулата. Паралелно съм Team Lead в Montway Auto Transport, управляващ LiveChat и uShip екипите: one-on-one срещи, проследяване на представянето и ежедневно развитие на членовете на екипа.',
     'about.bio2':
       'Разработчик с истински опит в управлението на хора — на терен, не само на хартия. Обичам да превръщам сложни проблеми в прости, бързи и интуитивни интерфейси.',
     'about.whatImDoing': 'Какво правя',
     'about.mySkills': 'Моите умения',
     'about.featuredProject': 'Основен проект',
-    'about.lupyDesc': 'Ръководих пълната миграция на платформата от WordPress към Next.js 14 и продължих надграждането през версии 15 и 16. Повиших ангажираността чрез геймификация — постижения, рангове, нива и персонализируеми теми/скинове. Разработих нотификации в реално време, класации, потребителски профили и многоезична поддръжка. Непрекъснато подобрявах функционалностите и UX спрямо нуждите на общността и съвременните уеб стандарти.',
+    'about.lupyDesc': 'Ръководих пълната миграция на платформата от WordPress към Next.js 14 и продължих надграждането до Next.js 16 и React 19. Повиших ангажираността чрез геймификация — постижения, рангове, дневни серии и предизвикателства, приятели и персонализируеми теми/скинове. Разработих известия, класации, профили, админ dashboards с анализи и EN/BG поддръжка, с Playwright e2e и Vitest тестове в CI.',
     'about.visitSite': 'Посети сайта',
     'about.webDesign': 'Уеб дизайн',
     'about.webDesignDesc':
       'Чист, модерен UI/UX, изграден с внимание към детайла и потребителското изживяване.',
     'about.webDev': 'Уеб разработка',
     'about.webDevDesc':
-      'Мащабируеми React & Next.js приложения с чиста архитектура.',
+      'Бързи и достъпни React и Next.js приложения, покрити с Playwright и Vitest тестове.',
     'about.teamLead': 'Лидерство на екип',
     'about.teamLeadDesc':
       'Коучинг, менториране и управление на представянето на екипа чрез one-on-one срещи и проследяване на KPI.',
     'about.fullStack': 'Full-Stack решения',
     'about.fullStackDesc':
-      'Цялостни приложения с MongoDB, Express, React и Node.js (MERN stack).',
+      'Цялостни продукти с Next.js, Supabase/PostgreSQL и Spring Boot — от схемата на базата до deployment.',
     'about.liveProject': 'Активен проект',
 
     'resume.education': 'Образование',
@@ -205,15 +206,15 @@ const translations = {
     'exp.lupyTitle': 'Front-End Developer — Lupy Games',
     'exp.lupyPeriod': 'Апр 2024 — Окт 2026',
     'exp.lupyDesc':
-      'Ръководих пълна миграция на платформата от WordPress към Next.js. Повиших ангажираността на потребителите чрез геймификация: постижения, рангове, нива и персонализируеми теми. Създадох от нулата Kauzi (kauzi.lupygames.com) — благотворителна платформа, в която ежедневни пъзел игри събират точки за обща кауза.',
+      'Основен разработчик на Next.js платформата (900+ commits, 140+ PR-а): водих миграцията от WordPress към Next.js и я поддържах актуална до Next.js 16 и React 19. Изградих системата за ангажираност — постижения, дневни серии и предизвикателства, приятели, теми — както и админ dashboards и функционалности в Spring Boot backend-а. Участвах в изграждането на Puzzle Platform — платформа с вграждани игри за медийни издатели, и създадох Kauzi (kauzi.lupygames.com) от нулата.',
     'exp.montwayTitle': 'Team Lead — Montway Auto Transport',
     'exp.montwayPeriod': 'Сеп 2016 — Настояще',
     'exp.montwayDesc':
-      'Ръководене на LiveChat екип в една от най-големите транспортни компании в САЩ. Управление на представянето чрез коучинг, one-on-one срещи, проследяване на KPI и отчетност в Salesforce.',
+      'Ръководя LiveChat и uShip екипите в една от най-големите компании за авто транспорт в САЩ — коучинг, one-on-one срещи, проследяване на KPI и отчети в Salesforce, като развивам всеки член към растеж и самостоятелност. Създадох Montway Hub — вътрешен hub за екипа, в който хиляди процедури се намират за секунди, и Chrome разширение, което автоматизира ежедневната работа.',
     'exp.volaTitle': 'Front-End Developer — Vola',
     'exp.volaPeriod': 'Юли 2023 — Фев 2024',
     'exp.volaDesc':
-      'Проектирах full-stack система за управление на инвентар за бижута (Vue3, Vuex, Spring Boot, PostgreSQL, Docker). Реализирах проследяване на продажби в реално време и достъп за множество роли.',
+      'Основен front-end разработчик (390+ commits) на full-stack система за инвентар на бижута (Vue 3, Vuetify, Vuex/Pinia, Spring Boot, PostgreSQL, Docker): управление на материали и продукти, трансфери, продажби и връщания, баркодове и достъп за няколко роли.',
     'exp.sutherlandTitle': 'Sales Support Specialist — Sutherland',
     'exp.sutherlandPeriod': 'Яну 2018 — Апр 2018',
     'exp.sutherlandDesc':
@@ -245,7 +246,8 @@ const translations = {
     'portfolio.za': 'Я → А',
     'portfolio.loadMore': 'Зареди още',
     'portfolio.featured': 'Основен',
-    'portfolio.lupyDesc': 'Платформа с геймификация — постижения, рангове, класации, персонализируеми теми и многоезична поддръжка. Мигрирана от WordPress към Next.js 14→16.',
+    'portfolio.lupyDesc': 'Платформа с геймификация — постижения, дневни серии и предизвикателства, приятели, класации, персонализируеми теми и EN/BG. Мигрирана от WordPress към Next.js 14→16.',
+    'portfolio.poofDesc': 'Chrome разширение, което разгъва кратки съкращения в пълен текст на всеки сайт. Manifest V3 разширение (React 19, Tiptap), маркетингов сайт и Supabase backend със Stripe абонаменти, админ с MFA и sync engine, който намали трафика към базата ~1000 пъти. Мой собствен продукт.',
     'portfolio.kauziDesc': 'Игри за кауза: безплатни ежедневни пъзели (Word Search, Wordle, Mini Sudoku, Patches), в които всяка завършена игра добавя точки към обща благотворителна цел. Отбори, класации, ежедневни напомняния и поддръжка на EN/BG. Създадена от нулата.',
     'portfolio.project': 'Проект',
     'portfolio.source': 'Код',
