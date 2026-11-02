@@ -177,7 +177,7 @@ export default function Home() {
           <SidebarFull />
           <div className="flex-1 min-w-0 relative bg-surface border border-border-gold rounded-2xl rounded-tr-none">
             <div ref={scrollRef} className="h-full overflow-y-auto overflow-x-hidden py-7.5 px-6 flex flex-col">
-              <div className="mb-2">
+              <div className="mb-2 shrink-0">
               <h2 className="text-heading text-2xl font-semibold tracking-tight">
                 {active === 'About' ? t('page.aboutMe') : t(tabTranslationKeys[active])}
               </h2>
