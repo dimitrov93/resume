@@ -16,8 +16,8 @@ export function SidebarFull() {
   const roles = useMemo(() => [t('sidebar.role1'), t('sidebar.role2'), t('sidebar.role3')], [t])
   return (
     <motion.aside
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      initial={{ x: -60, opacity: 0 }}
+      animate={{ x: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
       className="shrink-0 flex flex-col items-center justify-center overflow-hidden w-85 bg-surface border border-border-gold rounded-3xl py-7.5 px-7 gap-4"
     >
@@ -86,8 +86,8 @@ export function SidebarCompact({ onMenuToggle, active }: { onMenuToggle: () => v
 
   return (
     <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+      initial={{ y: -30, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
       className="bg-surface border border-border-gold rounded-2xl p-5 max-sm:p-4"
     >

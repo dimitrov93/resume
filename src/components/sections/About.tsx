@@ -8,8 +8,8 @@ import PulseDot from '../ui/PulseDot'
 import useLanguage from '../../hooks/useLanguage'
 import useFrameworkColors from '../../hooks/useFrameworkColors'
 
-const container = { hidden: {}, show: { transition: { staggerChildren: 0.04 } } }
-const item = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { duration: 0.3 } } }
+const container = { hidden: {}, show: { transition: { staggerChildren: 0.09 } } }
+const item = { hidden: { opacity: 0, y: 22 }, show: { opacity: 1, y: 0, transition: { duration: 0.45 } } }
 const iconFilter = 'invert(92%) sepia(85%) saturate(652%) hue-rotate(319deg) brightness(102%) contrast(101%)'
 
 export default function About() {
