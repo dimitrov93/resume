@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useRef } from 'react'
+import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiChevronDown, FiDownload, FiEye, FiMenu } from 'react-icons/fi'
 import useLanguage from '../hooks/useLanguage'
@@ -75,13 +75,14 @@ export function SidebarCompact({ onMenuToggle, active }: { onMenuToggle: () => v
   const [showContacts, setShowContacts] = useState(true)
   const { t } = useLanguage()
   const cvPdf = useCvPdf()
-  const initialTab = useRef(active)
+  const [initialTab] = useState(active)
+  const [prevActive, setPrevActive] = useState(active)
 
-  useEffect(() => {
-    if (active !== initialTab.current) {
-      setShowContacts(false)
-    }
-  }, [active])
+  // Collapse contacts once the user navigates away from the first tab (adjusting state during render, not in an effect).
+  if (active !== prevActive) {
+    setPrevActive(active)
+    if (active !== initialTab) setShowContacts(false)
+  }
   const roles = useMemo(() => [t('sidebar.role1'), t('sidebar.role2'), t('sidebar.role3')], [t])
   const typedRole = useTypewriter(roles)
 

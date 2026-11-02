@@ -62,6 +62,7 @@ const translations = {
       'Tested mobile games across the full Apple device lineup, reporting bugs across all screen sizes and iOS versions.',
 
     'role.teamLead': 'Team Lead',
+    'role.teamLeadPeriod': '2022 — Present',
     'role.seniorSales': 'Senior Sales Specialist',
     'role.sales': 'Sales Specialist',
     'role.coordinator': 'Transport Coordinator',
@@ -239,6 +240,7 @@ const translations = {
       'Тестване на мобилни игри на всички Apple устройства, докладване на бъгове за всички размери екрани и iOS версии.',
 
     'role.teamLead': 'Ръководител на екип',
+    'role.teamLeadPeriod': '2022 — Настояще',
     'role.seniorSales': 'Старши специалист продажби',
     'role.sales': 'Специалист продажби',
     'role.coordinator': 'Координатор транспорт',

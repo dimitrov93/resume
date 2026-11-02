@@ -4,8 +4,9 @@
 - React + TypeScript + Vite portfolio site
 - Tailwind CSS v4 for styling (use canonical class syntax, e.g. `py-2.5!` not `!py-2.5`)
 - Framer Motion for animations
-- React Router (`BrowserRouter`) for routing — relies on the SPA fallback in `public/.htaccess` (Apache rewrite to `index.html`). Don't switch to `HashRouter` without a reason.
-- Deployed to jump.bg shared hosting via FTP through `.github/workflows/deploy-main.yml`. Anything in `public/` (including `.htaccess`) is copied to `dist/` and uploaded.
+- React Router (`BrowserRouter`) for routing — relies on the SPA fallback in `vercel.json` (rewrite of every path to `index.html`). Don't switch to `HashRouter` without a reason.
+- Deployed to Vercel (Git integration): `main` → production (https://www.dimitrov93.eu), every other branch → a preview deployment. Anything in `public/` is copied to `dist/` and served as-is.
+- `vercel.json` also sets `Content-Disposition: attachment` for `/cv-*.pdf?download=1` (Download CV button).
 
 ## File Structure
 - `src/App.tsx` — router shell only. Maps URLs to pages. Touch this when adding/removing routes.
@@ -21,7 +22,7 @@
 
 ## Routing
 - Add a new page: create `src/pages/MyPage.tsx` (or `src/pages/myPage/MyPage.tsx` if it has private files), then add a `<Route>` line to `App.tsx`.
-- Routes use clean URLs (no `#`). The `.htaccess` rewrite handles direct visits and refreshes by falling back to `index.html`.
+- Routes use clean URLs (no `#`). The `vercel.json` rewrite handles direct visits and refreshes by falling back to `index.html`; unknown paths render the React `NotFound` page.
 - Real files in `public/` (e.g. `cv.pdf`, `hero.png`) are NOT rewritten — they continue to serve directly.
 - "Hidden" routes (like `/cv-private-x7k2`) are obscure-by-URL only — the path is in the JS bundle. Don't treat them as private; use host-level auth if real protection is needed.
 

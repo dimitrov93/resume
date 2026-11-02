@@ -48,7 +48,10 @@ export default function CvPage() {
   const photoInputRef = useRef<HTMLInputElement>(null)
   const [editMode, setEditMode] = useState(false)
   const [themePickerOpen, setThemePickerOpen] = useState(false)
-  const [activeTheme, setActiveTheme] = useState<string>('Classic')
+  const [activeTheme, setActiveTheme] = useState<string>(() => {
+    const saved = localStorage.getItem(THEME_KEY)
+    return THEMES.find((x) => x.name === saved)?.name ?? 'Classic'
+  })
 
   useEffect(() => {
     const prevTitle = document.title
@@ -75,10 +78,7 @@ export default function CvPage() {
       const savedTheme = localStorage.getItem(THEME_KEY)
       if (savedTheme) {
         const t = THEMES.find((x) => x.name === savedTheme)
-        if (t) {
-          applyTheme(root, t)
-          setActiveTheme(t.name)
-        }
+        if (t) applyTheme(root, t)
       }
     }
   }, [])
@@ -92,6 +92,14 @@ export default function CvPage() {
       el.contentEditable = editMode ? 'true' : 'false'
     })
   }, [editMode])
+
+  function autosave() {
+    const page = pageRef.current
+    if (!page) return
+    const photoEl = page.querySelector<HTMLImageElement>('#photo-el')
+    const photoData = photoEl ? photoEl.src : null
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ html: page.innerHTML, photo: photoData }))
+  }
 
   useEffect(() => {
     const page = pageRef.current
@@ -115,14 +123,6 @@ export default function CvPage() {
     document.addEventListener('click', onDocClick)
     return () => document.removeEventListener('click', onDocClick)
   }, [themePickerOpen])
-
-  function autosave() {
-    const page = pageRef.current
-    if (!page) return
-    const photoEl = page.querySelector<HTMLImageElement>('#photo-el')
-    const photoData = photoEl ? photoEl.src : null
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ html: page.innerHTML, photo: photoData }))
-  }
 
   function toggleEdit() {
     setEditMode((prev) => {
@@ -334,7 +334,7 @@ export default function CvPage() {
         <div className="body">
           <aside className="sidebar">
             <div ref={photoWrapRef} className="photo-wrap" id="photo-wrap">
-              <img id="photo-el" src="/hero.png" alt="Tsvetomir Dimitrov" />
+              <img id="photo-el" src="/cv-photo.jpg" alt="Tsvetomir Dimitrov" />
               <div
                 className="photo-overlay edit-visible"
                 onClick={() => photoInputRef.current?.click()}

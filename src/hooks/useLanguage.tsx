@@ -44,6 +44,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   )
 }
 
+// Provider and hook share this file on purpose; it only costs fast refresh for this module.
+// eslint-disable-next-line react-refresh/only-export-components
 export default function useLanguage() {
   return useContext(LanguageContext)
 }

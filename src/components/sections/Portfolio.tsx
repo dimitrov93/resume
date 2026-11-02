@@ -96,14 +96,14 @@ export default function Portfolio() {
       <motion.div variants={anim} className="flex flex-col gap-8">
         <FeaturedProjectCard
           href="https://lupygames.com"
-          image="/lupy-games.png"
+          image="/lupy-games.webp"
           title="Lupy Games"
           desc={t('portfolio.lupyDesc')}
           framework="Next.js"
         />
         <FeaturedProjectCard
           href="https://kauzi.lupygames.com"
-          image="/kauzi.png"
+          image="/kauzi.webp"
           title="Kauzi"
           desc={t('portfolio.kauziDesc')}
           framework="Next.js"

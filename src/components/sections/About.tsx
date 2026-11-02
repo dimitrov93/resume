@@ -122,7 +122,7 @@ export default function About() {
             <div className="bg-card border border-accent/40 rounded-2xl overflow-hidden transition-all duration-300 hover:border-accent/70 shadow-[0_8px_40px_rgba(0,0,0,0.25)] hover:shadow-[0_12px_48px_var(--color-border-gold)]">
               <div className="relative overflow-hidden aspect-16/8">
                 <img
-                  src="/lupy-games.png"
+                  src="/lupy-games.webp"
                   alt="Lupy Games"
                   className="w-full h-full object-cover object-top"
                 />

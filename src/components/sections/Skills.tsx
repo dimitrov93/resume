@@ -25,7 +25,7 @@ export default function Resume() {
       period: t('exp.montwayPeriod'),
       desc: t('exp.montwayDesc'),
       roles: [
-        { role: t('role.teamLead'), period: '2022 — Present' },
+        { role: t('role.teamLead'), period: t('role.teamLeadPeriod') },
         { role: t('role.seniorSales'), period: '2020 — 2022' },
         { role: t('role.sales'), period: '2018 — 2020' },
         { role: t('role.coordinator'), period: '2016 — 2018' },
