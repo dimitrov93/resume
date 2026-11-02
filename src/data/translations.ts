@@ -9,13 +9,13 @@ const translations = {
 
     'about.available': 'Available for freelance & opportunities',
     'about.bio1':
-      'Dual-role professional: Front-End Developer at Lupy Games and Team Lead at Montway Auto Transport, overseeing a LiveChat team. On one side, building scalable React/Next.js applications with clean architecture. On the other, running one-on-ones, monitoring performance, and developing team members day-to-day.',
+      'Front-End Developer and Team Lead. Built and shipped production React/Next.js applications at Lupy Games, including the Kauzi charity gaming platform from scratch. In parallel, Team Lead at Montway Auto Transport, overseeing a LiveChat team: running one-on-ones, monitoring performance, and developing team members day-to-day.',
     'about.bio2':
       'A developer with genuine people management experience — in the field, not just on paper. Passionate about turning complex problems into simple, performant, and intuitive interfaces.',
     'about.whatImDoing': "What I'm Doing",
     'about.mySkills': 'My Skills',
     'about.featuredProject': 'Featured Project',
-    'about.lupyDesc': 'Led the full platform migration from WordPress to Next.js 14, and continued upgrading through versions 15 and 16. Drove user engagement through gamification — achievements, ranks, level progression, and customizable themes/skins for a personalized experience. Built real-time notifications, leaderboards, user profile pages, and multi-language support. Continuously iterating on features and UX to keep pace with evolving community needs and modern web standards.',
+    'about.lupyDesc': 'Led the full platform migration from WordPress to Next.js 14, and continued upgrading through versions 15 and 16. Drove user engagement through gamification — achievements, ranks, level progression, and customizable themes/skins for a personalized experience. Built real-time notifications, leaderboards, user profile pages, and multi-language support. Continuously iterated on features and UX to keep pace with evolving community needs and modern web standards.',
     'about.visitSite': 'Visit Site',
     'about.webDesign': 'Web Design',
     'about.webDesignDesc':
@@ -29,10 +29,6 @@ const translations = {
     'about.fullStack': 'Full-Stack Solutions',
     'about.fullStackDesc':
       'End-to-end applications with MongoDB, Express, React, and Node.js (MERN stack).',
-    'about.focus': 'Focus',
-    'about.currentlyLearning': 'Currently Learning',
-    'about.learningDesc':
-      'Expanding into generative AI and building intelligent, production-grade apps on top of Node.js. Currently working through the Generative AI for Node.js: OpenAI, LangChain — TypeScript Udemy course, and getting hands-on with Claude and the broader Anthropic ecosystem.',
     'about.liveProject': 'Live Project',
 
     'resume.currently': 'Currently',
@@ -41,9 +37,9 @@ const translations = {
     'resume.careerProgression': 'Career Progression',
 
     'exp.lupyTitle': 'Front-End Developer — Lupy Games',
-    'exp.lupyPeriod': 'Apr 2024 — Present',
+    'exp.lupyPeriod': 'Apr 2024 — Oct 2026',
     'exp.lupyDesc':
-      'Led full platform migration from WordPress to Next.js. Drove user engagement through gamification: achievements, ranks, level progression, and customizable themes.',
+      'Led full platform migration from WordPress to Next.js. Drove user engagement through gamification: achievements, ranks, level progression, and customizable themes. Built Kauzi (kauzi.lupygames.com) from scratch — a charity platform where daily puzzle games raise points for a shared cause.',
     'exp.montwayTitle': 'Team Lead — Montway Auto Transport',
     'exp.montwayPeriod': 'Sep 2016 — Present',
     'exp.montwayDesc':
@@ -62,11 +58,11 @@ const translations = {
       'Tested mobile games across the full Apple device lineup, reporting bugs across all screen sizes and iOS versions.',
 
     'role.teamLead': 'Team Lead',
+    'role.teamLeadPeriod': '2022 — Present',
     'role.seniorSales': 'Senior Sales Specialist',
     'role.sales': 'Sales Specialist',
     'role.coordinator': 'Transport Coordinator',
 
-    'current.frontEnd': 'Front-End Developer',
     'current.teamLead': 'Team Lead',
 
     'edu.softuni': 'SoftUni — Computer Software Engineering',
@@ -83,11 +79,9 @@ const translations = {
     'portfolio.az': 'A → Z',
     'portfolio.za': 'Z → A',
     'portfolio.loadMore': 'Load More',
-    'portfolio.failed': 'Failed to load projects.',
-    'portfolio.retry': 'Retry',
     'portfolio.featured': 'Featured',
     'portfolio.lupyDesc': 'Gamified platform with achievements, ranks, leaderboards, customizable themes, and multi-language support. Migrated from WordPress to Next.js 14→16.',
-    'portfolio.otherProjects': 'Other Projects',
+    'portfolio.kauziDesc': 'Games for a cause: free daily puzzles (Word Search, Wordle, Mini Sudoku, Patches) where every finished game adds points to a shared charity goal. Teams, leaderboards, daily reminders, and EN/BG support. Built from scratch.',
     'portfolio.project': 'Project',
     'portfolio.source': 'Source',
     'portfolio.liveDemo': 'Live Demo',
@@ -135,7 +129,6 @@ const translations = {
     'certs.courses': 'courses',
     'certs.individualCourses': 'Individual Courses',
     'certs.notAdded': 'Not added yet',
-    'certs.certifications': 'Certifications',
     'certs.cvPreview': 'CV Preview',
     'certs.download': 'Download',
 
@@ -162,13 +155,16 @@ const translations = {
 
     'a11y.toggleMenu': 'Toggle menu',
     'a11y.closeMenu': 'Close menu',
+    'a11y.close': 'Close',
     'a11y.toggleContacts': 'Toggle contacts',
     'a11y.toggleTheme': 'Toggle theme',
-    'a11y.toggleLanguage': 'Toggle language',
+    'a11y.switchLanguageTo': 'Switch language to',
+    'a11y.mainMenu': 'Main menu',
+    'a11y.prev': 'Previous',
+    'a11y.next': 'Next',
 
     'sidebar.previewCv': 'Preview CV',
     'sidebar.downloadCv': 'Download CV',
-    'sidebar.showContacts': 'Show Contacts',
     'sidebar.email': 'EMAIL',
     'sidebar.phone': 'PHONE',
     'sidebar.location': 'LOCATION',
@@ -186,13 +182,13 @@ const translations = {
 
     'about.available': 'Свободен за freelance и нови възможности',
     'about.bio1':
-      'Професионалист с двойна роля: Front-End Developer в Lupy Games и Team Lead в Montway Auto Transport, управляващ LiveChat екип. От едната страна — изграждане на мащабируеми React/Next.js приложения с чиста архитектура. От другата — провеждане на one-on-one срещи, проследяване на представянето и ежедневно развитие на членовете на екипа.',
+      'Front-End Developer и Team Lead. Разработвах и пусках в продукция React/Next.js приложения в Lupy Games, включително благотворителната игрова платформа Kauzi от нулата. Паралелно съм Team Lead в Montway Auto Transport, управляващ LiveChat екип: one-on-one срещи, проследяване на представянето и ежедневно развитие на членовете на екипа.',
     'about.bio2':
-      'Разработчик с истински опит в управлението на хора — на терен, не само на хартия. Страстен към превръщането на сложни проблеми в прости, бързи и интуитивни интерфейси.',
+      'Разработчик с истински опит в управлението на хора — на терен, не само на хартия. Обичам да превръщам сложни проблеми в прости, бързи и интуитивни интерфейси.',
     'about.whatImDoing': 'Какво правя',
     'about.mySkills': 'Моите умения',
     'about.featuredProject': 'Основен проект',
-    'about.lupyDesc': 'Ръководих пълната миграция на платформата от WordPress към Next.js 14 и продължих надграждането през версии 15 и 16. Повишаване на ангажираността чрез геймификация — постижения, рангове, нива и персонализируеми теми/скинове. Разработих нотификации в реално време, класации, потребителски профили и многоезична поддръжка. Непрекъснато подобряване на функционалности и UX спрямо нуждите на общността и съвременните уеб стандарти.',
+    'about.lupyDesc': 'Ръководих пълната миграция на платформата от WordPress към Next.js 14 и продължих надграждането през версии 15 и 16. Повиших ангажираността чрез геймификация — постижения, рангове, нива и персонализируеми теми/скинове. Разработих нотификации в реално време, класации, потребителски профили и многоезична поддръжка. Непрекъснато подобрявах функционалностите и UX спрямо нуждите на общността и съвременните уеб стандарти.',
     'about.visitSite': 'Посети сайта',
     'about.webDesign': 'Уеб дизайн',
     'about.webDesignDesc':
@@ -206,10 +202,6 @@ const translations = {
     'about.fullStack': 'Full-Stack решения',
     'about.fullStackDesc':
       'Цялостни приложения с MongoDB, Express, React и Node.js (MERN stack).',
-    'about.focus': 'Фокус',
-    'about.currentlyLearning': 'В момента уча',
-    'about.learningDesc':
-      'Разширявам знанията си в генеративния AI и изграждането на интелигентни, production-grade приложения върху Node.js. В момента преминавам през Udemy курса Generative AI for Node.js: OpenAI, LangChain — TypeScript и експериментирам с Claude и по-широката екосистема на Anthropic.',
     'about.liveProject': 'Активен проект',
 
     'resume.currently': 'В момента',
@@ -218,9 +210,9 @@ const translations = {
     'resume.careerProgression': 'Кариерно развитие',
 
     'exp.lupyTitle': 'Front-End Developer — Lupy Games',
-    'exp.lupyPeriod': 'Апр 2024 — Настояще',
+    'exp.lupyPeriod': 'Апр 2024 — Окт 2026',
     'exp.lupyDesc':
-      'Ръководих пълна миграция на платформата от WordPress към Next.js. Повишаване на ангажираността на потребителите чрез геймификация: постижения, рангове, нива и персонализируеми теми.',
+      'Ръководих пълна миграция на платформата от WordPress към Next.js. Повиших ангажираността на потребителите чрез геймификация: постижения, рангове, нива и персонализируеми теми. Създадох от нулата Kauzi (kauzi.lupygames.com) — благотворителна платформа, в която ежедневни пъзел игри събират точки за обща кауза.',
     'exp.montwayTitle': 'Team Lead — Montway Auto Transport',
     'exp.montwayPeriod': 'Сеп 2016 — Настояще',
     'exp.montwayDesc':
@@ -239,11 +231,11 @@ const translations = {
       'Тестване на мобилни игри на всички Apple устройства, докладване на бъгове за всички размери екрани и iOS версии.',
 
     'role.teamLead': 'Ръководител на екип',
+    'role.teamLeadPeriod': '2022 — Настояще',
     'role.seniorSales': 'Старши специалист продажби',
     'role.sales': 'Специалист продажби',
     'role.coordinator': 'Координатор транспорт',
 
-    'current.frontEnd': 'Front-End разработчик',
     'current.teamLead': 'Ръководител на екип',
 
     'edu.softuni': 'SoftUni — Софтуерно инженерство',
@@ -260,11 +252,9 @@ const translations = {
     'portfolio.az': 'А → Я',
     'portfolio.za': 'Я → А',
     'portfolio.loadMore': 'Зареди още',
-    'portfolio.failed': 'Неуспешно зареждане на проекти.',
-    'portfolio.retry': 'Опитай отново',
     'portfolio.featured': 'Основен',
     'portfolio.lupyDesc': 'Платформа с геймификация — постижения, рангове, класации, персонализируеми теми и многоезична поддръжка. Мигрирана от WordPress към Next.js 14→16.',
-    'portfolio.otherProjects': 'Други проекти',
+    'portfolio.kauziDesc': 'Игри за кауза: безплатни ежедневни пъзели (Word Search, Wordle, Mini Sudoku, Patches), в които всяка завършена игра добавя точки към обща благотворителна цел. Отбори, класации, ежедневни напомняния и поддръжка на EN/BG. Създадена от нулата.',
     'portfolio.project': 'Проект',
     'portfolio.source': 'Код',
     'portfolio.liveDemo': 'Демо',
@@ -312,7 +302,6 @@ const translations = {
     'certs.courses': 'курса',
     'certs.individualCourses': 'Отделни курсове',
     'certs.notAdded': 'Все още не е добавен',
-    'certs.certifications': 'Сертификати',
     'certs.cvPreview': 'Преглед на CV',
     'certs.download': 'Изтегли',
 
@@ -323,7 +312,7 @@ const translations = {
     'contact.fullName': 'Пълно име',
     'contact.yourName': 'Вашето име',
     'contact.email': 'Имейл',
-    'contact.emailPlaceholder': 'вашият@имейл.com',
+    'contact.emailPlaceholder': 'your@email.com',
     'contact.subject': 'Тема',
     'contact.subjectPlaceholder': 'Напишете нещо...',
     'contact.message': 'Съобщение',
@@ -339,13 +328,16 @@ const translations = {
 
     'a11y.toggleMenu': 'Отвори/затвори менюто',
     'a11y.closeMenu': 'Затвори менюто',
+    'a11y.close': 'Затвори',
     'a11y.toggleContacts': 'Покажи/скрий контактите',
     'a11y.toggleTheme': 'Смени темата',
-    'a11y.toggleLanguage': 'Смени езика',
+    'a11y.switchLanguageTo': 'Смени езика на',
+    'a11y.mainMenu': 'Основно меню',
+    'a11y.prev': 'Предишни',
+    'a11y.next': 'Следващи',
 
     'sidebar.previewCv': 'Преглед на CV',
     'sidebar.downloadCv': 'Изтегли CV',
-    'sidebar.showContacts': 'Покажи контакти',
     'sidebar.email': 'ИМЕЙЛ',
     'sidebar.phone': 'ТЕЛЕФОН',
     'sidebar.location': 'ЛОКАЦИЯ',

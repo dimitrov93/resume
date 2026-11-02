@@ -48,12 +48,23 @@ export default function CvPage() {
   const photoInputRef = useRef<HTMLInputElement>(null)
   const [editMode, setEditMode] = useState(false)
   const [themePickerOpen, setThemePickerOpen] = useState(false)
-  const [activeTheme, setActiveTheme] = useState<string>('Classic')
+  const [activeTheme, setActiveTheme] = useState<string>(() => {
+    const saved = localStorage.getItem(THEME_KEY)
+    return THEMES.find((x) => x.name === saved)?.name ?? 'Classic'
+  })
 
   useEffect(() => {
     const prevTitle = document.title
     document.title = 'Tsvetomir Dimitrov — CV'
-    return () => { document.title = prevTitle }
+    // Hidden builder page: keep it out of search results without listing it in robots.txt.
+    const robots = document.createElement('meta')
+    robots.name = 'robots'
+    robots.content = 'noindex, nofollow'
+    document.head.appendChild(robots)
+    return () => {
+      document.title = prevTitle
+      robots.remove()
+    }
   }, [])
 
   useEffect(() => {
@@ -75,10 +86,7 @@ export default function CvPage() {
       const savedTheme = localStorage.getItem(THEME_KEY)
       if (savedTheme) {
         const t = THEMES.find((x) => x.name === savedTheme)
-        if (t) {
-          applyTheme(root, t)
-          setActiveTheme(t.name)
-        }
+        if (t) applyTheme(root, t)
       }
     }
   }, [])
@@ -92,6 +100,14 @@ export default function CvPage() {
       el.contentEditable = editMode ? 'true' : 'false'
     })
   }, [editMode])
+
+  function autosave() {
+    const page = pageRef.current
+    if (!page) return
+    const photoEl = page.querySelector<HTMLImageElement>('#photo-el')
+    const photoData = photoEl ? photoEl.src : null
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ html: page.innerHTML, photo: photoData }))
+  }
 
   useEffect(() => {
     const page = pageRef.current
@@ -115,14 +131,6 @@ export default function CvPage() {
     document.addEventListener('click', onDocClick)
     return () => document.removeEventListener('click', onDocClick)
   }, [themePickerOpen])
-
-  function autosave() {
-    const page = pageRef.current
-    if (!page) return
-    const photoEl = page.querySelector<HTMLImageElement>('#photo-el')
-    const photoData = photoEl ? photoEl.src : null
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ html: page.innerHTML, photo: photoData }))
-  }
 
   function toggleEdit() {
     setEditMode((prev) => {
@@ -334,7 +342,7 @@ export default function CvPage() {
         <div className="body">
           <aside className="sidebar">
             <div ref={photoWrapRef} className="photo-wrap" id="photo-wrap">
-              <img id="photo-el" src="/hero.png" alt="Tsvetomir Dimitrov" />
+              <img id="photo-el" src="/cv-photo.jpg" alt="Tsvetomir Dimitrov" />
               <div
                 className="photo-overlay edit-visible"
                 onClick={() => photoInputRef.current?.click()}
@@ -353,11 +361,11 @@ export default function CvPage() {
             <div className="s-section">
               <h2>About Me</h2>
               <p className="about-text">
-                Dual-role professional: Front-End Developer at Lupy Games and Team Lead at Montway Auto
-                Transport, overseeing a LiveChat team. On one side, building scalable
-                React/Next.js applications with clean architecture. On the other, running one-on-ones,
-                monitoring performance, and developing team members day-to-day. A developer with genuine
-                people management experience — in the field, not just on paper.
+                Front-End Developer and Team Lead. Built and shipped production React/Next.js
+                applications at Lupy Games, including the Kauzi charity gaming platform from scratch.
+                In parallel, Team Lead at Montway Auto Transport, overseeing a LiveChat team: running
+                one-on-ones, monitoring performance, and developing team members day-to-day. A developer
+                with genuine people management experience — in the field, not just on paper.
               </p>
             </div>
 
@@ -372,6 +380,8 @@ export default function CvPage() {
                 <span className="skill-chip">JavaScript</span>
                 <span className="skill-chip">Vue</span>
                 <span className="skill-chip">Angular</span>
+                <span className="skill-chip">Redux</span>
+                <span className="skill-chip">Tailwind</span>
               </div>
 
               <div className="skill-cat">Backend</div>
@@ -464,7 +474,7 @@ export default function CvPage() {
               <div className="job">
                 <div className="job-meta">
                   <div className="company">Lupy Games</div>
-                  <div className="period">Apr 2024 – Present</div>
+                  <div className="period">Apr 2024 – Oct 2026</div>
                   <div className="location">Remote</div>
                 </div>
                 <div className="job-content">
@@ -472,7 +482,8 @@ export default function CvPage() {
                   <ul>
                     <li>Led full platform migration from WordPress to Next.js — delivering measurable gains in performance and scalability</li>
                     <li>Drove user engagement through gamification: achievements, ranks, level progression, and customizable themes</li>
-                    <li>Continuously iterate on features and UX to keep pace with evolving community needs</li>
+                    <li>Built Kauzi (kauzi.lupygames.com) from scratch — a charity platform where daily puzzle games raise points for a shared cause, with teams, leaderboards, and EN/BG support</li>
+                    <li>Continuously iterated on features and UX to keep pace with evolving community needs</li>
                   </ul>
                 </div>
               </div>

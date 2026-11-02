@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { FiGithub, FiExternalLink } from 'react-icons/fi'
 import useLanguage from '../../hooks/useLanguage'
 import useFrameworkColors from '../../hooks/useFrameworkColors'
+import useMediaQuery from '../../hooks/useMediaQuery'
 import { frameworkIcons, type Project } from '../../data/projects'
 
 export default function ProjectCard({ project, index }: { project: Project; index: number }) {
@@ -10,6 +11,8 @@ export default function ProjectCard({ project, index }: { project: Project; inde
   const frameworkColors = useFrameworkColors()
   const frameworkColor = frameworkColors[project.framework]
   const [hovered, setHovered] = useState(false)
+  // Touch screens never hover, so images would stay dimmed forever; show them in full color there.
+  const canHover = useMediaQuery('(hover: hover)')
   const { t } = useLanguage()
 
   return (
@@ -38,7 +41,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
             className="w-full h-full object-cover"
             animate={{
               scale: hovered ? 1.04 : 1,
-              filter: hovered ? 'grayscale(0) brightness(1)' : 'grayscale(30%) brightness(0.85)',
+              filter: hovered || !canHover ? 'grayscale(0) brightness(1)' : 'grayscale(30%) brightness(0.85)',
             }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
           />
@@ -50,7 +53,7 @@ export default function ProjectCard({ project, index }: { project: Project; inde
         <div className="flex flex-col justify-center gap-4 p-6 sm:p-7 sm:w-[45%] relative">
           {/* Project number + framework */}
           <div className="flex items-center justify-between gap-2">
-            <span className="text-accent/40 text-[11px] font-bold tracking-[0.3em] uppercase">
+            <span className="text-accent text-[11px] font-bold tracking-[0.3em] uppercase">
               {t('portfolio.project')} {String(index + 1).padStart(2, '0')}
             </span>
             <span
@@ -90,17 +93,19 @@ export default function ProjectCard({ project, index }: { project: Project; inde
               </span>
               {t('portfolio.source')}
             </a>
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group/link flex items-center gap-2 text-dim text-[13px] font-medium no-underline hover:text-accent transition-colors"
-            >
-              <span className="w-9 h-9 rounded-xl bg-accent/10 border border-accent/15 flex items-center justify-center text-accent group-hover/link:bg-accent/20 transition-all">
-                <FiExternalLink size={15} />
-              </span>
-              {t('portfolio.liveDemo')}
-            </a>
+            {project.demo && (
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group/link flex items-center gap-2 text-dim text-[13px] font-medium no-underline hover:text-accent transition-colors"
+              >
+                <span className="w-9 h-9 rounded-xl bg-accent/10 border border-accent/15 flex items-center justify-center text-accent group-hover/link:bg-accent/20 transition-all">
+                  <FiExternalLink size={15} />
+                </span>
+                {t('portfolio.liveDemo')}
+              </a>
+            )}
           </div>
         </div>
 

@@ -23,7 +23,9 @@ export default function Contact() {
           </div>
           <div className="flex flex-col gap-1">
             <span className="text-[11px] uppercase tracking-wider font-semibold text-dim">{t('contact.getInTouch')}</span>
-            <span className="text-base sm:text-lg font-semibold text-heading group-hover:text-accent transition-colors duration-300 break-all">{profile.email}</span>
+            <span className="text-base sm:text-lg font-semibold text-heading group-hover:text-accent transition-colors duration-300 wrap-break-word">
+              {profile.email.split('@')[0]}@<wbr />{profile.email.split('@')[1]}
+            </span>
             <span className="text-xs text-dim">{t('contact.clickToEmail')}</span>
           </div>
         </a>

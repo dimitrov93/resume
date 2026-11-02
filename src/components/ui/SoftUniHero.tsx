@@ -4,6 +4,7 @@ import { FiChevronLeft, FiChevronRight, FiLayers } from 'react-icons/fi'
 import { certifications } from '../../data/resume'
 import CertPreview from './CertPreview'
 import useLanguage from '../../hooks/useLanguage'
+import { clickable } from './clickable'
 
 const jsPathTitles = [
   'ReactJS', 'Angular', 'JS Applications', 'JS Back-End', 'HTML & CSS', 'Programming Basics',
@@ -28,11 +29,15 @@ export default function SoftUniHero({ onViewCert }: { onViewCert: (title: string
         className="flex flex-col sm:flex-row items-stretch cursor-pointer"
         onClick={() => onViewCert(diploma.title, diploma.pdf)}
       >
-        <div className="sm:w-[45%] shrink-0 aspect-16/10 sm:aspect-auto overflow-hidden relative bg-overlay-5">
-          <CertPreview file={diploma.pdf} title={diploma.title} />
+        {/* Keyboard entry point for the diploma; mouse clicks are handled by the row above. */}
+        <div
+          className="sm:w-[45%] shrink-0 aspect-16/10 sm:aspect-auto overflow-hidden relative bg-overlay-5 focus-visible:outline-2 focus-visible:outline-accent"
+          {...{ ...clickable(() => onViewCert(diploma.title, diploma.pdf), diploma.title), onClick: undefined }}
+        >
+          <CertPreview file={diploma.pdf} title={diploma.title} className="object-top" />
         </div>
         <div className="flex flex-col justify-center gap-4 p-6 sm:p-8 flex-1">
-          <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-accent/50">{t('certs.diplomaLabel')}</span>
+          <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-accent">{t('certs.diplomaLabel')}</span>
           <h3 className="text-heading font-bold text-xl leading-snug">{diploma.title}</h3>
           <p className="text-[13px] text-muted leading-relaxed">
             {t('certs.trackDesc')} {softuniCourses.length} {t('certs.coursesCompleted')}
@@ -63,12 +68,14 @@ export default function SoftUniHero({ onViewCert }: { onViewCert: (title: string
                 <div className="flex items-center gap-1.5">
                   <button
                     onClick={() => scroll('left')}
+                    aria-label={t('a11y.prev')}
                     className="w-7 h-7 rounded-lg bg-overlay-5 border border-border-subtle flex items-center justify-center text-dim cursor-pointer hover:text-heading hover:bg-overlay-10 transition-colors"
                   >
                     <FiChevronLeft size={14} />
                   </button>
                   <button
                     onClick={() => scroll('right')}
+                    aria-label={t('a11y.next')}
                     className="w-7 h-7 rounded-lg bg-overlay-5 border border-border-subtle flex items-center justify-center text-dim cursor-pointer hover:text-heading hover:bg-overlay-10 transition-colors"
                   >
                     <FiChevronRight size={14} />
@@ -83,8 +90,8 @@ export default function SoftUniHero({ onViewCert }: { onViewCert: (title: string
                 {softuniCourses.map(cert => (
                   <div
                     key={cert.title}
-                    className="shrink-0 w-56 cursor-pointer group"
-                    onClick={() => cert.pdf && onViewCert(cert.title, cert.pdf)}
+                    className="shrink-0 w-56 cursor-pointer group rounded-lg focus-visible:outline-2 focus-visible:outline-accent"
+                    {...clickable(() => cert.pdf && onViewCert(cert.title, cert.pdf))}
                   >
                     <div className="aspect-16/10 rounded-lg overflow-hidden bg-overlay-5 relative mb-2 border border-transparent group-hover:border-accent/20 transition-colors">
                       <CertPreview file={cert.pdf} title={cert.title} />

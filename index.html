@@ -3,16 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#121212" />
+    <!-- Apply the saved (or OS) theme and language before the first paint, so light-theme visitors don't see a dark flash. Mirrors useTheme/useLanguage. -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('theme')
+          if (t !== 'dark' && t !== 'light') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
+          document.documentElement.setAttribute('data-theme', t)
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', t === 'dark' ? '#121212' : '#f5f5f5')
+          var l = localStorage.getItem('lang')
+          if (l !== 'bg' && l !== 'en') l = (navigator.languages || []).some(function (x) { return x.toLowerCase().indexOf('bg') === 0 }) ? 'bg' : 'en'
+          document.documentElement.setAttribute('lang', l)
+        } catch (e) {}
+      })()
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Tsvetomir Dimitrov — Full-Stack Developer portfolio showcasing projects, skills, and certifications." />
-    <meta property="og:title" content="Tsvetomir Dimitrov — Portfolio" />
-    <meta property="og:description" content="Full-Stack Developer portfolio showcasing projects, skills, and certifications." />
-    <meta property="og:image" content="https://dimitrov93.eu/og-image.png" />
-    <meta property="og:url" content="https://dimitrov93.eu/" />
+    <meta name="description" content="Tsvetomir Dimitrov — Front-End Developer (React, Next.js) and Team Lead. Portfolio with projects, experience, and certifications." />
+    <meta property="og:title" content="Tsvetomir Dimitrov — Front-End Developer" />
+    <meta property="og:description" content="Front-End Developer (React, Next.js) and Team Lead. Projects, experience, and certifications." />
+    <meta property="og:image" content="https://www.dimitrov93.eu/og-image.png" />
+    <meta property="og:url" content="https://www.dimitrov93.eu/" />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://dimitrov93.eu/og-image.png" />
-    <title>Portfolio</title>
+    <meta name="twitter:image" content="https://www.dimitrov93.eu/og-image.png" />
+    <title>Tsvetomir Dimitrov — Front-End Developer</title>
+    <link rel="canonical" href="https://www.dimitrov93.eu/" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Tsvetomir Dimitrov",
+        "jobTitle": "Front-End Developer",
+        "url": "https://www.dimitrov93.eu/",
+        "image": "https://www.dimitrov93.eu/og-image.png",
+        "email": "mailto:ts.dimitrov93@gmail.com",
+        "address": { "@type": "PostalAddress", "addressLocality": "Montana", "addressCountry": "BG" },
+        "knowsAbout": ["React", "Next.js", "TypeScript", "Vue", "Node.js", "Team leadership"],
+        "sameAs": ["https://github.com/dimitrov93", "https://linkedin.com/in/tsvetomir-dimitrov"]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>

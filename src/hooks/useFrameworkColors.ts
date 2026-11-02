@@ -4,7 +4,10 @@ import useTheme from './useTheme'
 
 const lightOverrides: Partial<Record<Framework, string>> = {
   'Next.js': '#000000',
-  'JavaScript': '#b38a00',
+  'JavaScript': '#8a6a00',
+  'React': '#06708f',
+  'Angular': '#c3002f',
+  'T3 Stack': '#2a6fa8',
 }
 
 export default function useFrameworkColors(): Record<Framework, string> {

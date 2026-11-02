@@ -1,9 +1,9 @@
-import { useState, useMemo, useEffect, useRef } from 'react'
+import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiChevronDown, FiDownload, FiEye, FiMenu } from 'react-icons/fi'
 import useLanguage from '../hooks/useLanguage'
-import useTypewriter from '../hooks/useTypewriter'
-import useCvPdf from '../hooks/useCvPdf'
+import TypedRoles from './ui/TypedRoles'
+import useCvPdf, { CV_FILE_NAME, cvDownloadUrl, downloadCv } from '../hooks/useCvPdf'
 import { contacts } from '../data/contacts'
 import { profile } from '../data/profile'
 import ContactItem from './ContactItem'
@@ -14,7 +14,6 @@ export function SidebarFull() {
   const { t } = useLanguage()
   const cvPdf = useCvPdf()
   const roles = useMemo(() => [t('sidebar.role1'), t('sidebar.role2'), t('sidebar.role3')], [t])
-  const typedRole = useTypewriter(roles)
   return (
     <motion.aside
       initial={{ x: -60, opacity: 0 }}
@@ -30,7 +29,7 @@ export function SidebarFull() {
           {profile.name}
         </h1>
         <div className="py-2.5 px-6 rounded-[10px] text-sm font-medium bg-gold-glow text-accent min-w-48 text-center">
-          {typedRole}<span className="animate-pulse">|</span>
+          <TypedRoles roles={roles} />
         </div>
       </div>
 
@@ -58,8 +57,9 @@ export function SidebarFull() {
           {t('sidebar.previewCv')}
         </button>
         <a
-          href={cvPdf}
-          download="Tsvetomir_Dimitrov_CV.pdf"
+          href={cvDownloadUrl(cvPdf)}
+          download={CV_FILE_NAME}
+          onClick={downloadCv}
           className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-linear-to-r from-accent to-accent-2 text-accent-text text-[11px] font-semibold no-underline transition-all duration-300 hover:brightness-110"
         >
           <FiDownload size={12} />
@@ -74,15 +74,15 @@ export function SidebarCompact({ onMenuToggle, active }: { onMenuToggle: () => v
   const [showContacts, setShowContacts] = useState(true)
   const { t } = useLanguage()
   const cvPdf = useCvPdf()
-  const initialTab = useRef(active)
+  const [initialTab] = useState(active)
+  const [prevActive, setPrevActive] = useState(active)
 
-  useEffect(() => {
-    if (active !== initialTab.current) {
-      setShowContacts(false)
-    }
-  }, [active])
+  // Collapse contacts once the user navigates away from the first tab (adjusting state during render, not in an effect).
+  if (active !== prevActive) {
+    setPrevActive(active)
+    if (active !== initialTab) setShowContacts(false)
+  }
   const roles = useMemo(() => [t('sidebar.role1'), t('sidebar.role2'), t('sidebar.role3')], [t])
-  const typedRole = useTypewriter(roles)
 
   return (
     <motion.div
@@ -98,7 +98,7 @@ export function SidebarCompact({ onMenuToggle, active }: { onMenuToggle: () => v
         <div className="flex flex-col gap-1.5">
           <h1 className="text-heading text-xl font-semibold tracking-tight">{profile.name}</h1>
           <div className="py-1.5 px-4 rounded-lg text-[13px] font-medium bg-overlay-5 text-accent w-fit">
-            {typedRole}<span className="animate-pulse">|</span>
+            <TypedRoles roles={roles} />
           </div>
         </div>
 
@@ -124,7 +124,7 @@ export function SidebarCompact({ onMenuToggle, active }: { onMenuToggle: () => v
         </div>
       </div>
 
-      <AnimatePresence>
+      <AnimatePresence initial={false}>
         {showContacts && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
@@ -153,8 +153,9 @@ export function SidebarCompact({ onMenuToggle, active }: { onMenuToggle: () => v
                   {t('sidebar.previewCv')}
                 </button>
                 <a
-                  href={cvPdf}
-                  download="Tsvetomir_Dimitrov_CV.pdf"
+                  href={cvDownloadUrl(cvPdf)}
+                  download={CV_FILE_NAME}
+                  onClick={downloadCv}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-linear-to-r from-accent to-accent-2 text-accent-text text-[11px] font-semibold no-underline transition-all duration-300 hover:brightness-110"
                 >
                   <FiDownload size={12} />

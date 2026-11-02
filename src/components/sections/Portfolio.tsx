@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { FiCheck, FiChevronDown, FiExternalLink, FiGrid } from 'react-icons/fi'
+import { FiCheck, FiChevronDown, FiGrid } from 'react-icons/fi'
 import ProjectCard from '../ui/ProjectCard'
-import PulseDot from '../ui/PulseDot'
+import FeaturedProjectCard from '../ui/FeaturedProjectCard'
 import useLanguage from '../../hooks/useLanguage'
 import useFrameworkColors from '../../hooks/useFrameworkColors'
 import type { TranslationKey } from '../../data/translations'
@@ -92,53 +92,22 @@ export default function Portfolio() {
 
   return (
     <motion.div variants={container} initial="hidden" animate="show" className="flex flex-col gap-6">
-      {/* Featured project */}
-      <motion.div variants={anim} className="relative">
-        <motion.div
-          aria-hidden
-          className="absolute -inset-1 rounded-3xl bg-linear-to-r from-accent via-accent-2 to-accent blur-xl pointer-events-none"
-          animate={{ opacity: [0.25, 0.55, 0.25] }}
-          transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
-        />
-        <a
+      {/* Featured projects */}
+      <motion.div variants={anim} className="flex flex-col gap-8">
+        <FeaturedProjectCard
           href="https://lupygames.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="group relative block no-underline"
-        >
-          <div className="relative flex flex-col sm:flex-row items-stretch rounded-2xl overflow-hidden bg-card border border-accent/40 transition-all duration-300 hover:border-accent/70 shadow-[0_8px_40px_rgba(0,0,0,0.25)] hover:shadow-[0_12px_48px_var(--color-border-gold)]">
-            <div className="sm:w-[55%] shrink-0 overflow-hidden h-52 sm:h-auto">
-              <img
-                src="/lupy-games.png"
-                alt="Lupy Games"
-                className="w-full h-full object-cover object-top"
-              />
-            </div>
-            <div className="flex flex-col justify-center gap-4 p-6 sm:p-7 sm:w-[45%]">
-              <div className="flex items-center justify-between gap-2">
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent bg-accent/10 px-2.5 py-1 rounded-md">{t('portfolio.featured')}</span>
-                  <PulseDot size="sm" />
-                </div>
-                <span
-                  className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.15em] bg-overlay-5 border border-border-subtle px-2 py-1 rounded-md"
-                  style={{ color: frameworkColors['Next.js'] }}
-                >
-                  {(() => {
-                    const Icon = frameworkIcons['Next.js']
-                    return <Icon size={12} />
-                  })()}
-                  Next.js
-                </span>
-              </div>
-              <h3 className="text-heading font-bold text-xl group-hover:text-accent transition-colors">Lupy Games</h3>
-              <p className="text-sm text-muted leading-relaxed">{t('portfolio.lupyDesc')}</p>
-              <span className="inline-flex items-center gap-1.5 text-accent text-sm font-semibold group-hover:gap-2.5 transition-all">
-                lupygames.com <FiExternalLink size={14} />
-              </span>
-            </div>
-          </div>
-        </a>
+          image="/lupy-games.webp"
+          title="Lupy Games"
+          desc={t('portfolio.lupyDesc')}
+          framework="Next.js"
+        />
+        <FeaturedProjectCard
+          href="https://kauzi.lupygames.com"
+          image="/kauzi.webp"
+          title="Kauzi"
+          desc={t('portfolio.kauziDesc')}
+          framework="Next.js"
+        />
       </motion.div>
 
       {/* Header: count + filter dropdown + sort */}
@@ -151,6 +120,8 @@ export default function Portfolio() {
           <div ref={filterRef} className="relative max-sm:flex-1 max-sm:min-w-0">
             <button
               onClick={() => setFilterOpen(o => !o)}
+              aria-expanded={filterOpen}
+              aria-haspopup="true"
               className={`cursor-pointer inline-flex items-center gap-2 text-[12px] font-semibold pl-3 pr-2.5 py-2 rounded-lg border transition-all duration-300 min-w-40 max-sm:min-w-0 max-sm:w-full ${
                 framework !== 'All'
                   ? 'border-accent/30 bg-accent/10 text-accent'
@@ -194,6 +165,7 @@ export default function Portfolio() {
                           setVisible(4)
                           setFilterOpen(false)
                         }}
+                        aria-pressed={active}
                         className={`w-full cursor-pointer inline-flex items-center gap-2.5 text-[12px] font-semibold px-3 py-2 rounded-lg border-none transition-colors duration-200 ${
                           active
                             ? 'bg-accent/15 text-accent'
@@ -218,6 +190,8 @@ export default function Portfolio() {
           <div ref={sortRef} className="relative max-sm:flex-1 max-sm:min-w-0">
             <button
               onClick={() => setSortOpen(o => !o)}
+              aria-expanded={sortOpen}
+              aria-haspopup="true"
               className="cursor-pointer inline-flex items-center gap-2 text-[12px] font-semibold pl-3 pr-2.5 py-2 rounded-lg border border-border-subtle bg-transparent text-paragraph hover:border-border-medium transition-all duration-300 min-w-32 max-sm:min-w-0 max-sm:w-full"
             >
               <span className="text-dim text-[10px] uppercase tracking-wider font-bold max-sm:hidden">{t('portfolio.sort')}</span>
@@ -248,6 +222,7 @@ export default function Portfolio() {
                           setVisible(4)
                           setSortOpen(false)
                         }}
+                        aria-pressed={active}
                         className={`w-full cursor-pointer inline-flex items-center gap-2.5 text-[12px] font-semibold px-3 py-2 rounded-lg border-none transition-colors duration-200 ${
                           active
                             ? 'bg-accent/15 text-accent'

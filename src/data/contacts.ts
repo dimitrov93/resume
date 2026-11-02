@@ -19,7 +19,7 @@ interface SocialEntry {
 export const contacts: ContactEntry[] = [
   { icon: FiMail, label: 'EMAIL', value: profile.email, href: `mailto:${profile.email}` },
   { icon: FiPhone, label: 'PHONE', value: profile.phone, href: `tel:${profile.phone.replace(/\s/g, '')}` },
-  { icon: FiMapPin, label: 'LOCATION', value: profile.location, href: '#' },
+  { icon: FiMapPin, label: 'LOCATION', value: profile.location, href: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(profile.location)}` },
 ]
 
 export const socials: SocialEntry[] = [

@@ -34,7 +34,7 @@ export default function TimelineEntry({ title, period, desc, roles }: TimelineEn
 
         {roles && (
           <div className="mt-4 pt-4 border-t border-border-subtle">
-            <p className="text-[11px] uppercase tracking-wider text-accent/70 font-semibold mb-3">{t('resume.careerProgression')}</p>
+            <p className="text-[11px] uppercase tracking-wider text-accent font-semibold mb-3">{t('resume.careerProgression')}</p>
             <div className="flex flex-col gap-2">
               {roles.map((r, i) => (
                 <div key={r.role} className="flex items-center gap-3">

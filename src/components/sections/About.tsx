@@ -1,7 +1,5 @@
-import { motion } from 'framer-motion'
-import { FiCpu, FiExternalLink } from 'react-icons/fi'
-import { SiOpenai, SiLangchain, SiClaude, SiTypescript, SiNodedotjs } from 'react-icons/si'
-import type { IconType } from 'react-icons'
+import { motion, useReducedMotion } from 'framer-motion'
+import { FiExternalLink } from 'react-icons/fi'
 import { skills, skillCategories } from '../../data/resume'
 import { frameworkIcons } from '../../data/projects'
 import GradientCard from '../ui/GradientCard'
@@ -10,25 +8,12 @@ import PulseDot from '../ui/PulseDot'
 import useLanguage from '../../hooks/useLanguage'
 import useFrameworkColors from '../../hooks/useFrameworkColors'
 
-interface LearningTech {
-  name: string
-  Icon: IconType
-  color: string
-}
-
-const learningStack: LearningTech[] = [
-  { name: 'OpenAI',     Icon: SiOpenai,     color: '#10A37F' },
-  { name: 'LangChain',  Icon: SiLangchain,  color: '#1C3C3C' },
-  { name: 'Claude',     Icon: SiClaude,     color: '#D97757' },
-  { name: 'Node.js',    Icon: SiNodedotjs,  color: '#5FA04E' },
-  { name: 'TypeScript', Icon: SiTypescript, color: '#3178C6' },
-]
-
 const container = { hidden: {}, show: { transition: { staggerChildren: 0.09 } } }
 const item = { hidden: { opacity: 0, y: 22 }, show: { opacity: 1, y: 0, transition: { duration: 0.45 } } }
 const iconFilter = 'invert(92%) sepia(85%) saturate(652%) hue-rotate(319deg) brightness(102%) contrast(101%)'
 
 export default function About() {
+  const reduceMotion = useReducedMotion()
   const { t } = useLanguage()
   const frameworkColors = useFrameworkColors()
 
@@ -61,7 +46,7 @@ export default function About() {
             <motion.div key={title} whileHover={{ y: -4 }}>
               <GradientCard className="flex items-start gap-4">
                 <IconBox size={56}>
-                  <img src={icon} alt={title} className="w-7 h-7" style={{ filter: iconFilter }} />
+                  <img src={icon} alt="" className="w-7 h-7" style={{ filter: iconFilter }} />
                 </IconBox>
                 <div>
                   <h4 className="text-heading font-bold mb-2 text-base">{title}</h4>
@@ -73,45 +58,14 @@ export default function About() {
         </div>
       </motion.div>
 
-      {/* Currently Learning — AI focus */}
-      <motion.div variants={item} className="mt-8">
-        <GradientCard>
-          <div className="flex items-start gap-4">
-            <IconBox size={56}>
-              <FiCpu size={26} style={{ color: '#FFDB6E' }} />
-            </IconBox>
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2 mb-2">
-                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-accent bg-accent/10 px-2 py-0.5 rounded-md">{t('about.focus')}</span>
-                <PulseDot size="sm" />
-              </div>
-              <h4 className="text-heading font-bold mb-2 text-base">{t('about.currentlyLearning')}</h4>
-              <p className="text-sm leading-relaxed text-muted">{t('about.learningDesc')}</p>
-              <div className="flex flex-wrap gap-2 mt-4">
-                {learningStack.map(({ name, Icon, color }) => (
-                  <motion.span
-                    key={name}
-                    whileHover={{ y: -2 }}
-                    className="inline-flex items-center gap-2 text-xs font-semibold bg-overlay-5 border border-border-subtle rounded-full pl-2.5 pr-3 py-1.5 text-paragraph"
-                  >
-                    <Icon size={14} style={{ color }} />
-                    {name}
-                  </motion.span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </GradientCard>
-      </motion.div>
-
       <motion.div variants={item} className="mt-8">
         <h3 className="text-lg sm:text-xl text-heading font-semibold mb-4">{t('about.featuredProject')}</h3>
         <div className="relative">
           <motion.div
             aria-hidden
             className="absolute -inset-1 rounded-3xl bg-linear-to-r from-accent via-accent-2 to-accent blur-xl pointer-events-none"
-            animate={{ opacity: [0.25, 0.55, 0.25] }}
-            transition={{ duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
+            animate={reduceMotion ? { opacity: 0.4 } : { opacity: [0.25, 0.55, 0.25] }}
+            transition={reduceMotion ? { duration: 0 } : { duration: 3.2, repeat: Infinity, ease: 'easeInOut' }}
           />
           <a
             href="https://lupygames.com"
@@ -122,7 +76,7 @@ export default function About() {
             <div className="bg-card border border-accent/40 rounded-2xl overflow-hidden transition-all duration-300 hover:border-accent/70 shadow-[0_8px_40px_rgba(0,0,0,0.25)] hover:shadow-[0_12px_48px_var(--color-border-gold)]">
               <div className="relative overflow-hidden aspect-16/8">
                 <img
-                  src="/lupy-games.png"
+                  src="/lupy-games.webp"
                   alt="Lupy Games"
                   className="w-full h-full object-cover object-top"
                 />

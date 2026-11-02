@@ -11,7 +11,7 @@ export interface Project {
   descriptionKey: TranslationKey
   image: string
   github: string
-  demo: string
+  demo?: string
   createdAt: string
 }
 
@@ -26,9 +26,9 @@ export const frameworkIcons: Record<Framework, IconType> = {
 export const frameworkColors: Record<Framework, string> = {
   'JavaScript': '#F7DF1E',
   'React': '#61DAFB',
-  'Angular': '#DD0031',
+  'Angular': '#FF6B84',
   'Next.js': '#ffffff',
-  'T3 Stack': '#398CCB',
+  'T3 Stack': '#5AAEE8',
 }
 
 export const projects: Project[] = [
@@ -37,7 +37,7 @@ export const projects: Project[] = [
     titleKey: 'projects.fairyTale.title',
     framework: 'React',
     descriptionKey: 'projects.fairyTale.desc',
-    image: 'https://raw.githubusercontent.com/dimitrov93/Projects/refs/heads/main/react-portfolio/client/src/assets/portfolio5.png?raw=true',
+    image: '/projects/fairy-tale.webp',
     github: 'https://github.com/dimitrov93/party-agency',
     demo: 'https://fairy-tale.bg/',
     createdAt: '2024-06-15T10:00:00.000Z',
@@ -47,9 +47,8 @@ export const projects: Project[] = [
     titleKey: 'projects.adminPanel.title',
     framework: 'React',
     descriptionKey: 'projects.adminPanel.desc',
-    image: 'https://raw.githubusercontent.com/dimitrov93/Projects/refs/heads/main/react-portfolio/client/src/assets/portfolio8.png?raw=true',
+    image: '/projects/admin-panel.webp',
     github: 'https://github.com/dimitrov93/Projects/tree/main/react-admin-pannel',
-    demo: 'https://admin-pannel-nine.vercel.app/',
     createdAt: '2024-04-10T10:00:00.000Z',
   },
   {
@@ -57,7 +56,7 @@ export const projects: Project[] = [
     titleKey: 'projects.officeBoard.title',
     framework: 'Angular',
     descriptionKey: 'projects.officeBoard.desc',
-    image: 'https://raw.githubusercontent.com/dimitrov93/Projects/refs/heads/main/react-portfolio/client/src/assets/portfolio4.jpg?raw=true',
+    image: '/projects/office-board.webp',
     github: 'https://github.com/dimitrov93/Projects/tree/main/angular-office-board',
     demo: 'https://angular-office-board-dimitrov93.vercel.app/',
     createdAt: '2024-02-20T10:00:00.000Z',
@@ -67,7 +66,7 @@ export const projects: Project[] = [
     titleKey: 'projects.twitterClone.title',
     framework: 'T3 Stack',
     descriptionKey: 'projects.twitterClone.desc',
-    image: 'https://raw.githubusercontent.com/dimitrov93/Projects/refs/heads/main/react-portfolio/client/src/assets/portfolio9.png?raw=true',
+    image: '/projects/twitter-clone.webp',
     github: 'https://github.com/dimitrov93/Projects/tree/main/nextjs-twitter-clone',
     demo: 'https://twitter-clone-dimitrov93.vercel.app/',
     createdAt: '2023-12-05T10:00:00.000Z',
@@ -77,7 +76,7 @@ export const projects: Project[] = [
     titleKey: 'projects.foodRecipes.title',
     framework: 'Next.js',
     descriptionKey: 'projects.foodRecipes.desc',
-    image: 'https://raw.githubusercontent.com/dimitrov93/Projects/refs/heads/main/react-portfolio/client/src/assets/portfolio6.png?raw=true',
+    image: '/projects/food-recipes.webp',
     github: 'https://github.com/dimitrov93/Projects/tree/main/nextjs-receipt-app',
     demo: 'https://receipt-food-dimitrov93.vercel.app/',
     createdAt: '2023-09-15T10:00:00.000Z',
@@ -87,7 +86,7 @@ export const projects: Project[] = [
     titleKey: 'projects.blogPosts.title',
     framework: 'Next.js',
     descriptionKey: 'projects.blogPosts.desc',
-    image: 'https://raw.githubusercontent.com/dimitrov93/Projects/refs/heads/main/react-portfolio/client/src/assets/portfolio7.png?raw=true',
+    image: '/projects/blog-posts.webp',
     github: 'https://github.com/dimitrov93/Projects/tree/main/nextjs-blog-posts-app',
     demo: 'https://blog-posts-two-rho.vercel.app/',
     createdAt: '2023-08-20T10:00:00.000Z',
@@ -97,7 +96,7 @@ export const projects: Project[] = [
     titleKey: 'projects.xoxoStore.title',
     framework: 'React',
     descriptionKey: 'projects.xoxoStore.desc',
-    image: 'https://raw.githubusercontent.com/dimitrov93/Projects/refs/heads/main/react-portfolio/client/src/assets/portfolio3.jpg?raw=true',
+    image: '/projects/xoxo-store.webp',
     github: 'https://github.com/dimitrov93/Projects/tree/main/react-xoxoStore',
     demo: 'https://xoxo-store-dimitrov93.vercel.app/',
     createdAt: '2023-05-10T10:00:00.000Z',
@@ -107,7 +106,7 @@ export const projects: Project[] = [
     titleKey: 'projects.pacman.title',
     framework: 'JavaScript',
     descriptionKey: 'projects.pacman.desc',
-    image: 'https://raw.githubusercontent.com/dimitrov93/Projects/refs/heads/main/react-portfolio/client/src/assets/portfolio1.jpg',
+    image: '/projects/pacman.webp',
     github: 'https://github.com/dimitrov93/Projects/tree/main/javascript-pacman',
     demo: 'https://packman-dimitrov93.netlify.app/',
     createdAt: '2023-03-05T10:00:00.000Z',
@@ -117,7 +116,7 @@ export const projects: Project[] = [
     titleKey: 'projects.spaceInvaders.title',
     framework: 'JavaScript',
     descriptionKey: 'projects.spaceInvaders.desc',
-    image: 'https://github.com/dimitrov93/Projects/blob/main/react-portfolio/client/src/assets/portfolio2.jpg?raw=true',
+    image: '/projects/space-invaders.webp',
     github: 'https://github.com/dimitrov93/Projects/tree/main/javascript-space-invaders',
     demo: 'https://space-invaders-dimitrov93.netlify.app/',
     createdAt: '2023-02-13T10:00:00.000Z',
