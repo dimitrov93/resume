@@ -40,7 +40,7 @@ export default function NavTabs({ active, setActive }: NavTabsProps) {
             onClick={() => setActive(tab)}
             aria-current={active === tab ? 'page' : undefined}
             className={`relative cursor-pointer text-[13px] font-medium px-5 py-3 min-w-[80px] text-center border-none bg-transparent whitespace-nowrap transition-colors duration-300 ${
-              active === tab ? 'text-heading' : 'text-dim hover:text-muted'
+              active === tab ? 'text-accent-text' : 'text-dim hover:text-muted'
             }`}
           >
             {active === tab && (
