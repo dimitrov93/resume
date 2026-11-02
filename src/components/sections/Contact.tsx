@@ -5,8 +5,8 @@ import useTheme from '../../hooks/useTheme'
 import useLanguage from '../../hooks/useLanguage'
 import ContactForm from '../ui/ContactForm'
 
-const anim = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { duration: 0.3 } } }
-const container = { hidden: {}, show: { transition: { staggerChildren: 0.04 } } }
+const anim = { hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0, transition: { duration: 0.35, ease: 'easeOut' as const } } }
+const container = { hidden: {}, show: { transition: { staggerChildren: 0.06 } } }
 
 export default function Contact() {
   const { theme } = useTheme()

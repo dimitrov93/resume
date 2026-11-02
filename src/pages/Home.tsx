@@ -33,9 +33,9 @@ const tabTranslationKeys: Record<string, 'nav.about' | 'nav.resume' | 'nav.certi
 }
 
 const pageVariants = {
-  // Fade only: sliding/scaling made the content (icons, cards) look like it was jumping between tabs.
-  initial: { opacity: 0 },
-  animate: { opacity: 1, transition: { duration: 0.2, ease: 'easeOut' as const } },
+  // Short, eased lift: big slides made content look like it jumped; no motion at all felt stiff.
+  initial: { opacity: 0, y: 6 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.25, ease: 'easeOut' as const } },
   exit: { opacity: 0, transition: { duration: 0.12, ease: 'easeIn' as const } },
 }
 

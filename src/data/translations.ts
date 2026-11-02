@@ -31,7 +31,6 @@ const translations = {
       'End-to-end applications with MongoDB, Express, React, and Node.js (MERN stack).',
     'about.liveProject': 'Live Project',
 
-    'resume.currently': 'Currently',
     'resume.experience': 'Experience',
     'resume.education': 'Education',
     'resume.careerProgression': 'Career Progression',
@@ -63,7 +62,6 @@ const translations = {
     'role.sales': 'Sales Specialist',
     'role.coordinator': 'Transport Coordinator',
 
-    'current.teamLead': 'Team Lead',
 
     'edu.softuni': 'SoftUni — Computer Software Engineering',
     'edu.softuniPeriod': '2021 — 2022',
@@ -204,7 +202,6 @@ const translations = {
       'Цялостни приложения с MongoDB, Express, React и Node.js (MERN stack).',
     'about.liveProject': 'Активен проект',
 
-    'resume.currently': 'В момента',
     'resume.experience': 'Опит',
     'resume.education': 'Образование',
     'resume.careerProgression': 'Кариерно развитие',
@@ -236,7 +233,6 @@ const translations = {
     'role.sales': 'Специалист продажби',
     'role.coordinator': 'Координатор транспорт',
 
-    'current.teamLead': 'Ръководител на екип',
 
     'edu.softuni': 'SoftUni — Софтуерно инженерство',
     'edu.softuniPeriod': '2021 — 2022',

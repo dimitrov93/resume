@@ -8,8 +8,8 @@ import CertPreview from '../ui/CertPreview'
 import SoftUniHero from '../ui/SoftUniHero'
 import useLanguage from '../../hooks/useLanguage'
 
-const container = { hidden: {}, show: { transition: { staggerChildren: 0.04 } } }
-const anim = { hidden: { opacity: 0 }, show: { opacity: 1, transition: { duration: 0.3 } } }
+const container = { hidden: {}, show: { transition: { staggerChildren: 0.06 } } }
+const anim = { hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0, transition: { duration: 0.35, ease: 'easeOut' as const } } }
 
 const jsPathTitles = [
   'ReactJS', 'Angular', 'JS Applications', 'JS Back-End', 'HTML & CSS', 'Programming Basics',
