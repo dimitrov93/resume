@@ -16,6 +16,12 @@ export default function ContactForm() {
 
   const handleSubmit = (e: React.SyntheticEvent<HTMLFormElement>) => {
     e.preventDefault()
+    // Honeypot: people never see the "website" field, simple bots fill it in. Pretend it worked.
+    const trap = formRef.current?.elements.namedItem('website') as HTMLInputElement | null
+    if (trap?.value) {
+      setSent(true)
+      return
+    }
     setLoading(true)
     setError('')
 
@@ -51,7 +57,7 @@ export default function ContactForm() {
 
   if (sent) {
     return (
-      <div className="flex flex-col items-center justify-center text-center bg-card border border-border-gold rounded-2xl py-12 px-4 gap-4">
+      <div role="status" className="flex flex-col items-center justify-center text-center bg-card border border-border-gold rounded-2xl py-12 px-4 gap-4">
         <FiCheckCircle size={48} color="#4ade80" />
         <h3 className="text-lg font-semibold text-heading">{t('contact.sent')}</h3>
         <p className="text-sm text-dim">{t('contact.thanks')}</p>
@@ -67,19 +73,23 @@ export default function ContactForm() {
 
   return (
     <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col bg-card border border-border-gold rounded-2xl p-6 gap-4">
+      <div aria-hidden="true" className="absolute -left-[9999px] w-px h-px overflow-hidden">
+        <label htmlFor="contact-website">Website</label>
+        <input id="contact-website" name="website" type="text" tabIndex={-1} autoComplete="off" defaultValue="" />
+      </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label htmlFor="contact-name" className="block text-xs font-medium mb-1.5 text-dim">{t('contact.fullName')}</label>
           <input
             id="contact-name" name="name" value={form.name} onChange={handleChange} placeholder={t('contact.yourName')} required
-            className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-border-subtle text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent/40"
+            className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-border-subtle text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent focus:ring-2 focus:ring-accent/25"
           />
         </div>
         <div>
           <label htmlFor="contact-email" className="block text-xs font-medium mb-1.5 text-dim">{t('contact.email')}</label>
           <input
             id="contact-email" name="email" type="email" value={form.email} onChange={handleChange} placeholder={t('contact.emailPlaceholder')} required
-            className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-border-subtle text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent/40"
+            className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-border-subtle text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent focus:ring-2 focus:ring-accent/25"
           />
         </div>
       </div>
@@ -87,14 +97,14 @@ export default function ContactForm() {
         <label htmlFor="contact-subject" className="block text-xs font-medium mb-1.5 text-dim">{t('contact.subject')}</label>
         <input
           id="contact-subject" name="subject" value={form.subject} onChange={handleChange} placeholder={t('contact.subjectPlaceholder')} required
-          className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-border-subtle text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent/40"
+          className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-border-subtle text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent focus:ring-2 focus:ring-accent/25"
         />
       </div>
       <div>
         <label htmlFor="contact-message" className="block text-xs font-medium mb-1.5 text-dim">{t('contact.message')}</label>
         <textarea
           id="contact-message" name="message" value={form.message} onChange={handleChange} placeholder={t('contact.messagePlaceholder')} rows={4} required
-          className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-border-subtle text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent/40 resize-none"
+          className="w-full px-4 py-3 rounded-xl text-sm outline-none bg-bg border border-border-subtle text-paragraph font-[Poppins,sans-serif] transition-[border-color] duration-300 focus:border-accent focus:ring-2 focus:ring-accent/25 resize-none"
         />
       </div>
       {error && (

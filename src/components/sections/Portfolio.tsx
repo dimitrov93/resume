@@ -120,6 +120,8 @@ export default function Portfolio() {
           <div ref={filterRef} className="relative max-sm:flex-1 max-sm:min-w-0">
             <button
               onClick={() => setFilterOpen(o => !o)}
+              aria-expanded={filterOpen}
+              aria-haspopup="true"
               className={`cursor-pointer inline-flex items-center gap-2 text-[12px] font-semibold pl-3 pr-2.5 py-2 rounded-lg border transition-all duration-300 min-w-40 max-sm:min-w-0 max-sm:w-full ${
                 framework !== 'All'
                   ? 'border-accent/30 bg-accent/10 text-accent'
@@ -163,6 +165,7 @@ export default function Portfolio() {
                           setVisible(4)
                           setFilterOpen(false)
                         }}
+                        aria-pressed={active}
                         className={`w-full cursor-pointer inline-flex items-center gap-2.5 text-[12px] font-semibold px-3 py-2 rounded-lg border-none transition-colors duration-200 ${
                           active
                             ? 'bg-accent/15 text-accent'
@@ -187,6 +190,8 @@ export default function Portfolio() {
           <div ref={sortRef} className="relative max-sm:flex-1 max-sm:min-w-0">
             <button
               onClick={() => setSortOpen(o => !o)}
+              aria-expanded={sortOpen}
+              aria-haspopup="true"
               className="cursor-pointer inline-flex items-center gap-2 text-[12px] font-semibold pl-3 pr-2.5 py-2 rounded-lg border border-border-subtle bg-transparent text-paragraph hover:border-border-medium transition-all duration-300 min-w-32 max-sm:min-w-0 max-sm:w-full"
             >
               <span className="text-dim text-[10px] uppercase tracking-wider font-bold max-sm:hidden">{t('portfolio.sort')}</span>
@@ -217,6 +222,7 @@ export default function Portfolio() {
                           setVisible(4)
                           setSortOpen(false)
                         }}
+                        aria-pressed={active}
                         className={`w-full cursor-pointer inline-flex items-center gap-2.5 text-[12px] font-semibold px-3 py-2 rounded-lg border-none transition-colors duration-200 ${
                           active
                             ? 'bg-accent/15 text-accent'

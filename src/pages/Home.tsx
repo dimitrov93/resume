@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { profile } from '../data/profile'
 import { AnimatePresence, motion } from 'framer-motion'
 import { FiX, FiSun, FiMoon } from 'react-icons/fi'
@@ -138,9 +138,22 @@ export default function Home() {
   const { t } = useLanguage()
   const cvPdf = useCvPdf()
 
+  // Browser tab title follows the active section, e.g. "Portfolio — Tsvetomir Dimitrov".
   useEffect(() => {
-    document.title = `${profile.name} — ${profile.title}`
-  }, [])
+    document.title = active === 'About'
+      ? `${profile.name} — ${profile.title}`
+      : `${t(tabTranslationKeys[active])} — ${profile.name}`
+  }, [active, t])
+
+  // A newly opened tab starts at its top, not at the previous tab's scroll position.
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const prevActive = useRef(active)
+  useEffect(() => {
+    if (prevActive.current === active) return
+    prevActive.current = active
+    scrollRef.current?.scrollTo({ top: 0 })
+    if (!isDesktop) window.scrollTo({ top: 0 })
+  }, [active, isDesktop])
 
   useEffect(() => {
     const handler = () => {
@@ -169,7 +182,7 @@ export default function Home() {
         <div className="flex items-stretch gap-7.5 flex-1 min-h-0">
           <SidebarFull />
           <div className="flex-1 min-w-0 relative bg-surface border border-border-gold rounded-2xl rounded-tr-none">
-            <div className="h-full overflow-y-auto overflow-x-hidden py-7.5 px-6">
+            <div ref={scrollRef} className="h-full overflow-y-auto overflow-x-hidden py-7.5 px-6">
               <div className="mb-2">
               <h2 className="text-heading text-2xl font-semibold tracking-tight">
                 {active === 'About' ? t('page.aboutMe') : t(tabTranslationKeys[active])}

@@ -12,6 +12,7 @@ import './index.css'
 import { ThemeProvider } from './hooks/useTheme'
 import { LanguageProvider } from './hooks/useLanguage'
 import App from './App'
+import ErrorBoundary from './components/ErrorBoundary'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -20,7 +21,9 @@ createRoot(document.getElementById('root')!).render(
       <MotionConfig reducedMotion="user">
         <LanguageProvider>
           <ThemeProvider>
-            <App />
+            <ErrorBoundary>
+              <App />
+            </ErrorBoundary>
           </ThemeProvider>
         </LanguageProvider>
       </MotionConfig>
