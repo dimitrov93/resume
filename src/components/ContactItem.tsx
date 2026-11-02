@@ -22,10 +22,10 @@ export default function ContactItem({ icon: Icon, label, value, href }: ContactI
     <a
       href={href}
       {...(href.startsWith('http') && { target: '_blank', rel: 'noopener noreferrer' })}
-      className="block py-2 no-underline text-inherit transition-opacity duration-300"
+      className="block no-underline text-inherit"
     >
-      {/* Row layout on an inner element: browser extensions (dialers, CRMs) restyle mailto:/tel: links themselves. */}
-      <div className="flex flex-row flex-nowrap items-center gap-4">
+      {/* Layout and spacing on an inner element: browser extensions (dialers, CRMs) restyle mailto:/tel: links themselves. */}
+      <div className="flex flex-row flex-nowrap items-center gap-4 py-2">
         <IconBox>
           <Icon size={18} style={{ color: 'var(--color-accent)' }} />
         </IconBox>
