@@ -14,10 +14,11 @@ export default function Contact() {
       <motion.div variants={anim}>
         <a
           href={`mailto:${profile.email}`}
-          className="group block bg-card border border-border-gold rounded-2xl p-6 no-underline transition-all duration-300 hover:border-accent/30 hover:shadow-[0_4px_24px_var(--color-border-gold)]"
+          className="group block rounded-2xl no-underline"
         >
-          {/* Row layout on an inner element: browser extensions (CRMs, dialers) restyle mailto: links themselves. */}
-          <div className="flex flex-row flex-nowrap items-center gap-5">
+          {/* All card styling lives on this inner element: browser extensions (CRMs, dialers) restyle
+              mailto: links themselves and were stripping the background, border and padding. */}
+          <div className="flex flex-row flex-nowrap items-center gap-5 bg-card border border-border-gold rounded-2xl p-6 transition-all duration-300 group-hover:border-accent/30 group-hover:shadow-[0_4px_24px_var(--color-border-gold)]">
             <div className="shrink-0 w-14 h-14 rounded-2xl bg-linear-to-br from-accent to-accent-2 flex items-center justify-center shadow-[0_4px_16px_var(--color-border-gold)] group-hover:shadow-[0_4px_24px_var(--color-border-gold)] transition-shadow duration-300">
               <FiMail size={24} className="text-accent-text" />
             </div>
