@@ -108,6 +108,13 @@ export default function Portfolio() {
           desc={t('portfolio.kauziDesc')}
           framework="Next.js"
         />
+        <FeaturedProjectCard
+          href="https://poof.works"
+          image="/poof.webp"
+          title="Poof"
+          desc={t('portfolio.poofDesc')}
+          framework="React"
+        />
       </motion.div>
 
       {/* Header: count + filter dropdown + sort */}
