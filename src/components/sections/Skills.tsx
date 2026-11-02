@@ -58,7 +58,6 @@ export default function Resume() {
   return (
     <motion.div variants={container} initial="hidden" animate="show" className="flex flex-col gap-10">
       <motion.div variants={anim}>
-        <h3 className="text-lg sm:text-xl text-heading font-semibold mb-5">{t('resume.experience')}</h3>
         <div className="flex flex-col gap-5">
           {localExperience.map(e => <TimelineEntry key={e.title} {...e} />)}
         </div>

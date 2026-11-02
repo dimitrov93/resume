@@ -31,7 +31,6 @@ const translations = {
       'End-to-end applications with MongoDB, Express, React, and Node.js (MERN stack).',
     'about.liveProject': 'Live Project',
 
-    'resume.experience': 'Experience',
     'resume.education': 'Education',
     'resume.careerProgression': 'Career Progression',
 
@@ -133,7 +132,6 @@ const translations = {
     'contact.getInTouch': 'Get in touch',
     'contact.clickToEmail': 'Click to send me an email',
     'contact.orUseForm': 'Or use the form below',
-    'contact.whereImBased': "Where I'm based",
     'contact.fullName': 'Full Name',
     'contact.yourName': 'Your name',
     'contact.email': 'Email',
@@ -149,14 +147,13 @@ const translations = {
     'contact.sendAnother': 'Send Another',
     'contact.sending': 'Sending...',
     'contact.sendMessage': 'Send Message',
-    'contact.mapTitle': 'Location map',
 
     'a11y.toggleMenu': 'Toggle menu',
     'a11y.closeMenu': 'Close menu',
     'a11y.close': 'Close',
     'a11y.toggleContacts': 'Toggle contacts',
     'a11y.toggleTheme': 'Toggle theme',
-    'a11y.switchLanguageTo': 'Switch language to',
+    'a11y.language': 'Language',
     'a11y.mainMenu': 'Main menu',
     'a11y.prev': 'Previous',
     'a11y.next': 'Next',
@@ -202,7 +199,6 @@ const translations = {
       'Цялостни приложения с MongoDB, Express, React и Node.js (MERN stack).',
     'about.liveProject': 'Активен проект',
 
-    'resume.experience': 'Опит',
     'resume.education': 'Образование',
     'resume.careerProgression': 'Кариерно развитие',
 
@@ -304,7 +300,6 @@ const translations = {
     'contact.getInTouch': 'Свържете се',
     'contact.clickToEmail': 'Натиснете, за да ми изпратите имейл',
     'contact.orUseForm': 'Или използвайте формата по-долу',
-    'contact.whereImBased': 'Къде се намирам',
     'contact.fullName': 'Пълно име',
     'contact.yourName': 'Вашето име',
     'contact.email': 'Имейл',
@@ -320,14 +315,13 @@ const translations = {
     'contact.sendAnother': 'Изпрати ново',
     'contact.sending': 'Изпращане...',
     'contact.sendMessage': 'Изпрати',
-    'contact.mapTitle': 'Карта на местоположението',
 
     'a11y.toggleMenu': 'Отвори/затвори менюто',
     'a11y.closeMenu': 'Затвори менюто',
     'a11y.close': 'Затвори',
     'a11y.toggleContacts': 'Покажи/скрий контактите',
     'a11y.toggleTheme': 'Смени темата',
-    'a11y.switchLanguageTo': 'Смени езика на',
+    'a11y.language': 'Език',
     'a11y.mainMenu': 'Основно меню',
     'a11y.prev': 'Предишни',
     'a11y.next': 'Следващи',
