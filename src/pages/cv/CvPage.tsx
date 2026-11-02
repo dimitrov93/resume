@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, type ChangeEvent } from 'react'
+import { FiMail, FiMapPin, FiPhone } from 'react-icons/fi'
 import './cv.css'
 import cvCssRaw from './cv.css?raw'
 import useTheme from '../../hooks/useTheme'
@@ -325,15 +326,15 @@ export default function CvPage() {
           </div>
           <div className="contacts">
             <div className="contact-item">
-              <div className="contact-icon">📍</div>
+              <div className="contact-icon"><FiMapPin /></div>
               <span>Montana, Bulgaria</span>
             </div>
             <div className="contact-item">
-              <div className="contact-icon">📞</div>
+              <div className="contact-icon"><FiPhone /></div>
               <span>+359 884 334 998</span>
             </div>
             <div className="contact-item">
-              <div className="contact-icon">📧</div>
+              <div className="contact-icon"><FiMail /></div>
               <span>ts.dimitrov93@gmail.com</span>
             </div>
           </div>
