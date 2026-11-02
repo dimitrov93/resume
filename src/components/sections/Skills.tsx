@@ -11,7 +11,6 @@ export default function Resume() {
   const { t } = useLanguage()
 
   const localCurrentPositions = [
-    { role: t('current.frontEnd'), company: 'Lupy Games' },
     { role: t('current.teamLead'), company: 'Montway Auto Transport' },
   ]
 

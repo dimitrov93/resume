@@ -9,7 +9,7 @@ const translations = {
 
     'about.available': 'Available for freelance & opportunities',
     'about.bio1':
-      'Dual-role professional: Front-End Developer at Lupy Games and Team Lead at Montway Auto Transport, overseeing a LiveChat team. On one side, building scalable React/Next.js applications with clean architecture. On the other, running one-on-ones, monitoring performance, and developing team members day-to-day.',
+      'Front-End Developer and Team Lead. Built and shipped production React/Next.js applications at Lupy Games, including the Kauzi charity gaming platform from scratch. In parallel, Team Lead at Montway Auto Transport, overseeing a LiveChat team: running one-on-ones, monitoring performance, and developing team members day-to-day.',
     'about.bio2':
       'A developer with genuine people management experience — in the field, not just on paper. Passionate about turning complex problems into simple, performant, and intuitive interfaces.',
     'about.whatImDoing': "What I'm Doing",
@@ -41,9 +41,9 @@ const translations = {
     'resume.careerProgression': 'Career Progression',
 
     'exp.lupyTitle': 'Front-End Developer — Lupy Games',
-    'exp.lupyPeriod': 'Apr 2024 — Present',
+    'exp.lupyPeriod': 'Apr 2024 — Oct 2026',
     'exp.lupyDesc':
-      'Led full platform migration from WordPress to Next.js. Drove user engagement through gamification: achievements, ranks, level progression, and customizable themes.',
+      'Led full platform migration from WordPress to Next.js. Drove user engagement through gamification: achievements, ranks, level progression, and customizable themes. Built Kauzi (kauzi.lupygames.com) from scratch — a charity platform where daily puzzle games raise points for a shared cause.',
     'exp.montwayTitle': 'Team Lead — Montway Auto Transport',
     'exp.montwayPeriod': 'Sep 2016 — Present',
     'exp.montwayDesc':
@@ -66,7 +66,6 @@ const translations = {
     'role.sales': 'Sales Specialist',
     'role.coordinator': 'Transport Coordinator',
 
-    'current.frontEnd': 'Front-End Developer',
     'current.teamLead': 'Team Lead',
 
     'edu.softuni': 'SoftUni — Computer Software Engineering',
@@ -87,6 +86,7 @@ const translations = {
     'portfolio.retry': 'Retry',
     'portfolio.featured': 'Featured',
     'portfolio.lupyDesc': 'Gamified platform with achievements, ranks, leaderboards, customizable themes, and multi-language support. Migrated from WordPress to Next.js 14→16.',
+    'portfolio.kauziDesc': 'Games for a cause: free daily puzzles (Word Search, Wordle, Mini Sudoku, Patches) where every finished game adds points to a shared charity goal. Teams, leaderboards, daily reminders, and EN/BG support. Built from scratch.',
     'portfolio.otherProjects': 'Other Projects',
     'portfolio.project': 'Project',
     'portfolio.source': 'Source',
@@ -186,7 +186,7 @@ const translations = {
 
     'about.available': 'Свободен за freelance и нови възможности',
     'about.bio1':
-      'Професионалист с двойна роля: Front-End Developer в Lupy Games и Team Lead в Montway Auto Transport, управляващ LiveChat екип. От едната страна — изграждане на мащабируеми React/Next.js приложения с чиста архитектура. От другата — провеждане на one-on-one срещи, проследяване на представянето и ежедневно развитие на членовете на екипа.',
+      'Front-End Developer и Team Lead. Разработвах и пусках в продукция React/Next.js приложения в Lupy Games, включително благотворителната игрова платформа Kauzi от нулата. Паралелно съм Team Lead в Montway Auto Transport, управляващ LiveChat екип: one-on-one срещи, проследяване на представянето и ежедневно развитие на членовете на екипа.',
     'about.bio2':
       'Разработчик с истински опит в управлението на хора — на терен, не само на хартия. Страстен към превръщането на сложни проблеми в прости, бързи и интуитивни интерфейси.',
     'about.whatImDoing': 'Какво правя',
@@ -218,9 +218,9 @@ const translations = {
     'resume.careerProgression': 'Кариерно развитие',
 
     'exp.lupyTitle': 'Front-End Developer — Lupy Games',
-    'exp.lupyPeriod': 'Апр 2024 — Настояще',
+    'exp.lupyPeriod': 'Апр 2024 — Окт 2026',
     'exp.lupyDesc':
-      'Ръководих пълна миграция на платформата от WordPress към Next.js. Повишаване на ангажираността на потребителите чрез геймификация: постижения, рангове, нива и персонализируеми теми.',
+      'Ръководих пълна миграция на платформата от WordPress към Next.js. Повишаване на ангажираността на потребителите чрез геймификация: постижения, рангове, нива и персонализируеми теми. Създадох от нулата Kauzi (kauzi.lupygames.com) — благотворителна платформа, в която ежедневни пъзел игри събират точки за обща кауза.',
     'exp.montwayTitle': 'Team Lead — Montway Auto Transport',
     'exp.montwayPeriod': 'Сеп 2016 — Настояще',
     'exp.montwayDesc':
@@ -243,7 +243,6 @@ const translations = {
     'role.sales': 'Специалист продажби',
     'role.coordinator': 'Координатор транспорт',
 
-    'current.frontEnd': 'Front-End разработчик',
     'current.teamLead': 'Ръководител на екип',
 
     'edu.softuni': 'SoftUni — Софтуерно инженерство',
@@ -264,6 +263,7 @@ const translations = {
     'portfolio.retry': 'Опитай отново',
     'portfolio.featured': 'Основен',
     'portfolio.lupyDesc': 'Платформа с геймификация — постижения, рангове, класации, персонализируеми теми и многоезична поддръжка. Мигрирана от WordPress към Next.js 14→16.',
+    'portfolio.kauziDesc': 'Игри за кауза: безплатни ежедневни пъзели (Word Search, Wordle, Mini Sudoku, Patches), в които всяка завършена игра добавя точки към обща благотворителна цел. Отбори, класации, ежедневни напомняния и поддръжка на EN/BG. Създадена от нулата.',
     'portfolio.otherProjects': 'Други проекти',
     'portfolio.project': 'Проект',
     'portfolio.source': 'Код',

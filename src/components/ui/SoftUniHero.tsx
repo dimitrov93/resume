@@ -29,7 +29,7 @@ export default function SoftUniHero({ onViewCert }: { onViewCert: (title: string
         onClick={() => onViewCert(diploma.title, diploma.pdf)}
       >
         <div className="sm:w-[45%] shrink-0 aspect-16/10 sm:aspect-auto overflow-hidden relative bg-overlay-5">
-          <CertPreview file={diploma.pdf} title={diploma.title} />
+          <CertPreview file={diploma.pdf} title={diploma.title} className="object-top" />
         </div>
         <div className="flex flex-col justify-center gap-4 p-6 sm:p-8 flex-1">
           <span className="text-[11px] uppercase tracking-[0.2em] font-bold text-accent/50">{t('certs.diplomaLabel')}</span>

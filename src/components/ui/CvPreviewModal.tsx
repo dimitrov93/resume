@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { FiDownload, FiX } from 'react-icons/fi'
 import useLanguage from '../../hooks/useLanguage'
-import useCvPdf from '../../hooks/useCvPdf'
+import useCvPdf, { cvDownloadUrl } from '../../hooks/useCvPdf'
 
 export default function CvPreviewModal({ onClose }: { onClose: () => void }) {
   const { t } = useLanguage()
@@ -27,7 +27,7 @@ export default function CvPreviewModal({ onClose }: { onClose: () => void }) {
             <span className="text-heading font-semibold text-sm">{t('certs.cvPreview')}</span>
             <div className="flex items-center gap-3">
               <a
-                href={cvPdf}
+                href={cvDownloadUrl(cvPdf)}
                 download="Tsvetomir_Dimitrov_CV.pdf"
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-linear-to-r from-accent to-accent-2 text-heading text-xs font-semibold no-underline transition-all duration-300 hover:brightness-110"
               >

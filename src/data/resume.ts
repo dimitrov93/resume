@@ -28,14 +28,13 @@ export const skills = [
 export const skillCategories = ['Frontend', 'Backend', 'Database & Tools'] as const
 
 export const currentPositions = [
-  { role: 'Front-End Developer', company: 'Lupy Games' },
   { role: 'Team Lead', company: 'Montway Auto Transport' },
 ]
 
 export const experience = [
   {
     title: 'Front-End Developer — Lupy Games',
-    period: 'Apr 2024 — Present',
+    period: 'Apr 2024 — Oct 2026',
     desc: 'Led full platform migration from WordPress to Next.js. Drove user engagement through gamification: achievements, ranks, level progression, and customizable themes.',
   },
   {

@@ -353,11 +353,11 @@ export default function CvPage() {
             <div className="s-section">
               <h2>About Me</h2>
               <p className="about-text">
-                Dual-role professional: Front-End Developer at Lupy Games and Team Lead at Montway Auto
-                Transport, overseeing a LiveChat team. On one side, building scalable
-                React/Next.js applications with clean architecture. On the other, running one-on-ones,
-                monitoring performance, and developing team members day-to-day. A developer with genuine
-                people management experience — in the field, not just on paper.
+                Front-End Developer and Team Lead. Built and shipped production React/Next.js
+                applications at Lupy Games, including the Kauzi charity gaming platform from scratch.
+                In parallel, Team Lead at Montway Auto Transport, overseeing a LiveChat team: running
+                one-on-ones, monitoring performance, and developing team members day-to-day. A developer
+                with genuine people management experience — in the field, not just on paper.
               </p>
             </div>
 
@@ -464,7 +464,7 @@ export default function CvPage() {
               <div className="job">
                 <div className="job-meta">
                   <div className="company">Lupy Games</div>
-                  <div className="period">Apr 2024 – Present</div>
+                  <div className="period">Apr 2024 – Oct 2026</div>
                   <div className="location">Remote</div>
                 </div>
                 <div className="job-content">
@@ -472,6 +472,7 @@ export default function CvPage() {
                   <ul>
                     <li>Led full platform migration from WordPress to Next.js — delivering measurable gains in performance and scalability</li>
                     <li>Drove user engagement through gamification: achievements, ranks, level progression, and customizable themes</li>
+                    <li>Built Kauzi (kauzi.lupygames.com) from scratch — a charity platform where daily puzzle games raise points for a shared cause, with teams, leaderboards, and EN/BG support</li>
                     <li>Continuously iterate on features and UX to keep pace with evolving community needs</li>
                   </ul>
                 </div>

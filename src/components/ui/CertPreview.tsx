@@ -6,7 +6,7 @@ function getThumbnail(file: string): string {
   return file.replace(/\.pdf$/i, '.jpg')
 }
 
-export default function CertPreview({ file, title }: { file: string; title: string }) {
+export default function CertPreview({ file, title, className = '' }: { file: string; title: string; className?: string }) {
   const { t } = useLanguage()
 
   if (!file) {
@@ -18,5 +18,5 @@ export default function CertPreview({ file, title }: { file: string; title: stri
     )
   }
 
-  return <img src={getThumbnail(file)} alt={title} className="w-full h-full object-cover" />
+  return <img src={getThumbnail(file)} alt={title} className={`w-full h-full object-cover ${className}`} />
 }
