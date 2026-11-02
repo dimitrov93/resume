@@ -161,8 +161,9 @@
 }
 
 .cv-root .contact-icon {
+  display: flex;
   font-size: 20px;
-  color: var(--accent);
+  color: #fff;
 }
 
 .cv-root .body {
