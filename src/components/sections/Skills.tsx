@@ -2,8 +2,8 @@ import { motion } from 'framer-motion'
 import TimelineEntry from '../ui/TimelineEntry'
 import useLanguage from '../../hooks/useLanguage'
 
-const container = { hidden: {}, show: { transition: { staggerChildren: 0.06 } } }
-const anim = { hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0, transition: { duration: 0.35, ease: 'easeOut' as const } } }
+const container = { hidden: {}, show: { transition: { staggerChildren: 0.09 } } }
+const anim = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0, transition: { duration: 0.45 } } }
 
 export default function Resume() {
   const { t } = useLanguage()
