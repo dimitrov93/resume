@@ -1,9 +1,13 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { FiX } from 'react-icons/fi'
+import useDialog from '../../hooks/useDialog'
+import useLanguage from '../../hooks/useLanguage'
 
 const isImage = (path: string) => /\.(jpg|jpeg|png|webp)$/i.test(path)
 
 export default function CertModal({ title, file, onClose }: { title: string; file: string; onClose: () => void }) {
+  const { t } = useLanguage()
+  const closeRef = useDialog(onClose)
   return (
     <AnimatePresence>
       <motion.div
@@ -19,12 +23,17 @@ export default function CertModal({ title, file, onClose }: { title: string; fil
           exit={{ opacity: 0, scale: 0.92 }}
           transition={{ duration: 0.25 }}
           onClick={e => e.stopPropagation()}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="cert-modal-title"
           className="relative w-full max-w-4xl max-h-[85vh] bg-surface border border-border-gold rounded-2xl overflow-hidden flex flex-col max-sm:max-w-full max-sm:max-h-[95vh] max-sm:rounded-lg"
         >
           <div className="flex items-center justify-between px-5 py-3 border-b border-border-gold">
-            <span className="text-heading font-semibold text-sm truncate">{title}</span>
+            <span id="cert-modal-title" className="text-heading font-semibold text-sm truncate">{title}</span>
             <button
+              ref={closeRef}
               onClick={onClose}
+              aria-label={t('a11y.close')}
               className="w-8 h-8 flex items-center justify-center rounded-full bg-overlay-10 border-none cursor-pointer text-heading hover:bg-overlay-20 transition-colors"
             >
               <FiX size={16} />

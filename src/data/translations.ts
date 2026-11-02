@@ -15,7 +15,7 @@ const translations = {
     'about.whatImDoing': "What I'm Doing",
     'about.mySkills': 'My Skills',
     'about.featuredProject': 'Featured Project',
-    'about.lupyDesc': 'Led the full platform migration from WordPress to Next.js 14, and continued upgrading through versions 15 and 16. Drove user engagement through gamification — achievements, ranks, level progression, and customizable themes/skins for a personalized experience. Built real-time notifications, leaderboards, user profile pages, and multi-language support. Continuously iterating on features and UX to keep pace with evolving community needs and modern web standards.',
+    'about.lupyDesc': 'Led the full platform migration from WordPress to Next.js 14, and continued upgrading through versions 15 and 16. Drove user engagement through gamification — achievements, ranks, level progression, and customizable themes/skins for a personalized experience. Built real-time notifications, leaderboards, user profile pages, and multi-language support. Continuously iterated on features and UX to keep pace with evolving community needs and modern web standards.',
     'about.visitSite': 'Visit Site',
     'about.webDesign': 'Web Design',
     'about.webDesignDesc':
@@ -29,10 +29,6 @@ const translations = {
     'about.fullStack': 'Full-Stack Solutions',
     'about.fullStackDesc':
       'End-to-end applications with MongoDB, Express, React, and Node.js (MERN stack).',
-    'about.focus': 'Focus',
-    'about.currentlyLearning': 'Currently Learning',
-    'about.learningDesc':
-      'Expanding into generative AI and building intelligent, production-grade apps on top of Node.js. Currently working through the Generative AI for Node.js: OpenAI, LangChain — TypeScript Udemy course, and getting hands-on with Claude and the broader Anthropic ecosystem.',
     'about.liveProject': 'Live Project',
 
     'resume.currently': 'Currently',
@@ -163,6 +159,7 @@ const translations = {
 
     'a11y.toggleMenu': 'Toggle menu',
     'a11y.closeMenu': 'Close menu',
+    'a11y.close': 'Close',
     'a11y.toggleContacts': 'Toggle contacts',
     'a11y.toggleTheme': 'Toggle theme',
     'a11y.toggleLanguage': 'Toggle language',
@@ -189,11 +186,11 @@ const translations = {
     'about.bio1':
       'Front-End Developer и Team Lead. Разработвах и пусках в продукция React/Next.js приложения в Lupy Games, включително благотворителната игрова платформа Kauzi от нулата. Паралелно съм Team Lead в Montway Auto Transport, управляващ LiveChat екип: one-on-one срещи, проследяване на представянето и ежедневно развитие на членовете на екипа.',
     'about.bio2':
-      'Разработчик с истински опит в управлението на хора — на терен, не само на хартия. Страстен към превръщането на сложни проблеми в прости, бързи и интуитивни интерфейси.',
+      'Разработчик с истински опит в управлението на хора — на терен, не само на хартия. Обичам да превръщам сложни проблеми в прости, бързи и интуитивни интерфейси.',
     'about.whatImDoing': 'Какво правя',
     'about.mySkills': 'Моите умения',
     'about.featuredProject': 'Основен проект',
-    'about.lupyDesc': 'Ръководих пълната миграция на платформата от WordPress към Next.js 14 и продължих надграждането през версии 15 и 16. Повишаване на ангажираността чрез геймификация — постижения, рангове, нива и персонализируеми теми/скинове. Разработих нотификации в реално време, класации, потребителски профили и многоезична поддръжка. Непрекъснато подобряване на функционалности и UX спрямо нуждите на общността и съвременните уеб стандарти.',
+    'about.lupyDesc': 'Ръководих пълната миграция на платформата от WordPress към Next.js 14 и продължих надграждането през версии 15 и 16. Повиших ангажираността чрез геймификация — постижения, рангове, нива и персонализируеми теми/скинове. Разработих нотификации в реално време, класации, потребителски профили и многоезична поддръжка. Непрекъснато подобрявах функционалностите и UX спрямо нуждите на общността и съвременните уеб стандарти.',
     'about.visitSite': 'Посети сайта',
     'about.webDesign': 'Уеб дизайн',
     'about.webDesignDesc':
@@ -207,10 +204,6 @@ const translations = {
     'about.fullStack': 'Full-Stack решения',
     'about.fullStackDesc':
       'Цялостни приложения с MongoDB, Express, React и Node.js (MERN stack).',
-    'about.focus': 'Фокус',
-    'about.currentlyLearning': 'В момента уча',
-    'about.learningDesc':
-      'Разширявам знанията си в генеративния AI и изграждането на интелигентни, production-grade приложения върху Node.js. В момента преминавам през Udemy курса Generative AI for Node.js: OpenAI, LangChain — TypeScript и експериментирам с Claude и по-широката екосистема на Anthropic.',
     'about.liveProject': 'Активен проект',
 
     'resume.currently': 'В момента',
@@ -221,7 +214,7 @@ const translations = {
     'exp.lupyTitle': 'Front-End Developer — Lupy Games',
     'exp.lupyPeriod': 'Апр 2024 — Окт 2026',
     'exp.lupyDesc':
-      'Ръководих пълна миграция на платформата от WordPress към Next.js. Повишаване на ангажираността на потребителите чрез геймификация: постижения, рангове, нива и персонализируеми теми. Създадох от нулата Kauzi (kauzi.lupygames.com) — благотворителна платформа, в която ежедневни пъзел игри събират точки за обща кауза.',
+      'Ръководих пълна миграция на платформата от WordPress към Next.js. Повиших ангажираността на потребителите чрез геймификация: постижения, рангове, нива и персонализируеми теми. Създадох от нулата Kauzi (kauzi.lupygames.com) — благотворителна платформа, в която ежедневни пъзел игри събират точки за обща кауза.',
     'exp.montwayTitle': 'Team Lead — Montway Auto Transport',
     'exp.montwayPeriod': 'Сеп 2016 — Настояще',
     'exp.montwayDesc':
@@ -325,7 +318,7 @@ const translations = {
     'contact.fullName': 'Пълно име',
     'contact.yourName': 'Вашето име',
     'contact.email': 'Имейл',
-    'contact.emailPlaceholder': 'вашият@имейл.com',
+    'contact.emailPlaceholder': 'your@email.com',
     'contact.subject': 'Тема',
     'contact.subjectPlaceholder': 'Напишете нещо...',
     'contact.message': 'Съобщение',
@@ -341,6 +334,7 @@ const translations = {
 
     'a11y.toggleMenu': 'Отвори/затвори менюто',
     'a11y.closeMenu': 'Затвори менюто',
+    'a11y.close': 'Затвори',
     'a11y.toggleContacts': 'Покажи/скрий контактите',
     'a11y.toggleTheme': 'Смени темата',
     'a11y.toggleLanguage': 'Смени езика',

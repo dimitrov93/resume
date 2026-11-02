@@ -22,7 +22,8 @@ export default function Certifications() {
   const { t } = useLanguage()
 
   const handleViewCert = (title: string, file: string) => {
-    if (window.innerWidth < 640) {
+    // Phones and tablets can't show a PDF inside an iframe reliably (blank on Android, first page only on iPad).
+    if (window.innerWidth < 640 || (window.matchMedia('(pointer: coarse)').matches && !/\.(jpe?g|png|webp)$/i.test(file))) {
       window.open(file, '_blank')
       return
     }

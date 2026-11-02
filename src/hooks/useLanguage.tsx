@@ -20,7 +20,9 @@ const LanguageContext = createContext<LanguageContextValue>({
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [lang, setLang] = useState<Lang>(() => {
     const saved = localStorage.getItem('lang') as Lang | null
-    return saved === 'bg' ? 'bg' : 'en'
+    if (saved === 'bg' || saved === 'en') return saved
+    // First visit: Bulgarian browsers get BG, everyone else EN.
+    return navigator.languages?.some(l => l.toLowerCase().startsWith('bg')) ? 'bg' : 'en'
   })
 
   useEffect(() => {

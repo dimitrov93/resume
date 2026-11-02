@@ -145,7 +145,8 @@ export default function Home() {
 
   useEffect(() => {
     const handler = () => {
-      if (window.innerWidth < 640) {
+      // Phones and tablets can't show a PDF inside an iframe reliably (blank on Android, first page only on iPad).
+      if (window.innerWidth < 640 || window.matchMedia('(pointer: coarse)').matches) {
         window.open(cvPdf, '_blank')
         return
       }
@@ -179,7 +180,6 @@ export default function Home() {
               <AnimatedSection active={active} />
             </main>
 
-            {showCvPreview && <CvPreviewModal onClose={() => setShowCvPreview(false)} />}
           </div>
           <div className="absolute bottom-0 left-0 right-0 h-8 pointer-events-none rounded-b-2xl bg-linear-to-t from-surface to-transparent" />
         </div>
@@ -193,8 +193,10 @@ export default function Home() {
         <ContentPanel active={active}>
           <AnimatedSection active={active} />
         </ContentPanel>
-        {showCvPreview && <CvPreviewModal onClose={() => setShowCvPreview(false)} />}
       </div>
+
+      {/* One modal for both layouts (the hidden layout would otherwise mount a second copy). */}
+      {showCvPreview && <CvPreviewModal onClose={() => setShowCvPreview(false)} />}
     </div>
   )
 }

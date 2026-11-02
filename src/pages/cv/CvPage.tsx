@@ -481,7 +481,7 @@ export default function CvPage() {
                     <li>Led full platform migration from WordPress to Next.js — delivering measurable gains in performance and scalability</li>
                     <li>Drove user engagement through gamification: achievements, ranks, level progression, and customizable themes</li>
                     <li>Built Kauzi (kauzi.lupygames.com) from scratch — a charity platform where daily puzzle games raise points for a shared cause, with teams, leaderboards, and EN/BG support</li>
-                    <li>Continuously iterate on features and UX to keep pace with evolving community needs</li>
+                    <li>Continuously iterated on features and UX to keep pace with evolving community needs</li>
                   </ul>
                 </div>
               </div>

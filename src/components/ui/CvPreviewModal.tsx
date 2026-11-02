@@ -1,11 +1,13 @@
 import { AnimatePresence, motion } from 'framer-motion'
 import { FiDownload, FiX } from 'react-icons/fi'
 import useLanguage from '../../hooks/useLanguage'
+import useDialog from '../../hooks/useDialog'
 import useCvPdf, { CV_FILE_NAME, cvDownloadUrl, downloadCv } from '../../hooks/useCvPdf'
 
 export default function CvPreviewModal({ onClose }: { onClose: () => void }) {
   const { t } = useLanguage()
   const cvPdf = useCvPdf()
+  const closeRef = useDialog(onClose)
   return (
     <AnimatePresence>
       <motion.div
@@ -21,10 +23,13 @@ export default function CvPreviewModal({ onClose }: { onClose: () => void }) {
           exit={{ opacity: 0, scale: 0.92 }}
           transition={{ duration: 0.25 }}
           onClick={e => e.stopPropagation()}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="cv-modal-title"
           className="relative w-full max-w-4xl h-[85vh] bg-surface border border-border-gold rounded-2xl overflow-hidden flex flex-col max-sm:max-w-full max-sm:h-[95vh] max-sm:rounded-lg"
         >
           <div className="flex items-center justify-between px-5 py-3 border-b border-border-gold">
-            <span className="text-heading font-semibold text-sm">{t('certs.cvPreview')}</span>
+            <span id="cv-modal-title" className="text-heading font-semibold text-sm">{t('certs.cvPreview')}</span>
             <div className="flex items-center gap-3">
               <a
                 href={cvDownloadUrl(cvPdf)}
@@ -36,7 +41,9 @@ export default function CvPreviewModal({ onClose }: { onClose: () => void }) {
                 {t('certs.download')}
               </a>
               <button
+                ref={closeRef}
                 onClick={onClose}
+                aria-label={t('a11y.close')}
                 className="w-8 h-8 flex items-center justify-center rounded-full bg-overlay-10 border-none cursor-pointer text-heading hover:bg-overlay-20 transition-colors"
               >
                 <FiX size={16} />

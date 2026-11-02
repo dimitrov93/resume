@@ -13,11 +13,15 @@ const ThemeContext = createContext<ThemeContextValue>({ theme: 'dark', toggle: (
 export function ThemeProvider({ children }: { children: ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
     const saved = localStorage.getItem('theme') as Theme | null
-    return saved || 'dark'
+    if (saved === 'dark' || saved === 'light') return saved
+    // First visit: follow the OS setting; dark stays the default when there is no preference.
+    return window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
   })
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
+    // Mobile browser toolbar follows the site background.
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', theme === 'dark' ? '#121212' : '#f5f5f5')
     localStorage.setItem('theme', theme)
   }, [theme])
 
