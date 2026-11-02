@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { FiChevronDown, FiDownload, FiEye, FiMenu } from 'react-icons/fi'
 import useLanguage from '../hooks/useLanguage'
 import useTypewriter from '../hooks/useTypewriter'
-import useCvPdf, { cvDownloadUrl } from '../hooks/useCvPdf'
+import useCvPdf, { CV_FILE_NAME, cvDownloadUrl, downloadCv } from '../hooks/useCvPdf'
 import { contacts } from '../data/contacts'
 import { profile } from '../data/profile'
 import ContactItem from './ContactItem'
@@ -59,7 +59,8 @@ export function SidebarFull() {
         </button>
         <a
           href={cvDownloadUrl(cvPdf)}
-          download="Tsvetomir_Dimitrov_CV.pdf"
+          download={CV_FILE_NAME}
+          onClick={downloadCv}
           className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-linear-to-r from-accent to-accent-2 text-accent-text text-[11px] font-semibold no-underline transition-all duration-300 hover:brightness-110"
         >
           <FiDownload size={12} />
@@ -154,7 +155,8 @@ export function SidebarCompact({ onMenuToggle, active }: { onMenuToggle: () => v
                 </button>
                 <a
                   href={cvDownloadUrl(cvPdf)}
-                  download="Tsvetomir_Dimitrov_CV.pdf"
+                  download={CV_FILE_NAME}
+                  onClick={downloadCv}
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-linear-to-r from-accent to-accent-2 text-accent-text text-[11px] font-semibold no-underline transition-all duration-300 hover:brightness-110"
                 >
                   <FiDownload size={12} />
