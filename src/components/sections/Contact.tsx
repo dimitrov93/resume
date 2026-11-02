@@ -14,17 +14,20 @@ export default function Contact() {
       <motion.div variants={anim}>
         <a
           href={`mailto:${profile.email}`}
-          className="group flex items-center gap-5 bg-card border border-border-gold rounded-2xl p-6 no-underline transition-all duration-300 hover:border-accent/30 hover:shadow-[0_4px_24px_var(--color-border-gold)]"
+          className="group block bg-card border border-border-gold rounded-2xl p-6 no-underline transition-all duration-300 hover:border-accent/30 hover:shadow-[0_4px_24px_var(--color-border-gold)]"
         >
-          <div className="shrink-0 w-14 h-14 rounded-2xl bg-linear-to-br from-accent to-accent-2 flex items-center justify-center shadow-[0_4px_16px_var(--color-border-gold)] group-hover:shadow-[0_4px_24px_var(--color-border-gold)] transition-shadow duration-300">
-            <FiMail size={24} className="text-accent-text" />
-          </div>
-          <div className="flex flex-col gap-1">
-            <span className="text-[11px] uppercase tracking-wider font-semibold text-dim">{t('contact.getInTouch')}</span>
-            <span className="text-base sm:text-lg font-semibold text-heading group-hover:text-accent transition-colors duration-300 wrap-break-word">
-              {profile.email.split('@')[0]}@<wbr />{profile.email.split('@')[1]}
-            </span>
-            <span className="text-xs text-dim">{t('contact.clickToEmail')}</span>
+          {/* Row layout on an inner element: browser extensions (CRMs, dialers) restyle mailto: links themselves. */}
+          <div className="flex flex-row flex-nowrap items-center gap-5">
+            <div className="shrink-0 w-14 h-14 rounded-2xl bg-linear-to-br from-accent to-accent-2 flex items-center justify-center shadow-[0_4px_16px_var(--color-border-gold)] group-hover:shadow-[0_4px_24px_var(--color-border-gold)] transition-shadow duration-300">
+              <FiMail size={24} className="text-accent-text" />
+            </div>
+            <div className="flex flex-col gap-1 min-w-0">
+              <span className="text-[11px] uppercase tracking-wider font-semibold text-dim">{t('contact.getInTouch')}</span>
+              <span className="text-base sm:text-lg font-semibold text-heading group-hover:text-accent transition-colors duration-300 wrap-break-word">
+                {profile.email.split('@')[0]}@<wbr />{profile.email.split('@')[1]}
+              </span>
+              <span className="text-xs text-dim">{t('contact.clickToEmail')}</span>
+            </div>
           </div>
         </a>
       </motion.div>
